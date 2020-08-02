@@ -1,0 +1,192 @@
+
+body{
+    background-image: url("../IMAGENS/LoginBack.png"); /* Os " ../ " são para sinalizar para que o arquivo saia da pasta CSS, entre na pasta "Imagens" e pegue a imagem solicitade */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-items: center;
+}
+/*==============================  GRID  ===========================*/
+main{
+    animation-name: Load;
+    animation-duration: 0.5s;
+
+    display: grid;
+    grid-template-areas: 
+    "Header Header"
+    "Form    Form"
+    "Bot    Bot";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
+}
+
+header{
+    grid-area: Header;
+}   
+content{
+    grid-area: Form;
+}
+footer{
+    grid-area: Bot;
+}
+.msg{
+    grid-area: Bot;
+}
+/*==============================  GRID  ===========================*/
+/*==============================  Card & Header  ===========================*/
+img#logo{
+    width: 12%;
+    min-width:80px;
+    height: auto;
+    background: #FFF;
+}
+.card{
+    position: relative;
+    margin: auto;
+    width: 900px;
+    max-width: 95%;
+    height: 80%;
+    background: white;
+    border-radius: 20px;
+    border: 1.5px solid gray;
+    padding: 10px;
+    padding-top:20px;
+}
+header{
+    animation-name:Load;
+    animation-duration: 1.2s;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    text-align: center;
+    font-size: 1em;
+}
+header p{
+    width: 100%;
+}
+
+/*==============================  Card & Header  ===========================*/
+/*==============================  Forms  ===========================*/
+
+content{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+
+}
+form#Cadastro{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    width: 40%;
+    height: 80%;
+
+}
+form#Login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    margin: auto;
+    width: 40%;
+    height: 80%;
+}
+div#row{
+    width: 2px;
+    height: 100%;
+    background: gray;
+}
+
+/*==============================  Forms  ===========================*/
+/*==============================  Inputs Forms  ===========================*/
+/*       Errors       */
+div.inputParent{
+    margin: 0;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    transition: height 1s;
+    
+}
+.msgError{
+    animation-name: Load;
+    animation-duration: 1.5s;
+    transition: 0.2s ease;
+
+    font-size: 12px;
+    color: rgb(255, 62, 62);
+
+    filter:opacity(1);
+}
+/*       Errors       */
+form input{    
+    animation-name:Load;
+    animation-duration: 1.5s;
+
+    border:0;
+    border-bottom:1px solid var(--blue-color) ;
+    padding: 10px;
+    margin:5px;
+
+    width: 100%;
+    background: transparent;
+
+    color: var(--blue-color);
+    box-shadow: none;
+}
+form input:focus{
+    outline: none;
+    transition: 0.3s;
+    background-color: var(--blue-white);
+    font-size:15px;
+    color:#212121;
+    margin: 0;
+    border-bottom: 2px solid var(--blue-color);
+    border-left: 2px solid var(--blue-color);
+
+    box-shadow: none;
+}
+form input:hover{
+    transition: 0.5s;
+    font-size:15px;
+    margin-left:2px;
+    margin-right:2px;
+}
+
+/*==============================  Inputs Forms  ===========================*/
+/*==============================  Form Buttons  ===========================*/
+footer{
+    animation-name:Load;
+    animation-duration: 1.2s;
+    width: 100%;
+    display: flex;
+    justify-content: space-between ;
+}
+footer button{
+    height: 60%;
+    min-height:50px;
+    width: min-content;
+    padding: 10px;
+
+    font-size:0.9rem;
+    transition: 0.5s;
+    border-radius: 10px;
+
+    background: var(--blue-color);
+    color: #FFF;
+}
+footer button:hover{
+    border-radius:0;
+}
+/*==============================  Form Buttons  ===========================*/
+
+#msg-sucesso{
+    background: #FFF;
+    font-size: 0.5rem;
+    height: min-content;
+}

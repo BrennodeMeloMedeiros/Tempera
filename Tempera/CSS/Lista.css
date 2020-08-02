@@ -1,0 +1,181 @@
+content{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+input:focus{
+    outline:none;
+}
+/*==============================  Grid  ===========================*/
+.Card{
+    margin: auto;
+    margin-top: 30px;
+    background: #FFF;
+    width: 85%;
+    height: auto;
+    max-height: auto;
+    min-height: 600px;
+    border-radius: 20px ;
+    border:1px solid gray;
+    padding: 2%;
+}
+
+.Card{
+    display: grid;
+    grid-template-areas: 
+    "Lista-Top  Aviso"
+    "Lista-Bot  Botão";
+    grid-template-rows: 5rem 6fr;
+    grid-template-columns: 2.5fr 2fr;
+}
+
+.List-Text{
+    grid-area: Lista-Top;
+}
+.List-Content{
+    grid-area: Lista-Bot;
+}
+.List-Aviso{
+    grid-area: Aviso;
+}
+#Button{
+    grid-area: Botão;
+}
+
+/*==============================  Grid  ===========================*/
+
+/*==============================  Card  ===========================*/
+.List-Text{
+    margin-left:2rem;
+    margin-top:1rem;
+    font-size: 1.8rem
+}
+
+            /*==================== Aviso  ==================*/
+.List-Aviso{
+    transition: 0.6s;
+    border-radius: 20px;
+    width: 90%;
+    padding: 0.5rem;
+    padding-top:0;
+    height: min-content;
+    background:#F2F245 ;
+    margin: 0;
+}
+.List-Aviso:hover #Alert-Text{
+    display: block;
+}
+#Alert-Title{
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+#Alert-Text{
+    transition: 0.6s;
+    display: none;
+    font-size:0.6rem ;
+}
+
+            /*==================== Aviso  ==================*/
+
+            /*==================== Botão  ==================*/
+
+#Button{
+    display: flex;
+    align-items:center ;
+    justify-content: center;
+}
+.Btn-Del{
+    background: none;
+}
+.Btn-Del:focus{
+    outline: none;
+    border: 0;
+}
+.Btn-Del:hover svg path{
+    fill:rgb(134, 3, 3);
+}
+
+            /*==================== Botão  ==================*/
+
+            /*==================== Lista  ==================*/
+.List-Item{
+    display: flex;
+    align-items:center;
+    border-bottom:1px solid #919191;
+}
+.List-Item svg{
+    margin:15px;
+}
+.Item{
+    font-size: 1rem;
+    padding:10px 0px 10px 10px;
+    color: #212121;
+}
+.Item:hover{
+    background: var(--blue-white);
+}
+.Item-Qtdd{
+    width: min-content;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+.Qtdd{
+   padding: 10px 0;
+   font-size: 1.2rem;
+   text-align: center;
+   width: 50px;
+   -webkit-appearance:textfield;
+   -moz-appearance:textfield;
+   appearance:textfield;
+}
+.Qtdd:hover{
+    background: var(--blue-white);
+}
+            /*==================== Botões  ==================*/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+-webkit-appearance: none;
+}
+.Btn{
+    background: none;
+    margin:0;
+    font-size:1.5rem;
+    width:100%;
+    padding:0 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.Btn svg{
+    margin: 0;
+    padding:0;
+}
+.Btn:active{
+    outline:none;
+    background: var(--blue-color);
+    color: #FFF;
+}
+            /*==================== Botões  ==================*/
+
+#AddItem{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding:10px;
+    border-radius:0px 0px 20px 20px;
+    border:1px 0px 0px 0px solid black;
+    margin-top:10px;
+}
+#AddItem:hover{
+    background: var(--blue-white);
+}
+            /*==================== Lista  ==================*/
+
+
+
+
+

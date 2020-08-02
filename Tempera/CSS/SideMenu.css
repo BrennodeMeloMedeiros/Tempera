@@ -1,0 +1,317 @@
+body{
+    background: var(--bg-color);
+}
+body::-webkit-scrollbar{
+    width: 0.35rem;    
+}
+body::-webkit-scrollbar-track{
+    background: black;
+
+}
+body::-webkit-scrollbar-thumb{
+    background: var(--blue-black);
+
+}
+/*=====================================  GRID  ================================*/
+main{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+    "Nav    Header   Header"
+    "Nav    Content  Aside"
+    "Nav    Content  Aside";
+
+    grid-template-rows: 1fr 5fr 5fr ;
+    grid-template-columns:var(--nav-size-width) 10fr 2fr ;
+}
+nav{
+    grid-area: Nav;
+}
+header{
+    grid-area: Header;
+}
+aside{
+    grid-area: Aside;
+}
+content{
+    grid-area: Content;
+}
+/*=====================================  GRID  ================================*/
+
+/*=====================================  Header  ================================*/
+
+header{
+    display: flex;
+    background: #FFF;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+header .Search-Input{
+    display: flex;
+    width: min-content;
+    height: min-content;
+    padding: 5px;
+    margin: 0 15px;
+    border-radius:20px;
+    background: var(--bg-color);
+}
+header .Search-Input input{
+    background: var(--bg-color);
+
+}
+header .Search-Input svg{
+    width: 15px;
+    height: 15px;
+    margin: auto 8px;
+}
+header .Search-Input input:focus{
+    outline:none;
+}
+
+            /*==================  Filtro  ==============*/
+.filtro-position{
+    width: min-content;
+    height: 100%;
+    display:flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0 10%;
+    position: relative;
+}
+.filtro-position svg{
+    transition: 0.4s;
+    margin: 3px 10px;
+}
+.filtro-position:hover{
+    color: var(--blue-black);
+
+}
+.filtro-position:hover .drop{
+    display:block;
+}
+.filtro-position:hover svg{
+    transform: rotate(90deg)
+}
+.filtro-position:hover svg::fill{
+    color:blue;
+}
+.drop{
+    display:none;
+    position:absolute;
+    background: #FFF;
+    padding-left:20px;
+    padding:0px 1rem 10px 10px ;
+    top:100%;
+    left: 0%;
+    border:1px solid gray;
+    border-top:0;
+}
+.drop-item{
+    color: black;
+    font-family: sans-serif;
+    transition:0.6s;
+    font-size:0.9rem;
+    width: 9rem;
+    border-bottom:1px solid var(--blue-black);
+    margin-top:5px;
+    cursor: pointer;
+}
+
+
+
+            /*==================  Filtro  ==============*/
+
+            /*==================  Avatar  ==============*/
+.Avatar{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    width: 2rem;
+    min-width: 50px;
+    height: auto;
+    padding:5px;
+}
+.Avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+    border: 3px solid var(--blue-black);
+}
+            /*==================  Avatar  ==============*/
+            /*==================  Logo  ==============*/
+.Logo{
+    display: flex;
+    width: 10%;
+    min-width:80px ;
+    height: 100%;
+    max-height: 100%;
+
+}
+
+.ImgLogo{
+    width: 100%;
+    height: 100%;
+   
+}
+            /*==================  Logo  ==============*/
+
+/*=====================================  Header  ================================*/
+
+/*=====================================  Nav   ================================*/
+ul.navbar{
+    background: var(--nav-bg);
+    
+    transition: 0.25s;
+
+    width: 3rem;
+}
+
+li.nav-top{
+    border-bottom: 1px solid #fff4;
+    background: var(--blue-black);
+
+}
+nav{
+    width: var(--nav-size-width);
+    height: 100%;
+
+    position: fixed;
+
+    text-decoration: none;
+
+    display:flex;
+
+    z-index: 9999;
+}
+nav:hover{
+    width: 13rem;
+}
+nav:hover ul.navbar{
+    width: 13rem;
+}
+nav:hover .nav-text{
+    display: block;
+    font-size: 25px;
+}
+nav:hover .nav-top svg{
+    display: none;
+}
+nav:hover .nav-text{
+    font-weight:bold;
+}
+
+
+.nav-top{ 
+    height: 9vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.nav-text{
+    display:none;
+    color:#FFF;
+    margin-left: 0.5rem ;
+}
+.navbar{
+    height: 100%;
+
+}
+.nav-item{
+    width: 100%;
+}
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 3em;
+    filter:opacity(0.8);
+}
+.nav-link:hover{
+    filter: opacity(1);
+}
+.nav-link svg, .nav-top svg{
+    margin:0 0.5rem;
+    width: 1.5rem;
+    min-width:1.5rem;
+}
+/*=====================================  Nav   ================================*/
+
+/*=====================================  Aside   ================================*/
+
+aside{
+    background:#F3F3F3;
+    width:100%;
+    height: 100%;
+
+}
+.UsersTop{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.UsersList{
+    width: 100%;
+}
+.User-Text{
+    margin-left:15px;
+    font-size: 0.8rem;
+}
+.TopUser{
+    width:2rem ;
+    height: auto;
+}
+.UserName{
+    font-size:0.6rem;
+
+}
+.User{
+    display:flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin:auto;
+    padding: 5%;
+    width: 90%;
+    font-weight: bolder;
+}
+.NameDiv{
+    display:flex;
+    flex-direction: column;   
+    justify-content: center;
+    align-items: center;
+
+}
+.SubName{
+    font-size: 0.5rem;
+    color:gray;
+    margin-left: 0;
+
+}
+/*=====================================  Aside   ================================*/
+
+/*=====================================  Content   ================================*/
+
+content{
+    display:flex;
+    width: 100%;
+}
+.Name-Page{
+    width: 100%;
+    height: 1.5rem;
+    padding-left:5.5rem;
+    margin: 0;
+
+    background: #D6D6D6;
+    color:var(--blue-color);
+    font-size: 0.8rem;
+
+
+    display: flex;
+    align-items: center;
+}
+
+
