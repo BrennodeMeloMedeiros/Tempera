@@ -21,7 +21,7 @@
     <main class="card blue"> 
         <header>
             <p><strong> Cadastrar </strong></p>
-            <img id="logo" src="/Tempera_V2/IMAGENS/Logo_Tempera.png">
+            <img id="logo" src="IMAGENS/Logo_Tempera.png">
             <p><strong> Logar </strong></p>
         </header>
         <content>

@@ -40,32 +40,36 @@
                     A lista serve para que você monte o que precisa para as suas próximas compras, dessa forma você mantém de forma mais organizada e prática o que tem ou não em sua geladeira.
                 </p>
             </div>
-            <div id="List-Content"class="List-Content">
-                
+            <div id="List-Content" class="List-Content">
+                <form autocomplete="off" method="POST" id="formList">
+        
                 <div id="0" class="List-Item">
-                    <button class="Btn-Del"onclick="Delete()"> 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" fill="Red"/></svg>
-                    </button>
-                    <input name="Ingredientes" placeHolder="Insira o Ingrediente" list="Ingredientes" class="Item">
-                    <div class="Item-Qtdd">
-                        <input type="number" id="Qtdd" value="1" class="Qtdd" min=1 max=99>
+                        <button class="Btn-Del"> 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" fill="Red"/></svg>
+                        </button>
+                        <input required name="Ingredientes" type="text" placeHolder="Insira o Ingrediente" list="Ingredientes" class="Item">
+                        <div class="Item-Qtdd">
+                            <input type="number" id="Qtdd" value="1" class="Qtdd" min=1 max=99>
+                        </div>
                     </div>
-                </div>
-                <datalist id="Ingredientes">
-                    <option value="Ingrediente 1">
-                    <option value="Ingrediente 2">
-                    <option value="Ingrediente 3">
-                    <option value="Ingrediente 4">
-                    <option value="Ingrediente 5">
-                    <option value="Ingrediente 6">
-                    <option value="Ingrediente 7">
-                    <option value="Ingrediente 8">
-                    <option value="Ingrediente 9">
-                    <option value="Ingrediente 10">
-                    <option value="Ingrediente 11">
-                    <option value="Ingrediente n">
-                </datalist>
 
+
+
+                    <datalist id="Ingredientes">
+                        <option value="Ingrediente 1">
+                        <option value="Ingrediente 2">
+                        <option value="Ingrediente 3">
+                        <option value="Ingrediente 4">
+                        <option value="Ingrediente 5">
+                        <option value="Ingrediente 6">
+                        <option value="Ingrediente 7">
+                        <option value="Ingrediente 8">
+                        <option value="Ingrediente 9">
+                        <option value="Ingrediente 10">
+                        <option value="Ingrediente 11">
+                        <option value="Ingrediente n">
+                    </datalist>
+                </form>
           
                 <div id="AddItem">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="Green"/></svg>
@@ -76,11 +80,13 @@
           
           
             <div id="Button">
-                <input class="Blue-Button" type="button" value="Exportar para a Geladeira">
+                <button class="Blue-Button" form="formList">Exportar para a Geladeira</button>
             </div>
         </div>
-        <script>
-        </script>
+
+
+      
+    
         </content>
     </main>
 </body>

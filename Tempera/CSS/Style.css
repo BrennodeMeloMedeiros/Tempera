@@ -24,7 +24,7 @@ html, body, ul, li, p {
     padding: 0px;
     border: 0px;
     list-style: none;
-    font-family: Segoe UI;
+    font-family: sans-serif;
     font-size: 1.4rem;
 }
 a{
@@ -62,7 +62,6 @@ a{
     background: #FFF;
     width: 85%;
     height: auto;
-    max-height: auto;
     min-height: 600px;
     border-radius: 20px ;
     border:1px solid gray;

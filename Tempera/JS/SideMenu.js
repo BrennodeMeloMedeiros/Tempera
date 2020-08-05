@@ -29,7 +29,7 @@ function ShowSideMenu() {
 "       </div>"+
 "       <div class='LogoTempera'>"+
 "           <div class='Logo'>"+
-"               <img src='/Tempera_V2/IMAGENS/Logo_Tempera.png' class='ImgLogo'> "+
+"               <img src='IMAGENS/Logo_Tempera.png' class='ImgLogo'> "+
 "           </div>"+
 "       </div>"+
 "       <div class='Search-Input'>"+
@@ -37,7 +37,7 @@ function ShowSideMenu() {
 "           <input type='text' class='search' placeholder='Pesquisar'>"+
 "       </div>"+
 "       <div class='Avatar'>"+
-"           <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='AvatarImg'>"+
+"           <img src='IMAGENS/AvatarBeta.png' class='AvatarImg'>"+
 "       </div>"+
 "   </header>"+
 "<!--============================================= Header =============================================-->"+
@@ -93,19 +93,19 @@ function ShowSideMenu() {
 "       <span class='User-Text blue'><strong>Top Usuários</strong></span>"+
 "       <ul class='User-List'>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <span class='UserName'>Nome do Usuário</span>"+
 "           </li>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <span class='UserName'>Nome do Usuário</span>"+
 "           </li>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <span class='UserName'>Nome do Usuário</span>"+
 "           </li>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <span class='UserName'>Nome do Usuário</span>"+
 "           </li>"+
 "       </ul>"+
@@ -115,28 +115,28 @@ function ShowSideMenu() {
 "       <span class='User-Text blue'><strong>Top Receitas</strong></span>"+
 "       <ul class='User-List'>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <div class='NameDiv'>"+
 "                   <span class='UserName'>Nome da Receita</span>"+
 "                   <span class='SubName'> Nome do Usuário</span>"+
 "               </div>"+
 "           </li>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <div class='NameDiv'>"+
 "                   <span class='UserName'>Nome da Receita</span>"+
 "                   <span class='SubName'> Nome do Usuário</span>"+
 "               </div>"+
 "           </li>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <div class='NameDiv'>"+
 "                   <span class='UserName'>Nome da Receita</span>"+
 "                   <span class='SubName'> Nome do Usuário</span>"+
 "               </div>"+
 "           </li>"+
 "           <li class='User'>"+
-"               <img src='/Tempera_V2/IMAGENS/AvatarBeta.png' class='TopUser'>"+
+"               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>"+
 "               <div class='NameDiv'>"+
 "                   <span class='UserName'>Nome da Receita</span>"+
 "                   <span class='SubName'> Nome do Usuário</span>"+

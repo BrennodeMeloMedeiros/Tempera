@@ -12,7 +12,6 @@ input:focus{
     background: #FFF;
     width: 85%;
     height: auto;
-    max-height: auto;
     min-height: 600px;
     border-radius: 20px ;
     border:1px solid gray;
@@ -47,7 +46,7 @@ input:focus{
 .List-Text{
     margin-left:2rem;
     margin-top:1rem;
-    font-size: 1.8rem
+    font-size: 1.4rem
 }
 
             /*==================== Aviso  ==================*/

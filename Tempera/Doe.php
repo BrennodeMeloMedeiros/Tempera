@@ -30,7 +30,7 @@
         <div class="Card">
             <section class="Ong-Painel">
                  <div class="Ong-Image">
-                    <img src="/Tempera_V2/IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
+                    <img src="IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
                  </div>
                  
                  <div class="Ong-Text">
@@ -44,7 +44,7 @@
 
             <section class="Ong-Painel">
                  <div class="Ong-Image">
-                    <img src="/Tempera_V2/IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
+                    <img src="IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
                  </div>
                  
                  <div class="Ong-Text">
@@ -58,7 +58,7 @@
 
             <section class="Ong-Painel">
                  <div class="Ong-Image">
-                    <img src="/Tempera_V2/IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
+                    <img src="IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
                  </div>
                  
                  <div class="Ong-Text">
