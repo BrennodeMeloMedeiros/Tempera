@@ -33,7 +33,7 @@
             <div class="Name-Page">
                 Página Inicial
             </div>
-            <section class="card">
+            <section  class="card">
                 <img src="IMAGENS/Stro.jpg" alt="Receita">
                 <div class="card-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="80.615" height="11.865" viewBox="0 0 82.615 13.865">
