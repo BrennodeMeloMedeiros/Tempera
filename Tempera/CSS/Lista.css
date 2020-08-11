@@ -113,25 +113,25 @@ input:focus{
 .Item:hover{
     background: var(--blue-white);
 }
-.Item-Qtdd{
-    width: min-content;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+    /* .Item-Qtdd{
+        width: min-content;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
 
-}
-.Qtdd{
-   padding: 10px 0;
-   font-size: 1.2rem;
-   text-align: center;
-   width: 50px;
-   -webkit-appearance:textfield;
-   -moz-appearance:textfield;
-   appearance:textfield;
-}
-.Qtdd:hover{
-    background: var(--blue-white);
-}
+    }
+    .Qtdd{
+    padding: 10px 0;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 50px;
+    -webkit-appearance:textfield;
+    -moz-appearance:textfield;
+    appearance:textfield;
+    }
+    .Qtdd:hover{
+        background: var(--blue-white);
+    } */
             /*==================== Botões  ==================*/
 
 input[type=number]::-webkit-inner-spin-button, 
