@@ -43,15 +43,16 @@
             <div id="List-Content" class="List-Content">
                 <form autocomplete="off" method="POST" id="formList">
         
-                <div id="0" class="List-Item">
+                <div id="item-0" class="List-Item">
                         <button class="Btn-Del"> 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" fill="Red"/></svg>
                         </button>
                         <input name="Ingredientes" type="text" placeHolder="Insira o Ingrediente" class="Item">
-                    </div>
+                </div>
+                
                 </form>
-          
-                <div id="AddItem">
+    
+                <div id="AddItem" onclick="addItemList()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="Green"/></svg>
                </div>
             </div>

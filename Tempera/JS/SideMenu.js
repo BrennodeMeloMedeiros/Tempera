@@ -23,7 +23,7 @@ function ShowSideMenu() {
 "                   Saladas"+
 "               </li>"+
 "               <li class='drop-item'>"+
-"                   Doces"+
+"                   Sopremesas"+
 "               </li>"+
 "           </ul>"+
 "       </div>"+
@@ -148,4 +148,4 @@ function ShowSideMenu() {
 "   </section>"+
 "</aside>"+
 "<!--=============================================  Aside  =============================================-->";
-    };
+};
