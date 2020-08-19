@@ -96,7 +96,7 @@ header .Search-Input input:focus{
 .filtro-position:hover svg{
     transform: rotate(90deg)
 }
-.filtro-position:hover svg::fill{
+.filtro-position:hover svg{
     color:blue;
 }
 .drop{

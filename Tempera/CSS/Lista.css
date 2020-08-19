@@ -143,7 +143,6 @@ input:focus{
     justify-content:center;
     padding:10px;
     border-radius:0px 0px 20px 20px;
-    border:1px 0px 0px 0px solid black;
     margin-top:10px;
 }
 #AddItem:hover{
