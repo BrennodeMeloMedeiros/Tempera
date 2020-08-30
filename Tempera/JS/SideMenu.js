@@ -28,17 +28,19 @@ function ShowSideMenu() {
            </ul>
        </div>
        <div class='LogoTempera'>
-           <div class='Logo'>
-               <img src='IMAGENS/Logo_Tempera.png' class='ImgLogo'> 
+       <a href='Home.php'>
+            <div class='Logo'>
+                 <img src='IMAGENS/Logo_Tempera.png' class='ImgLogo'>     
            </div>
+        </a> 
        </div>
        <div class='Search-Input'>
            <svg xmlns='http://www.w3.org/2000/svg' width='35.997' height='36.004' viewBox='0 0 35.997 36.004'><path id='Icon_awesome-search' data-name='Icon awesome-search' d='M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z' fill='#3A9AE4'/></svg>
            <input type='text' class='search' placeholder='Pesquisar'>
        </div>
-       <div class='Avatar'>
-           <img src='IMAGENS/AvatarBeta.png' class='AvatarImg'>
-       </div>
+        <div class='Avatar'>
+            <img src='IMAGENS/AvatarBeta.png' class='AvatarImg'>
+        </div>
    </header>
 <!--============================================= Header =============================================-->
 
@@ -57,7 +59,7 @@ function ShowSideMenu() {
                    
                </li>
            <li class='nav-item'>
-               <a href='Home.php' class='nav-link'>
+                <a href='Home.php' class='nav-link'>
                    <svg xmlns='http://www.w3.org/2000/svg' width='69.642' height='54.155' viewBox='0 0 69.642 54.155'><path id='Icon_awesome-home' data-name='Icon awesome-home' d='M33.9,16.3,11.607,34.661V54.475a1.934,1.934,0,0,0,1.934,1.934l13.548-.035a1.934,1.934,0,0,0,1.925-1.934V42.869a1.934,1.934,0,0,1,1.934-1.934h7.737a1.934,1.934,0,0,1,1.934,1.934V54.431a1.934,1.934,0,0,0,1.934,1.94l13.543.037a1.934,1.934,0,0,0,1.934-1.934V34.648L35.746,16.3A1.474,1.474,0,0,0,33.9,16.3ZM69.105,28.781,59,20.45V3.7a1.451,1.451,0,0,0-1.451-1.451h-6.77A1.451,1.451,0,0,0,49.326,3.7v8.778L38.5,3.577a5.8,5.8,0,0,0-7.375,0l-30.6,25.2a1.451,1.451,0,0,0-.193,2.043l3.083,3.748a1.451,1.451,0,0,0,2.044.2L33.9,11.346a1.474,1.474,0,0,1,1.85,0L64.185,34.769a1.451,1.451,0,0,0,2.043-.193l3.083-3.748a1.451,1.451,0,0,0-.206-2.047Z' transform='translate(0.001 -2.254)' fill='#fff'/></svg>
                    <span class='nav-text'>Home</span>
                </a>     
@@ -69,7 +71,13 @@ function ShowSideMenu() {
                    <span class='nav-text'>Lista</span>
                </a>     
            </li>
-
+           <li class='nav-item'>
+           <a href='AddReceitas.php' class='nav-link'>
+           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="#fff"/></svg>
+               <span class='nav-text'>Adicionar</span>
+           </a>     
+       </li>
+          
            <li class='nav-item'>
                <a href='Geladeira.php' class='nav-link'>
                    <svg xmlns='http://www.w3.org/2000/svg' width='71.253' height='67.853' viewBox='0 0 71.253 67.853'><path id='Icon_awesome-door-closed' data-name='Icon awesome-door-closed' d='M69.472,59.371H57V6.732C57,3.019,54.606,0,51.659,0H19.594C16.647,0,14.25,3.019,14.25,6.732V59.371H1.781A1.973,1.973,0,0,0,0,61.492v4.241a1.973,1.973,0,0,0,1.781,2.12H69.472a1.973,1.973,0,0,0,1.781-2.12V61.492A1.973,1.973,0,0,0,69.472,59.371Zm-23.158-21.2c-1.967,0-3.563-1.9-3.563-4.241s1.6-4.241,3.563-4.241,3.563,1.9,3.563,4.241S48.282,38.167,46.314,38.167Z' fill='#fff'/></svg>

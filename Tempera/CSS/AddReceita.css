@@ -1,0 +1,186 @@
+content{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.Card{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    min-height: min-content;
+
+    flex-direction: column;
+}
+
+/* =============== Imagem ============ */
+#Image-Painel{
+    width: 80%;
+    height:200px;
+
+    background: #D9D9D9;
+
+    border-radius: 20px;
+
+    display: flex;
+    align-items: flex-end;
+
+    align-self: flex-start;
+}
+
+#Image-Painel input[type='file']{
+    display: none;
+}
+
+label[for='image'].Blue-Button{
+    
+    min-width: min-content;
+    max-width: 165px;
+
+    height: min-content;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+/* =============== Imagem ============ */
+/* ================ Inputs ================= */
+/* ==== Nome da Receita ==== */
+.Input-Row{
+    height: 10vh;
+
+    
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.Input-Row#Name{
+    display:flex;
+    justify-items: center;
+    align-items: center;
+}
+.Input-Row#Name input{
+    width: 50%;
+    height:40%;
+
+    border-radius:10px;
+
+    padding:5px 10px 5px 10px;
+
+    background:#D9D9D9;
+
+    font-size: 0.9rem;
+    color:#212121;
+
+    margin:0;
+}
+
+
+/* ==== Nome da Receita ==== */
+
+
+#Inputs-Painel{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+
+    margin:20px 0;
+
+    font-size:0.9rem;
+
+    height: min-content;
+}
+#Inputs-Painel input{
+    width: 50px;
+}
+#Inputs-Painel p{
+    font-size:0.85rem;
+    width: min-content;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#Inputs-Painel i{
+    margin-right: 5px;
+}
+
+.Input-Row#Row1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    width: 100%;
+}
+.desc{
+    font-size: 0.6rem;
+    font-weight: bold;
+
+    color: #212121;
+
+    margin-right:3px;
+}
+.row input{
+    padding: 2px 5px;
+    margin:0;
+
+    text-align:center;
+}
+.row i{
+    color: var(--blue-black);
+}
+/* ================ Inputs ================= */
+/* ============ Ingredientes e Modo de Preparo ============ */
+.Input-Row#Row2, .Input-Row#Row3, .Input-Row#Row4{
+    width: 100%;
+    height: max-content;
+
+    margin-bottom: 30px;
+
+}
+.Input-Row#Row2 label, .Input-Row#Row3 label, .Input-Row#Row4 label{
+
+    padding: 10px 0  5px 0;
+}
+.Input-Row#Row2 span, .Input-Row#Row3 span{
+    font-weight:normal;
+
+    margin-bottom:5px;
+}
+.Input-Row#Row2 .row, .Input-Row#Row3 .row, .Input-Row#Row4 .row{
+    width: 80%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+textarea{
+    background: #D9D9D9;
+    width:100%;
+    max-width: 100%;
+    height:120px;
+
+    padding:10px;
+    margin-left:0;
+
+    border-radius:10px;
+}
+
+/* ============ Ingredientes e Modo de Preparo ============ */
+/* ======== Tags ======== */
+
+select{
+    width: 100%;
+    
+    background: #D9D9D9;
+    
+    border-radius:10px;
+
+    padding:5px 10px 5px 10px;
+
+    -moz-appearance:none;
+    -webkit-appearance:none;
+}
+
+/* ======== Tags ======== */

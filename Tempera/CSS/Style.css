@@ -59,13 +59,28 @@ a{
 .Card{
     margin: auto;
     margin-top: 30px;
+    margin-bottom:20px;
     background: #FFF;
     width: 85%;
     height: auto;
-    min-height: 600px;
+    min-height:600px ;
     border-radius: 20px ;
     border:1px solid gray;
     padding: 2%;
+}
+form{
+    margin:0;
+    height: min-content;
+    
+}
+.Basic-Input{
+    border-radius: 10px;
+    border: 1px solid var(--blue-color);
+
+    padding-left:10px;
+}
+.Basic-Input:hover{
+    background: var(--blue-white);
 }
 /* ANIMAÇÕES */
 

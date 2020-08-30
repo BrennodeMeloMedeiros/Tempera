@@ -72,10 +72,9 @@ function checkList(event){
         event.preventDefault()        
     } else {
         alert('Os itens da sua lista foram enviados para a sua geladeira!')
-        event.preventDefault()        
-    }
+    }        
 } 
 
 addEventListener('submit', (event) =>{
-    checkList(event)     
+    checkList(event) 
 })
