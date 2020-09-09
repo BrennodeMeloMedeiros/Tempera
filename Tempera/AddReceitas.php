@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/69a958c39b.js" crossorigin="anonymous"></script>
     <script src="JS\Script.js"></script>
-    <script src="JS\AddReceita.js"></script>
+    <script src="JS\AddReceita.js" defer></script>
     <script src="JS\SideMenu.js"></script>
     
     <title>
@@ -33,10 +33,11 @@
                     <input type='text' id='InputName' placeholder='Nome da receita' >    
                 </div>
                 <div id='Image-Painel'> 
-                    <input type='file' name='image' id='image' class='Blue-Button'>
+                    <input type='file' onchange='viewTargetImage()' name='image' id='image' class='Blue-Button'>
                     <label for='image' class='Blue-Button'>Adicionar Foto</label>
                 </div>
-                
+                 
+                <p class='opcional row' style='color:red'>Atenção! Colocar uma imagem ajuda muito na visibilidade da sua receita, mas não é obrigatório.</p> 
                 <div id='Inputs-Painel'>
                     <div class='Input-Row' id='Row1'>
                         <!-- Linha de Tempo e Porções  -->
@@ -46,11 +47,17 @@
                             <spam class='desc'>Minutos</spam>
                         </div>
                         <div class='row'>
+                            <p><i class="fas fa-weight-hanging"></i><label for='Time'>Calorias</label></p>
+                            <input pattern='[0-9]{1,4}' maxlength="4" class='Basic-Input' type='text' name='Calorias' id='Calorias'>
+                            <spam class='desc'>Cal</spam>
+                        </div>
+                        <div class='row'>
                             <p><i class="fas fa-user-friends"></i><label for='Qtdd-Porcoes'>Porções</label></p>
                             <input type='text' pattern='[0-9]{1,2}' maxlength="2" class='Basic-Input' name='Qtdd-Porcoes' id='Qtdd-Pocoes'>
                             <spam class='desc'>Porções</spam>
                         </div>
                     </div>
+                    <span class='opcional row'>Opcional</span> 
 
                     <div class='Input-Row' id='Row2'>
                         <div class='row'>
@@ -66,7 +73,7 @@
                             
                             <label for='IngredientesText'><i class="fas fa-concierge-bell"></i>Modo de Preparo</label>
                             <span class='desc'>O formato do texto será mantido na exibição da receita. Escreva de forma organizada.</span>
-                            <textarea spellcheck="false" id='IngredientesText'> </textarea>
+                            <textarea spellcheck="false" id='PreparoText'> </textarea>
                         </div>
                     </div>
 
