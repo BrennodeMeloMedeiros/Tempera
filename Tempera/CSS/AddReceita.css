@@ -109,7 +109,7 @@ label[for='image'].Blue-Button{
 
 .Input-Row#Row1{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 
     width: 100%;
@@ -129,6 +129,13 @@ label[for='image'].Blue-Button{
 }
 .row i{
     color: var(--blue-black);
+}
+.row#align{
+    width: 100%;
+
+    display:flex;
+    justify-content:space-between;
+    flex-direction:row;
 }
 .opcional{
     width:100%;

@@ -17,6 +17,8 @@
 html,body{
     height: 100%;
     box-sizing: border-box;
+
+    scroll-behavior: smooth;
     
 }
 html, body, ul, li, p {
@@ -72,6 +74,9 @@ form{
     margin:0;
     height: min-content;
     
+}
+.warning{
+    color:red;
 }
 .Basic-Input{
     border-radius: 10px;
