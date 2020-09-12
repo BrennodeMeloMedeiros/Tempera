@@ -5,12 +5,12 @@
 const List = document.getElementById("formList");
 const Btn = document.querySelector("#AddItem");
 const log = console.log
-
+let a = 0.0
 
 
 
 function addItemList(){
-    itemsCount = document.querySelector('#formList').childElementCount 
+    itemsCount = a++
     // Ascento grave permite a quebra de linha ao declarar qual o conteúdo de uma string, substituindo o "" e ''
     const newItem = `
     <div id="item-`+ itemsCount +`" class="List-Item">
@@ -31,7 +31,7 @@ function removeItem(id){
          itemTarget.parentNode.removeChild(itemTarget)
      }else {
          log(itemsRemoveCount)
-         alert('A Sua lista deve ter ao menos 1 item!')
+         alert('A Sua geladeira deve ter ao menos 1 item!')
     }
 }
 

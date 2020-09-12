@@ -39,7 +39,9 @@ function ShowSideMenu() {
            <input type='text' class='search' placeholder='Pesquisar'>
        </div>
         <div class='Avatar'>
-            <img src='IMAGENS/AvatarBeta.png' class='AvatarImg'>
+            <a href='Perfil.php'>
+                <img src='IMAGENS/AvatarBeta.png' class='AvatarImg'>
+            </a>
         </div>
    </header>
 <!--============================================= Header =============================================-->
