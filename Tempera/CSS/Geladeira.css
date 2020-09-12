@@ -1,0 +1,88 @@
+content{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/* ----------------Grid------------- */
+.Card{
+    display:flex;
+    flex-direction: column;
+
+    height: min-content;
+
+}
+.top{
+    width: 100%;
+    height:2rem;
+    margin-bottom:15px;
+
+    display:flex;
+}
+.fridgeTitle{
+    width: 50%;
+    margin:0;
+}
+.Button{
+    width: 50%;
+    margin:0;
+}
+.bot{
+    width:80%;
+    
+}
+/* ----------------Grid------------- */
+
+.fridgeContent{
+    width: 100%;
+
+}
+
+
+
+/* -------button------- */
+#AddItem{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding:10px;
+    border-radius:20px 20px 0px 0px;
+    margin-top:10px;
+}
+#AddItem:hover{
+    background: var(--blue-white);
+}
+.Btn-Del{
+    background: none;
+    margin: 5px;
+
+    display:flex;
+    justify-content: center;
+}
+.Btn-Del:focus{
+    outline: none;
+    border: 0;
+}
+.Btn-Del:hover svg path{
+    fill:rgb(134, 3, 3);
+}
+
+/* -------button------- */
+  /*==================== Lista  ==================*/
+  .List-Item{
+    display: flex;
+    align-items:center;
+    border-bottom:1px solid #919191;
+}
+.List-Item svg{
+    margin:15px;
+}
+.Item{
+    font-size: 1rem;
+    padding:10px 0px 10px 10px;
+    color: #212121;
+    width: 80%;
+    margin:0;
+}
+.Item:hover{
+    background: var(--blue-white);
+}
+            /*==================== Botões  ==================*/
