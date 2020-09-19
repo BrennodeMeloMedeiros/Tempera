@@ -1,0 +1,22 @@
+content{
+    flex-wrap: wrap;
+} 
+
+.Card{
+    margin: auto;
+    margin-top: 30px;
+    background: #FFF;
+    width: 85%;
+    height: min-content;
+    min-height: min-content;
+    border-radius: 20px ;
+    border:1px solid gray;
+    padding: 2%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+}
+.Card *{
+    margin-bottom:15px;
+}

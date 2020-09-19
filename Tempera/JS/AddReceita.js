@@ -1,5 +1,6 @@
 const log = console.log
 
+
 const form = document.querySelector('form')
     const inputs = form.querySelectorAll('input')
 
@@ -10,6 +11,8 @@ function viewTargetImage(){
 
     imagePainel.style.backgroundImage = `URL(${imageURL})`
 }
+
+
 
 function noInputErrorIndicator(event){
     const ingredientes = form.querySelector('#IngredientesText')
@@ -33,6 +36,7 @@ function noInputErrorIndicator(event){
 
 }
 
+
 form.addEventListener(
     'submit',
     (event) =>{
@@ -41,7 +45,6 @@ form.addEventListener(
 
 function setErrorIndicator(event) {
     const input = event.target
-    
     if(!input.validity.valid){
         event.preventDefault()
         scrollTo(0,0)

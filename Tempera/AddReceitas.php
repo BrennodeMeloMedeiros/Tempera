@@ -1,3 +1,36 @@
+<?php
+
+$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+
+if (!$link) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
+//print_r($_POST);
+//die;
+if(isset($_POST['Inputname'])){
+$nome_receita=$_POST["Inputname"];
+$tags=$_POST["Tags"];
+$porcoes=$_POST["QtddPorcoes"];
+$tempo=$_POST["Time"];
+$descricao=$_POST["Preparo"];
+$calorias=$_POST["Calorias"];
+$ingredientes=$_POST["Ingredientes"];
+
+$sql="insert into tb_receita (txt_descricao, int_calorias, int_porcoes, txt_tags, txt_ingredientes, txt_tempo, txt_nome_receita)
+values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "')"; 
+
+//echo $sql;
+//die;
+
+mysqli_query($link,$sql);
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -28,7 +61,7 @@
             Adicionar Receitas
         </div>
         <div class='Card'>
-            <form autocomplete="off" method="POST" id="NovaReceita">
+            <form name="Form_receita" autocomplete="off" method="POST" id="NovaReceita" action="AddReceitas.php">
                 <div id='Name' class='Input-Row InputDefault' > 
                     <input required  type='text' id='InputName' name='Inputname' placeholder='Nome da receita' >    
                 </div>
