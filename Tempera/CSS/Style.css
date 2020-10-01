@@ -87,6 +87,7 @@ form{
 .Basic-Input:hover{
     background: var(--blue-white);
 }
+
 /* ANIMAÇÕES */
 
 @keyframes Load {                /* Declara uma anição. Ela é chamda por "animation-name: *Nome da Animação*"  no elemento que será animado*/

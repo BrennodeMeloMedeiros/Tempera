@@ -24,6 +24,18 @@ content{
 .Button{
     width: 50%;
     margin:0;
+
+    display:flex;
+    flex-direction:row;
+}
+.Button button{ 
+    font-size:0.8rem;
+    width:40%;
+    height: 100%;
+}
+.Button :first-child{
+    font-size:0.70rem;
+    padding:4px;
 }
 .bot{
     width:80%;

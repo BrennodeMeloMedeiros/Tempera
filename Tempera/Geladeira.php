@@ -29,6 +29,7 @@
                     Geladeira 
                 </div>
                 <div class="Button">
+                    <button form='formList' class="Blue-Button" formaction='FiltrarGeladeira.php' >Filtrar por ingredientes</button>
                     <button form='formList' class="Blue-Button">Salvar alterações</button>
                 </div>
             </div>

@@ -40,7 +40,7 @@ function ShowSideMenu() {
        </div>
         <div class='Avatar'>
             <a href='Perfil.php'>
-                <img src='IMAGENS/AvatarBeta.png' class='AvatarImg'>
+                <img src='IMAGENS/Me.jpg' class='AvatarImg'>
             </a>
         </div>
    </header>

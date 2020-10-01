@@ -7,6 +7,7 @@
     <link rel='stylesheet' type='text/css' href='CSS/Perfil.css'>
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
     <script src="JS\Script.js"></script>
+    <script src="JS\Perfil.js" defer></script>
     <script src="JS\SideMenu.js"></script>
     <title>
         Perfil
@@ -24,29 +25,50 @@
         </div>
         <div class='Card'>  
             <div class="Top">
-                <img src='IMAGENS/Me.jpg' alt='Sua foto de perfil'>
-                <label for='Username'>Nome <input readonly type='text' placeholder='Seu Nome' id='Username' class='#'> </label>
-                <label for='Useremail'>Email <input readonly type='email' placeholder='seuemail@gmail.com' id='Username' class='#'> </label>
+                <div class="Image">
+                    <img id='PImage' src="IMAGENS/Me.jpg" alt=".">
+                </div>
+                <div class='align'>
+                    <div class="row" id='row1'>
+                        <input type="text" placeholder='Nome do usuário' readonly>
+                        <input type="email" placeholder='Email do usuário' readonly>
+                    </div>
+                    <div class="row" id='row2'>
+                        <textarea spellcheck='false' maxlength='190' rows='4' readonly ></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mid">
+                <div class="infos">
+                    <span class="Seguidores">Seguidores: XXX</span>
+                    <span class="Seguindo">Seguindo: XXX</span>
+                </div>
             </div>
             <div class="Bot">
                 <div class="Minicard">
-                    <span>
-                    Favoritos 
-                    </span>
-                    <img src="IMAGENS/Arroz.jpg" alt="Favoitos" name="favoritos">
+                    <p>
+                        Favoritos
+                        <span id='FavQttd'> +256</span>
+                    </p>
+                    
                 </div>
                 <div class="Minicard">
-                    <span>
-                    Suas receitas
-                    </span>
-                    <img src="IMAGENS/Pudim.jpg" alt="Receitas" name="Receitas">
+                    <p>
+                        Histórico
+                        <span id='HistQttd'> +256</span>
+                    </p>
+                    
                 </div>
                 <div class="Minicard">
-                    <span>
-                        Histórico 
-                    </span>
-                        <img src="IMAGENS/Stro.jpg" alt="Histórico" name="Histórico">
+                    <p>
+                        Postagens
+                        <span id='PostQttd'> +256</span>
+                    </p>
+                    
                 </div>
+            </div>
+            <div class="Button">
+                <a href='EditarPerfil.php' class='Blue-Button'>Editar Perfil</a>
             </div>
         </div>
         </content>

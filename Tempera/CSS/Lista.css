@@ -82,6 +82,15 @@ input:focus{
     display: flex;
     align-items:center ;
     justify-content: center;
+    flex-direction: column;
+}
+#Button button{
+    width:100%;
+
+    margin-bottom:15px;
+}
+#Button :first-child{
+    background: #3c9b2f;
 }
 .Btn-Del{
     background: none;

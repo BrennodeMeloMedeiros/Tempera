@@ -41,7 +41,7 @@
                 </p>
             </div>
             <div id="List-Content" class="List-Content">
-                <form autocomplete="off" method="POST" id="formList">
+                <form autocomplete="off" method="POST" action='Salvar.php' id="formList">
         
                 
                 
@@ -56,7 +56,9 @@
           
           
             <div id="Button">
-                <button class="Blue-Button" form="formList">Exportar para a Geladeira</button>
+                <!-- O PRIMEIRO BOTÃO MANDA AS IFNORMAÇÕES PARA A PÁGINA 'SALVAR.PHP', ENQUANTO A SEGUNDA MANDA PARA A PÁGINA 'EXPORTAR.PHP', AMBAS RECEBEM AS MESMAS INFORMAÇÕES -->
+                <button class="Blue-Button" form="formList">Salvar Lista</button>
+                <button class="Blue-Button" form="formList" formactation='Exportar.php' >Exportar para a Geladeira</button>
             </div>
         </div>
 

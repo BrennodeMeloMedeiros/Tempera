@@ -6,115 +6,210 @@ content{
 .Card{
     margin: auto;
     margin-top: 30px;
-    background: #FFF;
+
+    display:flex;
+    flex-direction: column;
+
     width: 85%;
     height: auto;
-    min-height: 65vh;
+    min-height:0px;
+
+    background: #FFF;
     border-radius: 20px ;
     border:1px solid gray;
     padding: 2%;
 }
-/* ==================GRID================== */
-.Card{
-    display:grid;
-    grid-template-areas:
-    'Top Top Top'
-    'Bot Bot Bot';
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
 
-}
+/* =========================TOP============================ */
 .Top{
-    grid-area: Top;
-    width: 100%;
-    height: 95%;
-}
-.Bot{
-    grid-area: Bot;
-    width: 100%;
-    height: 95%;
-}
+    width: 99%;
+    margin:auto;
+    padding:1%;
 
-/* ==================GRID================== */
-/* ==================TOP================== */
-
-.Top{
     display:flex;
-    justify-content:center ;
-    align-items:center;
-
-    font-size:0.8rem;
-
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-.Top img{
-    width: 25%;
-    height: 95%;
-    min-height: min-content;
-    max-height: min-content;
-    
-    margin:0;
-    border-radius:50px;
-    
+.Top .Image { 
+    width: 20%;
+
+    margin:0 ;
+    padding: 0;
+    border: 0;
+
+    display: flex;
+    justify-content: center;  
+}
+.Top .Image img{ 
+    border-radius: 50%!important;
+    width: 100%;
+
+
+    color:#000;
+
     object-fit: cover;
 }
-.Top label{
-    width: min-content;
-    min-width:30%;
-    height: min-content;
+.align{
+    margin: 0;
+    width: 100%;
 }
-.Top input{
-    border-radius: 5px;
-    background: #D3D3D3;
-    padding:2px;
-    padding-left: 5px;
-
-    cursor: default;
-    
+.row{
+    width: 80%;
 }
-/* ==================TOP================== */
-/* ==================BOT================== */
-.Bot{
+.row#row1{
     display:flex;
+    flex-direction: row;
+}
+.row#row1 input, .input{
+    width: 40%;
+    padding: 5px 5px 5px 8px;
+    font-size:0.6rem;
+    margin-left:10px;
+    background:#d3d3d3;
+    border-radius: 10px;
+}
+.row#row1 input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000;
+    opacity: 1; /* Firefox */
+  }
+  
+row#row1 input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: #000;
+}
+
+row#row1 input::-ms-input-placeholder { /* Microsoft Edge */
+color: #000;
+}
+textarea{
+    width: 100%;
+
+    background:#d3d3d3;    
+    border-radius: 10px;
+    margin:10px;
+    padding: 5px;
+
+    color:#000;
+    font-size: 0.7rem;
     
-    justify-content: space-around;
+    resize:none;
+    
+    overflow: hidden;
+
+
+}
+/* =========================TOP============================ */
+/* =========================MID============================ */
+.mid{
+    width: 100%;
+ 
+    display:flex;
+    justify-content:center;
+ 
+    margin:10px 0;
+}
+.infos{
+    width: 50%;
+
+    display:flex;
+    justify-content:space-around;
+}
+.mid span{
+    font-size:0.6rem;
+    font-weight:bold;
+
+    color:var(--blue-color);
+
+}
+/* =========================MID============================ */
+/* =========================BOT============================ */
+.Bot{
+    width: 99%;
+    
+    padding:1%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
 .Minicard{
-    width: 25%;
-    height:80%;
-    
-    border-radius:15px;
-    background: rgba(53, 147, 228, 0.242);
+    width: 24%;
 
-    
-    margin:10px 0;
+    background:#d3d3d3;
+    border-radius:10px;
 
     display:flex;
     flex-direction:column;
-    padding-bottom: 10px;
-}
-.Minicard span{
-    margin: 5px auto;
     
-    color:#3ba4f5;
 
+    color:#919191;
     font-weight: bold;
-    font-size:0.7rem;
 
+
+    transition: 0.5s
+}
+.Minicard:hover{
+    background: var(--nav-bg);
+    color:#fff;
+
+}
+
+.Minicard p{
+    font-size:0.8rem;
+    margin:5px 5px 5px 10px;   
+    
+    display:flex;
+    align-items: center;
+}
+.Minicard p span{
+    font-size: 0.6rem;
+}
+.Minicard .Ialign{
+    width: 100%;
+    height: 60%;
+    max-height: 60%;
+    min-height: 80%;
+    
+    margin:10px auto;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    
 }
 .Minicard img{
-    width: 70%;
-    min-width: 90%;
-    max-width: 90%;
-
-    height: 80%;
-    min-height: 80%;
-    max-height: 80%;
-
-    margin: auto;
-    border-radius:20px;
-
-    object-fit: cover;
-
+    width: 80%;
+    height: 100%;
+    max-height: 100%;
+   
+    background:var(--blue-white)
 
 }
-/* ==================BOT================== */
+/* =========================BOT============================ */
+.Button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2.5% 0;
+}
+.Button a{
+    background: red;
+}
+.Button button#save{
+    background: green;
+}
+
+input[type='file']{
+    display: none;
+}
+.input{
+    cursor: default;
+    color:gray
+}
+#error{
+    font-size : 0.5rem;
+    text-align: center;
+    color:red;
+}

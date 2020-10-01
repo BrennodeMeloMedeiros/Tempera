@@ -66,7 +66,7 @@ mysqli_query($link,$sql);
                     <input required  type='text' id='InputName' name='Inputname' placeholder='Nome da receita' >    
                 </div>
                 <div id='Image-Painel'> 
-                    <input type='file' onchange='viewTargetImage()' name='image' id='image' class='Blue-Button'>
+                    <input type='file' accept="image/*" onchange='viewTargetImage()' name='image' id='image' class='Blue-Button'>
                     <label for='image' class='Blue-Button'>Adicionar Foto</label>
                 </div>
                  
