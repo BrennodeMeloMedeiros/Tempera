@@ -43,7 +43,7 @@ mysqli_query($link,$sql);
     <script src="https://kit.fontawesome.com/69a958c39b.js" crossorigin="anonymous"></script>
     <script src="JS\Script.js"></script>
     <script src="JS\AddReceita.js" defer></script>
-    <script src="JS\SideMenu.js"></script>
+    <script src="JS\Lista.js" defer></script>
     
     <title>
         Adicionar Receitas
@@ -52,9 +52,9 @@ mysqli_query($link,$sql);
 </head>
 <body>
     <main id="main">
-        <script>
-            ShowSideMenu()
-        </script>
+        <?php 
+       include 'SideMenu.php'
+       ?>
 
         <content>
         <div class="Name-Page">
@@ -99,8 +99,9 @@ mysqli_query($link,$sql);
                         <div class='row'>
                             
                             <label for='IngredientesText'><i class="fas fa-carrot"></i>Ingredientes</label>
-                            <span class='desc'>O formato do texto será mantido na exibição da receita. Escreva de forma organizada.</span>
-                            <textarea spellcheck="false" name='Ingredientes' id='IngredientesText'> </textarea>
+                            <div id="AddItem" onclick="addItemList()">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="Green"/></svg>
+                            </div>
                         </div>
                     </div>
 

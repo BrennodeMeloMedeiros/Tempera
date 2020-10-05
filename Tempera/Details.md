@@ -17,9 +17,9 @@
 </head>
 <body>
     <main id="main">
-        <script>
-            ShowSideMenu()
-        </script>
+        <?php 
+           include 'SideMenu.php'
+       ?>
         <content>
         <div class="Name-Page">
             ****Nome da Página****
@@ -41,7 +41,7 @@
 
 - Tudo que precisa ser adicionado como elemento único da página, ou seja, tudo que não o faz parte do SideMenu, cabeçalho e Top Usuários/Top Receitas deve ser colocado dentro da tag "<Content>" e estilizado na página css própria para a página em questão ("NomeDaPágina.CSS"). 
 
-- O Script, juntamente com a função "ShowSideMenu()" serve para aplicar o código predefinido em HTML do Sidemenu ("Sidemenu.js"), que é estilizado pelo Link que acessa o página "SideMenu.CSS", qualquer modificação em um desses arquivos afetará todas as páginas.
+- O "include 'SideMenu.php'" é o que garante que todas as páginas que necessitam do side menu o tenham, o código que ele executa se encontra e m"SIdeMenu.php" e sua estilizaçãp está em "SideMenu.css"
 
 - A Div de classe "Name-Page" deve conter somente o nome da página que irá aparecer em todo o superior da área de Content, a estilização dela já está predefinida.
 

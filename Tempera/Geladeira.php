@@ -16,9 +16,9 @@
 </head>
 <body>
     <main id="main">
-        <script>
-            ShowSideMenu()
-        </script>
+        <?php 
+       include 'SideMenu.php'
+       ?>
         <content>
         <div class="Name-Page">
             Geladeira

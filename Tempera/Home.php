@@ -24,10 +24,9 @@
 </head>
 <body>
     <main id="main">
-        <script>
-            ShowSideMenu()
-        </script>
-        
+         <?php 
+       include 'SideMenu.php'
+       ?>
         
         <content>
             <div class="Name-Page">
@@ -66,6 +65,7 @@
                         
                     </span>
                 </div>
+            
             </section>
              
             <section class="card">

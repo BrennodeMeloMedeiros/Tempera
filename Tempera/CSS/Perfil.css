@@ -24,12 +24,13 @@ content{
 .Top{
     width: 99%;
     margin:auto;
-    padding:1%;
 
     display:flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    padding:10px;
 }
 .Top .Image { 
     width: 20%;
@@ -53,6 +54,7 @@ content{
 .align{
     margin: 0;
     width: 100%;
+    height: 100%;
 }
 .row{
     width: 80%;
@@ -82,17 +84,19 @@ row#row1 input::-ms-input-placeholder { /* Microsoft Edge */
 color: #000;
 }
 textarea{
+    resize:none;
     width: 100%;
+    height: 100%;
 
     background:#d3d3d3;    
     border-radius: 10px;
-    margin:10px;
+
+    margin-left:15px;
     padding: 5px;
 
     color:#000;
     font-size: 0.7rem;
     
-    resize:none;
     
     overflow: hidden;
 
@@ -101,20 +105,25 @@ textarea{
 /* =========================TOP============================ */
 /* =========================MID============================ */
 .mid{
-    width: 100%;
+    width: auto;
  
     display:flex;
     justify-content:center;
  
-    margin:10px 0;
+    margin-left:10px;
 }
 .infos{
-    width: 50%;
+    width: 80%;
+
+    margin:5px auto;
 
     display:flex;
-    justify-content:space-around;
 }
-.mid span{
+.infos span{
+    width:49%;
+
+    margin-left:1%;
+
     font-size:0.6rem;
     font-weight:bold;
 
@@ -147,7 +156,7 @@ textarea{
     font-weight: bold;
 
 
-    transition: 0.5s
+    transition: 0.3s
 }
 .Minicard:hover{
     background: var(--nav-bg);
@@ -212,4 +221,31 @@ input[type='file']{
     font-size : 0.5rem;
     text-align: center;
     color:red;
+}
+
+
+
+
+
+
+
+.Editar{
+    margin: 10px auto;
+}
+
+
+textarea.Editar{
+    margin:10px;
+}
+textarea.Editar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000;
+    opacity: 1; /* Firefox */
+}
+  
+textarea.Editar:-ms-input-placeholder { /* Internet Explorer 10-11 */
+color: #000;
+}
+
+textarea.Editar::-ms-input-placeholder { /* Microsoft Edge */
+color: #000;
 }

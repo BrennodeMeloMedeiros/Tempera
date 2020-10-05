@@ -17,9 +17,9 @@
 </head>
 <body>
     <main id="main">
-        <script>
-            ShowSideMenu()
-        </script>
+       <?php 
+       include 'SideMenu.php'
+       ?>
         <content>
         <div class="Name-Page">
             Editar Perfil
@@ -32,12 +32,12 @@
                         <input type="file" accept="image/*" onchange='viewNewImage()'id="newImage">
                     </label>
                     <div class='align'>
-                        <div class="row" id='row1'>
+                        <div class="row Editar" id='row1'>
                             <input type="text" placeholder='Nome do usuário' id='name' >
                             <div class='input'> Email do usuário</div>
                         </div>
                         <div class="row" id='row2'>
-                            <textarea placeholder='Sua bio'spellcheck='false' maxlength='190' rows='4' ></textarea>
+                            <textarea placeholder='Sua bio' class='Editar' spellcheck='false' maxlength='190' rows='4' ></textarea>
                         </div>
                         <div class="row" id='error'></div>
                     </div>

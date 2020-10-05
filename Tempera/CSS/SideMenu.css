@@ -167,7 +167,7 @@ header .Search-Input input:focus{
 ul.navbar{
     background: var(--nav-bg);
     
-    transition: 0.25s;
+    transition: 0.15s;
 
     width: 3rem;
 }
@@ -239,6 +239,9 @@ nav:hover .nav-text{
     margin:0 0.5rem;
     width: 1.5rem;
     min-width:1.5rem;
+}
+p.sub{
+    font-size:0.6rem;
 }
 /*=====================================  Nav   ================================*/
 

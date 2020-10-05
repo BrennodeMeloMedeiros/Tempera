@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS/Style.css">
     <link rel='stylesheet' type='text/css' href='CSS/Perfil.css'>
-    <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
     <script src="JS\Script.js"></script>
     <script src="JS\Perfil.js" defer></script>
     <script src="JS\SideMenu.js"></script>
@@ -16,9 +15,9 @@
 </head>
 <body>
     <main id="main">
-        <script>
-            ShowSideMenu()
-        </script>
+       <?php 
+       include 'SideMenu.php'
+       ?>
         <content>
         <div class="Name-Page">
             Seu Perfil
@@ -33,17 +32,18 @@
                         <input type="text" placeholder='Nome do usuário' readonly>
                         <input type="email" placeholder='Email do usuário' readonly>
                     </div>
+                    <div class="mid">
+                        <div class="infos">
+                            <span class="Seguidores">Seguidores: XXX</span>
+                            <span class="Seguindo">Seguindo: XXX</span>
+                        </div>
+                    </div>
                     <div class="row" id='row2'>
                         <textarea spellcheck='false' maxlength='190' rows='4' readonly ></textarea>
                     </div>
                 </div>
             </div>
-            <div class="mid">
-                <div class="infos">
-                    <span class="Seguidores">Seguidores: XXX</span>
-                    <span class="Seguindo">Seguindo: XXX</span>
-                </div>
-            </div>
+          
             <div class="Bot">
                 <div class="Minicard">
                     <p>
