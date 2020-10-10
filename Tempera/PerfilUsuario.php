@@ -16,7 +16,7 @@
     </title>
 
 </head>
-<body>
+<body> 
     <main id="main">
         <?php 
            include 'SideMenu.php'

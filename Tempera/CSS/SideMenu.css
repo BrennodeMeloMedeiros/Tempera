@@ -320,3 +320,192 @@ content{
 }
 
 
+/*================================= Responsivo ============================*/
+@media only screen and (max-width: 800px) {
+    main{
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-areas:
+        "Header     Header   "
+        "Content    Content  "
+        "Nav        Nav      ";
+    
+        grid-template-rows: 5fr 5fr var(--nav-size-width) ;
+        grid-template-columns: 2fr 2fr;
+    }
+    nav{
+        grid-area: Nav;
+    }
+    header{
+        grid-area: Header;
+    }
+    aside{
+        display:none;
+    }
+    content{
+        grid-area: Content;
+    }
+
+
+
+    /* Side Menu  */
+    ul.navbar{            
+        width: 100%;
+        
+        display: flex;
+        flex-direction: row;
+        justify-content:space-around ;
+    }
+    
+    li.nav-top{
+        display: none;
+    
+    }
+    nav{
+        width: 100%;
+        height:var(--nav-size-width);
+
+        bottom:0;
+
+    }
+    nav:hover{
+        width: 100%;
+    }
+    nav:hover ul.navbar{
+        width: 100%;
+    }
+    nav:hover .nav-text{
+        display: none;
+        font-size: 25px;
+    }
+    nav:hover .nav-top svg{
+        display: none;
+    }
+    
+    
+    .nav-top{ 
+        display: none;    
+    }
+    .nav-text{
+        display:none;
+    }
+    .nav-item{
+        width: min-content;
+        height: 90%;
+        display:flex;
+        align-items: center;
+    }
+    .nav-link{
+        display: flex;
+        align-items: center;
+        height: 90%;
+        filter:opacity(0.8);
+    }
+    .nav-link svg, .nav-top svg{
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /* Side Menu  */
+    /* Header  */
+
+    header{
+        display: flex;
+        background: #FFF;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    header .Search-Input{
+        display: flex;
+        width: min-content;
+        height: min-content;
+        padding: 5px;
+        margin: 0 15px;
+        border-radius:20px;
+        background: var(--bg-color);
+    }
+    header .Search-Input input{
+        background: var(--bg-color);
+    
+    }
+    header .Search-Input svg{
+        width: 15px;
+        height: 15px;
+        margin: auto 8px;
+    }
+    header .Search-Input input:focus{
+        outline:none;
+    }
+    
+                /*==================  Filtro  ==============*/
+    .filtro-position{
+        width: min-content;
+        height: 100%;
+        display:flex;
+        align-items: flex-end;
+        justify-content: center;
+        font-size: 20px;
+        margin: 0 10%;
+        position: relative;
+    }
+    .filtro-position svg{
+        transition: 0.4s;
+        margin: 3px 10px;
+    }
+    .filtro-position:hover{
+        color: var(--blue-black);
+    
+    }
+    .filtro-position:hover .drop{
+        display:block;
+    }
+    .filtro-position:hover svg{
+        transform: rotate(90deg)
+    }
+    .filtro-position:hover svg{
+        color:blue;
+    }
+    .drop{
+        display:none;
+        position:absolute;
+        background: #FFF;
+        padding-left:20px;
+        padding:0px 1rem 10px 10px ;
+        top:100%;
+        left: 0%;
+        border:1px solid gray;
+        border-top:0;
+    }
+    .drop-item{
+        color: black;
+        font-family: sans-serif;
+        transition:0.6s;
+        font-size:0.9rem;
+        width: 9rem;
+        border-bottom:1px solid var(--blue-black);
+        margin-top:5px;
+        cursor: pointer;
+    }
+    
+    
+    
+                /*==================  Filtro  ==============*/
+    
+                /*==================  Avatar  ==============*/
+    .Avatar{
+        margin: 0 10px;
+    }
+                /*==================  Avatar  ==============*/
+                /*==================  Logo  ==============*/
+    .Logo{
+        display:none;
+    }
+                /*==================  Logo  ==============*/
+
+
+    /* Header  */
+}
