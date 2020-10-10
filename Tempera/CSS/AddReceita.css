@@ -146,6 +146,7 @@ label[for='image'].Blue-Button{
 }
 /* ================ Inputs ================= */
 /* ============ Ingredientes e Modo de Preparo ============ */
+
 .Input-Row#Row2, .Input-Row#Row3, .Input-Row#Row4{
     width: 100%;
     height: max-content;
@@ -206,13 +207,39 @@ select{
 
 
 
-AddItem{
+ /*==================== Lista  ==================*/
+ .List-Item{
+    display: flex;
+    align-items:center;
+    border-bottom:1px solid #919191;
+  
+    margin: 0;
+}
+.List-Item svg{
+    margin:15px;
+
+}
+.Item{
+    font-size: 1rem;
+    padding:10px 0px 10px 10px;
+    color: #212121;
+    width: 100%!important;
+
+    text-align: left!important;
+}
+.Item:hover{
+    background: var(--blue-white);
+}
+
+
+#AddItem{
     display: flex;
     align-items: center;
     justify-content:center;
     padding:10px;
-    border-radius:0px 0px 20px 20px;
+    border-radius:20px 20px 0px 0px;
     margin-top:10px;
+    width: 100%;
 }
 #AddItem:hover{
     background: var(--blue-white);

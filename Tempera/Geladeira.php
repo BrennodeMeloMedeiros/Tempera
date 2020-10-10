@@ -41,13 +41,21 @@
                     <div class="fridgeContent">
                         
                     </div> 
-                    
+                    <datalist id='Ingredientes'> 
+                     </datalist>
                 </form>
             </div>
 
         </div>
+     
+      <?php 
+      
+        require 'Validacao.php'
+
+      ?>
 
         </content>
+        
     </main>
 </body>
 </html>
