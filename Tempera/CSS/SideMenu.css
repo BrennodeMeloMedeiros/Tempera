@@ -319,6 +319,11 @@ content{
     align-items: center;
 }
 
+a{
+    color: #000;
+    text-decoration: none;  
+}
+
 
 /*================================= Responsivo ============================*/
 @media only screen and (max-width: 800px) {
@@ -331,7 +336,7 @@ content{
         "Content    Content  "
         "Nav        Nav      ";
     
-        grid-template-rows: 5fr 5fr var(--nav-size-width) ;
+        grid-template-rows: 100px 5fr var(--nav-size-width) ;
         grid-template-columns: 2fr 2fr;
     }
     nav{
@@ -412,87 +417,17 @@ content{
     /* Header  */
 
     header{
-        display: flex;
-        background: #FFF;
         height: 100%;
         width: 100%;
-        align-items: center;
-        justify-content: flex-end;
-    }
-    header .Search-Input{
+
+        background: #FFF;
+        
         display: flex;
-        width: min-content;
-        height: min-content;
-        padding: 5px;
-        margin: 0 15px;
-        border-radius:20px;
-        background: var(--bg-color);
-    }
-    header .Search-Input input{
-        background: var(--bg-color);
-    
-    }
-    header .Search-Input svg{
-        width: 15px;
-        height: 15px;
-        margin: auto 8px;
-    }
-    header .Search-Input input:focus{
-        outline:none;
+        align-items: center;
+        justify-content:center;
     }
     
                 /*==================  Filtro  ==============*/
-    .filtro-position{
-        width: min-content;
-        height: 100%;
-        display:flex;
-        align-items: flex-end;
-        justify-content: center;
-        font-size: 20px;
-        margin: 0 10%;
-        position: relative;
-    }
-    .filtro-position svg{
-        transition: 0.4s;
-        margin: 3px 10px;
-    }
-    .filtro-position:hover{
-        color: var(--blue-black);
-    
-    }
-    .filtro-position:hover .drop{
-        display:block;
-    }
-    .filtro-position:hover svg{
-        transform: rotate(90deg)
-    }
-    .filtro-position:hover svg{
-        color:blue;
-    }
-    .drop{
-        display:none;
-        position:absolute;
-        background: #FFF;
-        padding-left:20px;
-        padding:0px 1rem 10px 10px ;
-        top:100%;
-        left: 0%;
-        border:1px solid gray;
-        border-top:0;
-    }
-    .drop-item{
-        color: black;
-        font-family: sans-serif;
-        transition:0.6s;
-        font-size:0.9rem;
-        width: 9rem;
-        border-bottom:1px solid var(--blue-black);
-        margin-top:5px;
-        cursor: pointer;
-    }
-    
-    
-    
                 /*==================  Filtro  ==============*/
     
                 /*==================  Avatar  ==============*/
@@ -501,11 +436,21 @@ content{
     }
                 /*==================  Avatar  ==============*/
                 /*==================  Logo  ==============*/
-    .Logo{
-        display:none;
-    }
                 /*==================  Logo  ==============*/
 
 
     /* Header  */
 }
+
+@media only screen and (max-width: 650px) {
+    .filtro-position{
+        display:none;
+}
+}
+
+@media only screen and (max-width: 475px) {
+    .Logo{
+        display:none;
+    }
+}
+

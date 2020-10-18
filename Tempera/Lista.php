@@ -12,7 +12,7 @@
         Lista de Compras
     </title>
 
-</head>
+</head> 
 <body>
     <main id="main">
         <?php 

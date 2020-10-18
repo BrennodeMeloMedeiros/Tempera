@@ -63,7 +63,7 @@ mysqli_query($link,$sql);
         <div class='Card'>
             <form name="Form_receita" autocomplete="off" method="POST" id="NovaReceita" action="AddReceitas.php">
                 <div id='Name' class='Input-Row InputDefault' > 
-                    <input required  type='text' id='InputName' name='Inputname' placeholder='Nome da receita' >    
+                    <input required  accept='image/*'type='text' id='InputName' name='Inputname' placeholder='Nome da receita' >    
                 </div>
                 <div id='Image-Painel'> 
                     <input type='file' accept="image/*" onchange='viewTargetImage()' name='image' id='image' class='Blue-Button'>
@@ -128,6 +128,8 @@ mysqli_query($link,$sql);
                                 <option value='Tag3'>Vegetariano</option>
                                 <option value='Tag4'>Massas</option>
                                 <option value='Tag5'>Molhos</option>
+                                <option value='Tag5'>Saladas</option>
+                                <option value='Tag5'>Sobremesas</option>
                             </select>
                         </div>
                     </div>
@@ -236,7 +238,7 @@ mysqli_query($link,$sql);
             const ingredienteRepetido = verificarRepetição()
             if(!existeIngrediente){
                 e.preventDefault()
-                alert('Algum dos ingredientes que você colocou não existe em nossa tabela, porfavor verifique os campos e remova')
+                alert('Algum dos ingredientes que você colocou não existe em nossa tabela, por favor verifique os campos')
             }else if (ingredienteRepetido){
                 e.preventDefault()
                 alert('Parece que algum item está repetido, porfavor retire-o da lista')

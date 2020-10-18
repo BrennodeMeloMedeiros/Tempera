@@ -61,7 +61,7 @@ function foundItemError(){
 function checkList(event){
     const foundError = foundItemError()
     if(foundError){
-        alert('Hey, há algo errado na sua lista, verifique se não há algo repetido ou vazio!')
+        alert('Hey, há algo errado na sua lista, verifique se há algo repetido ou vazio!')
         event.preventDefault()        
     } else {
         alert('Suas alteraçõesforam salvas.')

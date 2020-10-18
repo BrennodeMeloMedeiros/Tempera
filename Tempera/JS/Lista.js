@@ -27,7 +27,7 @@ function removeItem(id){
         const itemTarget = document.getElementById("item-"+id) 
          itemTarget.parentNode.removeChild(itemTarget)
      }else {
-         alert('A Sua geladeira deve ter ao menos 1 item!')
+         alert('A Sua Lista deve ter ao menos 1 item!')
     }
 }
 
