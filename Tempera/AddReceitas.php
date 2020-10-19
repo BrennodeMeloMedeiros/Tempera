@@ -1,6 +1,8 @@
 <?php
 
-$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+//$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+$link = mysqli_connect("localhost", "root", "", "test");
+
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -18,16 +20,22 @@ $tempo=$_POST["Time"];
 $descricao=$_POST["Preparo"];
 $calorias=$_POST["Calorias"];
 $ingredientes=$_POST["Ingredientes"];
+$imagem=$_FILES['image']['name'];
 
-$sql="insert into tb_receita (txt_descricao, int_calorias, int_porcoes, txt_tags, txt_ingredientes, txt_tempo, txt_nome_receita)
-values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "')"; 
+$sql="insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, image)
+values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "', '" .$imagem. "')"; 
 
 //echo $sql;
 //die;
 
 mysqli_query($link,$sql);
-}
 
+$destino = '' . $_FILES['image']['name'];
+ 
+$arquivo_tmp = $_FILES['image']['tmp_name'];
+ 
+move_uploaded_file( $arquivo_tmp, $destino  );
+}
 
 
 ?>
@@ -41,7 +49,7 @@ mysqli_query($link,$sql);
     <link rel="stylesheet" type="text/css" href="CSS/AddReceita.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/69a958c39b.js" crossorigin="anonymous"></script>
-    <script src="JS\Script.js" defer></script>
+    <script src="JS\Script.js"></script>
     <script src="JS\AddReceita.js" defer></script>
 
     
@@ -53,7 +61,7 @@ mysqli_query($link,$sql);
 <body>
     <main id="main">
         <?php 
-       include 'SideMenu.php' 
+       include 'SideMenu.php'
        ?>
 
         <content>
@@ -61,9 +69,9 @@ mysqli_query($link,$sql);
             Adicionar Receitas
         </div>
         <div class='Card'>
-            <form name="Form_receita" autocomplete="off" method="POST" id="NovaReceita" action="AddReceitas.php">
+            <form name="Form_receita" autocomplete="off" method="POST" id="NovaReceita" enctype="multipart/form-data" action="AddReceitas.php">
                 <div id='Name' class='Input-Row InputDefault' > 
-                    <input required  accept='image/*'type='text' id='InputName' name='Inputname' placeholder='Nome da receita' >    
+                    <input required  type='text' id='InputName' name='Inputname' placeholder='Nome da receita' >    
                 </div>
                 <div id='Image-Painel'> 
                     <input type='file' accept="image/*" onchange='viewTargetImage()' name='image' id='image' class='Blue-Button'>
@@ -128,8 +136,6 @@ mysqli_query($link,$sql);
                                 <option value='Tag3'>Vegetariano</option>
                                 <option value='Tag4'>Massas</option>
                                 <option value='Tag5'>Molhos</option>
-                                <option value='Tag5'>Saladas</option>
-                                <option value='Tag5'>Sobremesas</option>
                             </select>
                         </div>
                     </div>
@@ -238,7 +244,7 @@ mysqli_query($link,$sql);
             const ingredienteRepetido = verificarRepetição()
             if(!existeIngrediente){
                 e.preventDefault()
-                alert('Algum dos ingredientes que você colocou não existe em nossa tabela, por favor verifique os campos')
+                alert('Algum dos ingredientes que você colocou não existe em nossa tabela, porfavor verifique os campos e remova')
             }else if (ingredienteRepetido){
                 e.preventDefault()
                 alert('Parece que algum item está repetido, porfavor retire-o da lista')
