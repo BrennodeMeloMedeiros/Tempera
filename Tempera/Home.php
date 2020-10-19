@@ -15,9 +15,8 @@
     <link rel="stylesheet" type="text/css" href="CSS/Style.css">
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
     <link rel="stylesheet" type="text/css" href="CSS/Home.css">
-    <script src="JS\Script.js"></script>
-    <script src="JS\Home.js" defer></script>
-    <script src="JS\SideMenu.js"></script>
+    <script src="JS\Script.js" defer></script>
+    <script src="JS\SideMenu.js" defer></script>
 
     <title>Página Inicial</title>
 

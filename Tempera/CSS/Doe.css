@@ -8,81 +8,67 @@ content{
    padding: 0;
 }
 /*              GRID             */
-section.Ong-Painel{
-    display: grid;
-    grid-template-areas:
-    "Image  Text" 
-    "Btn  Btn"
-    ;
-    grid-template-columns: 1fr 1fr;
 
-    grid-template-rows: 3fr 1fr ;
-    
-}
-
-.Ong-Img{
-    grid-area: Image ;
-}
-
-.Ong-Text{
-    grid-area: Text ;
-}
-
-.Ong-Button{
-    grid-area: Btn ;
-}
-
-/*              GRID             */
 .Ong-Painel{
-    display: flex;
-    flex-wrap: wrap;
-
-    margin: 3.5% 0;
-}
-
-
-
-
-
-.Ong-Image{
-    width: 100%;
-    height: auto;
-
-    display:flex;
-    align-items: center;
-
-    object-fit: cover;
-}
-.Ong-Img{
-    max-width: 90%;
-    height: 90%;
-}
-
-
-
-
-
-.Ong-Text{
-    width: 100%;
-
-    display:flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 0.8rem;
-}
-
-.Ong-Text p{
-    height: min-content;
     width: 95%;
+    height: auto;
+    min-height:450px;
 
-    font-size: 70%;
-}
+    margin:10px auto;
 
-
-.Ong-Button{
-    display: flex;
-
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around;
     align-items: center;
 
+}
+.Ong-Painel img{
+    object-fit: cover;
+    max-height: 150px;
+    min-height: 150px;
+    max-width: 90%;
+
+    margin:0;
+}
+.Ong-Painel p{
+    width: 100%;
+    
+
+    margin:10px 0;
+
+    color:var(--blue-color);
+
+    text-align:center;
+}
+.Ong-Painel  .Ong-Text{
+    width: 90%;
+}
+.Ong-Painel  .Ong-Text p{
+    color:#212121;
+    text-align: left;
+
+    font-size:0.8rem;
+}
+
+h2{
+    height: 100%;
+    
+    color:var(--blue-white);
+    font-size:0.8rem;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+h2 span{
+    margin-top:10px;
+
+    height: auto;
+    width: 100%;
+
+    text-align:center;
+
+    font-size:1rem;
+    font-weight:bold;
 }

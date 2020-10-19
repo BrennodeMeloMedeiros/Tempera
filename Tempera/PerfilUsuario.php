@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/Style.css">
     <link rel='stylesheet' type='text/css' href='CSS/Perfil.css'>
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
-    <script src="JS\Script.js"></script>
+    <script src="JS\Script.js" defer></script>
     <script src="JS\Perfil.js" defer></script>
     <script src="JS\SideMenu.js"></script>
     <title>

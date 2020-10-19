@@ -1,3 +1,15 @@
+<?php 
+$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+
+if (!$link) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}else {
+  
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,9 +18,9 @@
     <link rel="stylesheet" type="text/css" href="CSS/Style.css">
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
     <link rel="stylesheet" type="text/css" href="CSS/Doe.css">
-    <script src="JS\Script.js"></script>
+    <script src="JS\Script.js" defer></script>
     <script type="text/javascript" src="JS/Doe.js" defer></script>
-    <script src="JS\SideMenu.js"></script>
+    <script src="JS\SideMenu.js" defer></script>
     <title>
         Doe
     </title>
@@ -28,52 +40,35 @@
 
 
         <div class="Card">
-            <section class="Ong-Painel">
-                 <div class="Ong-Image">
-                    <img src="IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
-                 </div>
-                 
-                 <div class="Ong-Text">
-                    <p> Lorem ipsum risus iaculis phasellus sollicitudin fringilla vitae aenean, dui nisi elit praesent mi facilisis feugiat donec semper, suspendisse sapien torquent praesent aliquam et nulla. at taciti faucibus platea odio sed velit nullam velit aliquam risus, mattis massa etiam fusce augue nullam eros ullamcorper ipsum, feugiat sed est nunc placerat vivamus feugiat class ut. quisque mi vitae nibh ornare integer facilisis, dapibus eleifend lorem himenaeos dictum interdum non, molestie himenaeos orci fusce et. class eleifend feugiat laoreet facilisis nunc facilisis nostra nisi vivamus, vel mattis aliquet volutpat commodo felis suspendisse torquent luctus, ultricies elit ultricies hac integer tortor ornare urna.</p>
-                 </div>
+         <?php 
+      $command = "select * from tb_ong;";
 
-                 <div class="Ong-Button">
-                    <button class="Blue-Button"> Saiba mais </button>
-                 </div>
-            </section>
+      $exe = mysqli_query($link,$command);
 
-            <section class="Ong-Painel">
-                 <div class="Ong-Image">
-                    <img src="IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
-                 </div>
-                 
-                 <div class="Ong-Text">
-                    <p> Lorem ipsum risus iaculis phasellus sollicitudin fringilla vitae aenean, dui nisi elit praesent mi facilisis feugiat donec semper, suspendisse sapien torquent praesent aliquam et nulla. at taciti faucibus platea odio sed velit nullam velit aliquam risus, mattis massa etiam fusce augue nullam eros ullamcorper ipsum, feugiat sed est nunc placerat vivamus feugiat class ut. quisque mi vitae nibh ornare integer facilisis, dapibus eleifend lorem himenaeos dictum interdum non, molestie himenaeos orci fusce et. class eleifend feugiat laoreet facilisis nunc facilisis nostra nisi vivamus, vel mattis aliquet volutpat commodo felis suspendisse torquent luctus, ultricies elit ultricies hac integer tortor ornare urna.</p>
-                 </div>
+      if($exe){
+         while($row = mysqli_fetch_assoc($exe)){
+            echo 
+            "<section class='Ong-Painel'>
+            <p>".$row['st_nome']."</p>
+            <img src='IMAGENS/BancodeAlimentos.png' alt='a' >   
+            <div class='Ong-Text'>
+               <p> ".utf8_encode($row['st_descricao'])."</p>
+            </div>
 
-                 <div class="Ong-Button">
-                    <button class="Blue-Button"> Saiba mais </button>
-                 </div>
-            </section>
+            <div class='Ong-Button'>
+               <a href='". $row['st_link'] ."' class='Blue-Button'> Saiba mais </a>
+            </div>
+         </section>";
+         } 
+      }else{
+         echo "<h2>Parece que ainda não apoiamos nenhuma ONG =( <span> Não se preocupe, isso irá mudar em breve!</span></h2>";
+      }
+      }
+               
 
-            <section class="Ong-Painel">
-                 <div class="Ong-Image">
-                    <img src="IMAGENS/ONG.png" alt="Aguarde, estamos carregando sua Imagem :)" class="Ong-Img">
-                 </div>
-                 
-                 <div class="Ong-Text">
-                    <p> Lorem ipsum risus iaculis phasellus sollicitudin fringilla vitae aenean, dui nisi elit praesent mi facilisis feugiat donec semper, suspendisse sapien torquent praesent aliquam et nulla. at taciti faucibus platea odio sed velit nullam velit aliquam risus, mattis massa etiam fusce augue nullam eros ullamcorper ipsum, feugiat sed est nunc placerat vivamus feugiat class ut. quisque mi vitae nibh ornare integer facilisis, dapibus eleifend lorem himenaeos dictum interdum non, molestie himenaeos orci fusce et. class eleifend feugiat laoreet facilisis nunc facilisis nostra nisi vivamus, vel mattis aliquet volutpat commodo felis suspendisse torquent luctus, ultricies elit ultricies hac integer tortor ornare urna.</p>
-                 </div>
-
-                 <div class="Ong-Button">
-                    <button class="Blue-Button"> Saiba mais </button>
-                 </div>
-            </section>
-        </div>
-
-        
-
-
+         ?>
+   
+   
         </content>
     </main>
 </body>

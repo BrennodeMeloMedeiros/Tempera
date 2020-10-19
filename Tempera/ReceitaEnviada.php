@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
     <link rel="stylesheet" type="text/css" href="CSS/Enviada.css">
     <script src="https://kit.fontawesome.com/69a958c39b.js" crossorigin="anonymous"></script>
-    <script src="JS\Script.js"></script>
+    <script src="JS\Script.js" defer></script>
     <script src="JS\SideMenu.js"></script>
     
     <title>

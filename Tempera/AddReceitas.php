@@ -41,7 +41,7 @@ mysqli_query($link,$sql);
     <link rel="stylesheet" type="text/css" href="CSS/AddReceita.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/69a958c39b.js" crossorigin="anonymous"></script>
-    <script src="JS\Script.js"></script>
+    <script src="JS\Script.js" defer></script>
     <script src="JS\AddReceita.js" defer></script>
 
     
@@ -53,7 +53,7 @@ mysqli_query($link,$sql);
 <body>
     <main id="main">
         <?php 
-       include 'SideMenu.php'
+       include 'SideMenu.php' 
        ?>
 
         <content>

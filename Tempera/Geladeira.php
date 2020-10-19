@@ -6,9 +6,9 @@
     <link rel="stylesheet" type="text/css" href="CSS/Style.css">
     <link rel='stylesheet' type="text/css" href="CSS/Geladeira.css">
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
-    <script src="JS\Script.js"></script>
+    <script src="JS\Script.js" defer></script>
     <script src="JS\Geladeira.js" defer></script>
-    <script src="JS\SideMenu.js"></script>
+    <script src="JS\SideMenu.js" defer></script>
 
 
     <title>Geladeira</title>

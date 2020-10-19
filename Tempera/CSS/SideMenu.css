@@ -50,6 +50,9 @@ header{
     justify-content: flex-end;
 }
 header .Search-Input{
+    height: min-content;
+
+
     display: flex;
     width: min-content;
     height: min-content;
@@ -69,6 +72,15 @@ header .Search-Input svg{
 }
 header .Search-Input input:focus{
     outline:none;
+}
+header form{
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+
+    padding:0;
+    margin:0;
+    background: tomato;
 }
 
             /*==================  Filtro  ==============*/

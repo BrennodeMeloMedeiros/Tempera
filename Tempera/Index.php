@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="CSS\Style.css">
     <link rel="stylesheet" type="text/css" href="CSS\Login.css">
-    <script src="JS\Script.js"></script>
+    <script src="JS\Script.js" defer></script>
     <script src="JS\Login.js" defer></script>
 
     <title>Login & Cadastro</title>
