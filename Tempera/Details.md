@@ -1,5 +1,6 @@
 == Código HTML padrão parar todas as páginas: ==
 
+//morra por favor apenas cesse sua vida, eu teodeio ss
 
 <!DOCTYPE html>
 <html lang="pt-br">
