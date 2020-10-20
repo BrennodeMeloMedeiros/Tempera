@@ -50,7 +50,7 @@ if (!$link) {
             echo 
             "<section class='Ong-Painel'>
             <p>".$row['st_nome']."</p>
-            <img src='IMAGENS/BancodeAlimentos.png' alt='a' >   
+            <img src='' alt='Sem Imagem' >   
             <div class='Ong-Text'>
                <p> ".utf8_encode($row['st_descricao'])."</p>
             </div>

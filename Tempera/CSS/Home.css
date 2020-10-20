@@ -3,7 +3,7 @@ content{
     justify-content: center;
 }
 
-.card{
+section.card{
     background: #FFF;
     width: 260px;
     height: 360px;
@@ -11,9 +11,10 @@ content{
     border-radius: 10px ;
 
     position:relative;
+    z-index: -1;
 
 }
-.card img{
+section.card img{
     width: 100%;
     max-height: 140px;
     min-height: 140px; 
@@ -29,7 +30,7 @@ content{
    
     border-radius: 10px 10px 0px 0px;
 }
-.card-header{
+section .card-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,13 +39,13 @@ content{
 
     font-size:0.6rem;
 }
-.card-header span{
+section .card-header span{
     background: var(--nav-bg);
     padding: 2px 5px;
     border-radius:10px;
     color:#fff;
 }
-.card-content{
+section .card-content{
     margin-top:3px;
 
     padding: 0 10px;
@@ -65,7 +66,7 @@ content{
     min-height: 80px;
     max-height: 80px;
 }
-.card-footer{
+section .card-footer{
     width: 96%;
 
     font-size: 0.6rem;
@@ -78,14 +79,14 @@ content{
     position: absolute;
     bottom:0;
 }
-.card-footer span{
+section .card-footer span{
     width: max-content;
     display: flex;
     align-items: center;
     flex-direction: row;
     
 }
-.card-footer .row{
+section .card-footer .row{
     width: 100%;
 
     padding:4px 0;
@@ -93,10 +94,10 @@ content{
     display: flex;
     flex-direction: row;
 }
-.card-footer svg{
+section .card-footer svg{
     margin: 0 3px;
 }
-.card-footer #Autor{
+section .card-footer #Autor{
     display: flex;
     justify-content: center;
     align-items: center;

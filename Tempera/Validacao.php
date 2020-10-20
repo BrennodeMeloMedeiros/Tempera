@@ -10,11 +10,11 @@
                 exit;
             }else{
 
-            $getUsuarios = 'select * from tb_ingredientes';
+            $getUsuarios = 'select * from tb_ingrediente';
             $executeLine = mysqli_query($conecta, $getUsuarios);
 
             ?> 
-            var js_array = [<?php while($row = mysqli_fetch_assoc($executeLine)){ echo "'{$row['st_usuario']}',"; }; ?>]
+            var js_array = [<?php while($row = mysqli_fetch_assoc($executeLine)){ echo utf8_encode("'{$row['st_nomeIngrediente']}',"); }; ?>]
             const datalist = document.querySelector('datalist')
             function addOption(item, index){
                 let option = document.createElement("option")

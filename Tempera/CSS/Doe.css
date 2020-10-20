@@ -27,6 +27,16 @@ content{
     max-height: 150px;
     min-height: 150px;
     max-width: 90%;
+    min-width: 400px;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+
+    color:var(--blue-color);
+
+    border-radius:4px;
+    background-color: var(--blue-white);
 
     margin:0;
 }
