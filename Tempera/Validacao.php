@@ -1,7 +1,7 @@
 <script type='text/javascript'>
         // Limita as opções de escolha do Datalist de acordo com o Banco de Ingredientes
             <?php
-            $conecta = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com","tempera","Tempera_123","clovis_cartola_v2");
+            $conecta = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com","tempera","Tempera_123","tempera");
 
             if(!$conecta){
                 echo "Error: Unable to connect to MySql" . PHP_EOL;
@@ -10,7 +10,7 @@
                 exit;
             }else{
 
-            $getUsuarios = 'select * from tb_usuario';
+            $getUsuarios = 'select * from tb_ingredientes';
             $executeLine = mysqli_query($conecta, $getUsuarios);
 
             ?> 

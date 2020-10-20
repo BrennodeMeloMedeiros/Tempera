@@ -1,7 +1,7 @@
 <?php
 
-//$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
-$link = mysqli_connect("localhost", "root", "", "test");
+$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+
 
 
 if (!$link) {
@@ -131,11 +131,13 @@ move_uploaded_file( $arquivo_tmp, $destino  );
                             <label for='Tags'><i class="fas fa-tag"></i>Tag</label>
                             <select id='Tags' name='Tags'> 
                                 <option value='Tag0'>Selecione uma Tag</option>
-                                <option value='Tag1'>Carnes</option>
-                                <option value='Tag2'>Fitness</option>
-                                <option value='Tag3'>Vegetariano</option>
-                                <option value='Tag4'>Massas</option>
-                                <option value='Tag5'>Molhos</option>
+                                <option value='Carnes'>Carnes</option>
+                                <option value='Fitness'>Fitness</option>
+                                <option value='Vegetariano'>Vegetariano</option>
+                                <option value='Massas'>Massas</option>
+                                <option value='Molhos'>Molhos</option>
+                                <option value='Salada'>Saladas</option>
+                                <option value='Sobremesas'>Sobremesas</option>
                             </select>
                         </div>
                     </div>
@@ -156,20 +158,18 @@ move_uploaded_file( $arquivo_tmp, $destino  );
         <script type='text/javascript'>
         // Limita as opções de escolha do Datalist de acordo com o Banco de Ingredientes
             <?php
-            $conecta = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com","tempera","Tempera_123","clovis_cartola_v2");
-
-            if(!$conecta){
+            if(!$link){
                 echo "Error: Unable to connect to MySql" . PHP_EOL;
                 echo "Debugging errno:" . mysqli_connect_errno() . PHP_EOL;
                 echo "Error: Unable to connect to MySql" . mysqli_connect_error() . PHP_EOL;
                 exit;
             }else{
 
-            $getUsuarios = 'select * from tb_usuario';
-            $executeLine = mysqli_query($conecta, $getUsuarios);
+            $getUsuarios = 'select * from tb_ingrediente';
+            $executeLine = mysqli_query($link, $getUsuarios);
 
             ?> 
-            var js_array = [<?php while($row = mysqli_fetch_assoc($executeLine)){ echo "'{$row['st_usuario']}',"; }; ?>]
+            var js_array = [<?php while($row = mysqli_fetch_assoc($executeLine)){ echo utf8_encode("'{$row['st_nomeIngrediente']}',"); };?>]
             const datalist = document.querySelector('datalist')
             function addOption(item, index){
                 let option = document.createElement("option")

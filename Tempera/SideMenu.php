@@ -155,8 +155,6 @@
                    <span class='SubName'> Nome do Usuário</span>
                </div>
            </li>
-           </li>
-           
        </ul>
    </section>
 </aside>

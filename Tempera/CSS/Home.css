@@ -10,27 +10,43 @@ content{
     margin: 20px;
     border-radius: 10px ;
 
+    position:relative;
+
 }
 .card img{
-    object-fit: cover;
     width: 100%;
-    height: auto;
     max-height: 140px;
-    min-height: 140px;
+    min-height: 140px; 
+    object-fit: cover;
+
+    color:var(--blue-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--blue-white);
+   
     border-radius: 10px 10px 0px 0px;
 }
 .card-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    margin-top:3px;
+
     font-size:0.6rem;
 }
 .card-header span{
-    background: tomato;
+    background: var(--nav-bg);
     padding: 2px 5px;
     border-radius:10px;
+    color:#fff;
 }
 .card-content{
+    margin-top:3px;
+
     padding: 0 10px;
 
 }
@@ -45,19 +61,37 @@ content{
     line-height:20px;
     word-break: break-all;
     margin-bottom:5px;
+
+    min-height: 80px;
+    max-height: 80px;
 }
 .card-footer{
+    width: 96%;
+
     font-size: 0.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 5px;
+    flex-direction: column;
+    padding:2%;
+
+    position: absolute;
+    bottom:0;
 }
 .card-footer span{
+    width: max-content;
     display: flex;
     align-items: center;
-    margin: 0 2px;
-    margin-right:15px;
+    flex-direction: row;
+    
+}
+.card-footer .row{
+    width: 100%;
+
+    padding:4px 0;
+
+    display: flex;
+    flex-direction: row;
 }
 .card-footer svg{
     margin: 0 3px;
