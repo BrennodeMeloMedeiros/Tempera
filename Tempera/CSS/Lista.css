@@ -160,6 +160,38 @@ input:focus{
             /*==================== Lista  ==================*/
 
 
+@media only screen and (max-width: 620px) {
+    .Card{
+        display: flex;
+        flex-direction: column;
+        
+        margin-bottom: var(--nav-size-width)
+    }
+    .List-Aviso{
+        display:none;
+    }
 
+    #Button{
+        width: 100%;
+     
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #List-Content{
+        max-width: 100%;
+        min-height: 100%;
+    }
+    #formList{
+        width: 100%;
+    }
+    .List-Item{
+    max-width:100%;
+    margin:5px;
+    }
+    .List-Item input{
+        max-width: 80%;
+    }
+}
 
 

@@ -98,3 +98,14 @@ content{
     background: var(--blue-white);
 }
             /*==================== Botões  ==================*/
+
+@media only screen and (max-width: 495px) {
+   div.Button button.Blue-Button{
+       font-size: 0.45rem;
+       font-weight: bold;
+
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+}

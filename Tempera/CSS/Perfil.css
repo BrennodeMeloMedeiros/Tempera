@@ -262,3 +262,20 @@ color: #000;
    justify-content: center;
 }
 
+@media only screen and (max-width: 750px){
+    div.Top{
+        flex-direction: column;
+    }
+    
+    .Minicard{
+        min-width: 50%;
+    }
+    .row{
+        width: 100%;
+        margin: 0;
+    }
+    textarea{
+        margin: 0;
+        width: 95%;
+    }
+}

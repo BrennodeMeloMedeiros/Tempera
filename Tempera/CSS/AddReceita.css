@@ -244,3 +244,23 @@ select{
 #AddItem:hover{
     background: var(--blue-white);
 }
+
+
+@media only screen and (max-width: 495px) {
+    #Inputs-Painel p{
+        font-size:0.6rem;
+    }
+    div.row{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .List-Item{
+        max-width:100%;
+        margin:5px;
+        }
+        .List-Item input{
+            max-width: 80%;
+        }
+}

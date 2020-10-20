@@ -67,7 +67,7 @@
         } )
         function comecarValidacao(){
             const form = document.querySelector('form')
-            const inputs = form.querySelectorAll('input')
+            const inputs = form.querySelectorAll('input.Item')
             let achouIngrediente = true
             for(input of inputs){
                 const ingrediente = input.value

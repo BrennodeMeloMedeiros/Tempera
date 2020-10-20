@@ -120,7 +120,7 @@ move_uploaded_file( $arquivo_tmp, $destino  );
                         <div class='row'>
                             
                             <label for='IngredientesText'><i class="fas fa-concierge-bell"></i>Modo de Preparo</label>
-                            <span class='desc'>O formato do texto será mantido na exibição da receita. Escreva de forma organizada.</span>
+                            <span class='desc'>Recomenda-se que coloque a medida dos Ingredientes abaixo</span>
                             <textarea spellcheck="false" name='Preparo' id='PreparoText'> </textarea>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ move_uploaded_file( $arquivo_tmp, $destino  );
         } )
         function comecarValidacao(){
             const form = document.querySelector('#ListForm')
-            const inputs = form.querySelectorAll('input')
+            const inputs = form.querySelectorAll('input.Item')
             let achouIngrediente = true
             for(input of inputs){
                 const ingrediente = input.value

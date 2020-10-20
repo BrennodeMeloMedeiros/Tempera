@@ -26,6 +26,11 @@
         
         <div class="Card">
             
+        <div id="Button">
+                <!-- O PRIMEIRO BOTÃO MANDA AS IFNORMAÇÕES PARA A PÁGINA 'SALVAR.PHP', ENQUANTO A SEGUNDA MANDA PARA A PÁGINA 'EXPORTAR.PHP', AMBAS RECEBEM AS MESMAS INFORMAÇÕES -->
+                <button class="Blue-Button" form="formList">Salvar Lista de compras</button>
+                <button class="Blue-Button" form="formList" formactation='Exportar.php' >Exportar para a Geladeira</button>
+            </div>
         
             <div class="List-Text blue">
                 Lista de compras
@@ -54,12 +59,6 @@
             </datalist>
           
           
-          
-            <div id="Button">
-                <!-- O PRIMEIRO BOTÃO MANDA AS IFNORMAÇÕES PARA A PÁGINA 'SALVAR.PHP', ENQUANTO A SEGUNDA MANDA PARA A PÁGINA 'EXPORTAR.PHP', AMBAS RECEBEM AS MESMAS INFORMAÇÕES -->
-                <button class="Blue-Button" form="formList">Salvar Lista de compras</button>
-                <button class="Blue-Button" form="formList" formactation='Exportar.php' >Exportar para a Geladeira</button>
-            </div>
         </div>
         
         
