@@ -1,3 +1,8 @@
+<?php 
+   
+   session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,7 +44,38 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="Green"/></svg>
                    </div>
                     <div class="fridgeContent">
+                        <?php
+                     
+
+                            $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+
+
+
+                            if (!$link) {
+                                echo "Error: Unable to connect to MySQL." . PHP_EOL;
+                                echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+                                echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+                                exit;
+                            }else {
+                                $id = $_SESSION['id_usuario'];
+                               $query = "select * from tb_geladeira where id_usuario = {$id}";
+                               $result = mysqli_query($link,$query);
+                               if(mysqli_num_rows($result) > 0){
+                                
+                                   while($row = mysqli_fetch_array($result)){
+                                       $count= $row['id_geladeira'];                   
+                                        echo '<div id="item-'.$count.'" class="List-Item">
+                                        <div class="Btn-Del" onclick="removeItem('.$count.')"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" fill="Red"/></svg>
+                                        </div>
+                                        <input list="Ingredientes" name="Ingredientes'.$count.'" value="'.$row['st_nomeIngrediente'].'" type="text" placeHolder="Insira o Ingrediente" class="Item">
+                                        </div>';
+                                    }
+                               }
+                            }
+
                         
+                        ?>
                     </div> 
                     <datalist id='Ingredientes'> 
                      </datalist>
