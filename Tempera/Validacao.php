@@ -66,12 +66,14 @@
             objeto[item] = item
         } )
         function comecarValidacao(){
-            const form = document.querySelector('form')
+           
+            const form = document.querySelector('form#formList')
             const inputs = form.querySelectorAll('input.Item')
             let achouIngrediente = true
             for(input of inputs){
                 const ingrediente = input.value
                 const buscarIngrediente = objeto[ingrediente]
+
                 if(!buscarIngrediente){
                    achouIngrediente = false
                    input.parentNode.style.borderBottom = '2px solid red'

@@ -30,7 +30,7 @@
             <h2 class='blue'>Sua receita foi enviada!</h2>
             <div class="b">
             <a class='Blue-Button' href='Home.php'>Voltar para a Home</a>
-            <a class='Blue-Button' href='AddReceitas.php'>Adiconar mais receitas</a>
+            <a class='Blue-Button' href='AddReceitas.php'>Adicionar mais receitas</a>
             </div>
         </div>
         </content>
