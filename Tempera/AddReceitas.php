@@ -35,6 +35,7 @@ $destino = '' . $_FILES['image']['name'];
 $arquivo_tmp = $_FILES['image']['tmp_name'];
  
 move_uploaded_file( $arquivo_tmp, $destino  );
+header('location:ReceitaEnviada.php');
 }
 
 
@@ -171,6 +172,7 @@ move_uploaded_file( $arquivo_tmp, $destino  );
             ?> 
             var js_array = [<?php while($row = mysqli_fetch_assoc($executeLine)){ echo utf8_encode("'{$row['st_nomeIngrediente']}',"); };?>]
             const datalist = document.querySelector('datalist')
+
             function addOption(item, index){
                 let option = document.createElement("option")
                 let optionText = option.innerText = item

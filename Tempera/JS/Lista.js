@@ -15,7 +15,7 @@ function addItemList(){
         <div class="Btn-Del" onclick="removeItem(`+ itemsCount +`)"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" fill="Red"/></svg>
         </div>
-        <input list='Ingredientes' name="Ingredientes" type="text" placeHolder="Insira o Ingrediente" class="Item">
+        <input list='Ingredientes' name="Ingredientes`+ itemsCount +`" type="text" placeHolder="Insira o Ingrediente" class="Item">
     </div>`;
     List.insertAdjacentHTML('beforeend', newItem)    
 }
