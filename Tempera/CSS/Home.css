@@ -106,6 +106,22 @@ section .card-footer #Autor{
 }
 
 
+h3#Error{
+    width: 80%;
+    height: min-content;
+
+    text-align: center;
+
+    padding:2%;
+
+    background:#FFF;
+    border:1px solid gray;
+    border-radius:5px;
+
+    color:var(--blue-color);
+}
+
+
 
 
 

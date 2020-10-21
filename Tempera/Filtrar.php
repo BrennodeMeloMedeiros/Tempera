@@ -1,11 +1,8 @@
 <?php 
 
-$pesquisa = $_POST['searchInput'];
-
-if(!$pesquisa){
-    header('location:Home.php');
-}else{
-    $query = '';
-};
-
+$type = $_GET['type'];
+if($type='Tag'){
+    $filtro = $_GET['Tag'];
+    header('location:Home.php?Tag='.$filtro);
+}
 ?>

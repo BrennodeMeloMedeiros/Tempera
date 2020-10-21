@@ -5,27 +5,42 @@
            Filtrar
            <svg xmlns='http://www.w3.org/2000/svg' width='8.503' height='18.616' viewBox='0 0 13.503 23.616'><path id='Icon_ionic-ios-arrow-forward' data-name='Icon ionic-ios-arrow-forward' d='M20.679,18,11.742,9.07a1.681,1.681,0,0,1,0-2.384,1.7,1.7,0,0,1,2.391,0L24.258,16.8a1.685,1.685,0,0,1,.049,2.327L14.14,29.32a1.688,1.688,0,0,1-2.391-2.384Z' transform='translate(-11.246 -6.196)'/></svg>
            <ul class='drop'>
-               <li class='drop-item'>
-                   Carnes
-               </li>
-               <li class='drop-item'>
-                   Fitness
-               </li>
-               <li class='drop-item'>
-                   Vegetariano
-               </li>
-               <li class='drop-item'>
-                   Massas
-               </li>
-               <li class='drop-item'>
-                   Molhos
-               </li>
-               <li class='drop-item'>
-                   Saladas
-               </li>
-               <li class='drop-item'>
-                   Sobremesas
-               </li>
+                    <a href="Filtrar.php?Tag=Carnes&type=Tag">
+                    <li class='drop-item'>
+                        Carnes
+                    </li>
+                    </a>
+                    <a href="Filtrar.php?Tag=Fitness&type=Tag">
+                    <li class='drop-item'>
+                        Fitness
+                    </li>
+                    </a>
+                    <a href="Filtrar.php?Tag=Vegetariano&type=Tag">
+                    <li class='drop-item'>
+                        Vegetariano
+                    </li>
+                    </a>
+                    <a href="Filtrar.php?Tag=Massas&type=Tag">
+                    <li class='drop-item'>
+                        Massas
+                    </li>
+                    </a>
+                    <a href="Filtrar.php?Tag=Molhos&type=Tag">
+                    <li class='drop-item'>
+                        Molhos
+                    </li>
+                    </a>
+                    <a href="Filtrar.php?Tag=Saladas&type=Tag">
+                    <li class='drop-item'>
+                        Saladas
+                    </li>
+                    </a>
+                    <a href="Filtrar.php?Tag=Sobremessas&type=Tag">
+                    <li class='drop-item'>
+                        Sobremesas
+                    </li>
+                    </a>
+
            </ul>
        </div>
        <div class='LogoTempera'>

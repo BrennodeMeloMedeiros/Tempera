@@ -42,7 +42,14 @@
                 Página Inicial
             </div>
             <?php
-$query = "SELECT * FROM tb_receita2 ORDER BY id_receita ASC";
+
+
+if( isset($_GET['Tag']) ){
+    $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'";
+}else{
+    $query = "SELECT * FROM tb_receita2 ORDER BY id_receita ASC";
+};
+
 $result = mysqli_query($link,$query);
 if(mysqli_num_rows($result) > 0)
 {
@@ -90,7 +97,9 @@ if(mysqli_num_rows($result) > 0)
             </section>
 <?php
     }
-}
+}else{
+    echo '<h3 id="Error"> Parece que ainda não temos receitas relacionadas a sua pesquisa =( </h3>';
+};
 ?>
                        
         </content>
