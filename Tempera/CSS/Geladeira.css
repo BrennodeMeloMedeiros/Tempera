@@ -38,8 +38,12 @@ content{
     padding:4px;
 }
 .bot{
-    width:80%;
-    
+    width:80%;   
+}
+.Blue-Button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* ----------------Grid------------- */
 

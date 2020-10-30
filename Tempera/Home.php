@@ -43,11 +43,20 @@
             </div>
             <?php
 
+// if(isset($_GET)){
+//     $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'" 
+//     foreach($_GET as $ingre){
 
-if( isset($_GET['Tag']) ){
+//     }
+// };
+if(isset($_GET['Tag']) ){
     $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'";
 }else{
     $query = "SELECT * FROM tb_receita2 ORDER BY id_receita ASC";
+};
+
+if(isset($_GET['Filtro'])) {
+
 };
 
 $result = mysqli_query($link,$query);
@@ -74,7 +83,7 @@ if(mysqli_num_rows($result) > 0)
                     </p>
                     <p class="descricao">
                     <?php 
-                    echo substr($row["st_descricao"],1,160) ?>...
+                    echo substr($row["st_descricao"],0,160) ?>...
                     </p>
                     </a>
                 </div>

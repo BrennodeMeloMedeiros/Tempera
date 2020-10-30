@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <?php
     require_once 'CLASSES/usuarios.php';

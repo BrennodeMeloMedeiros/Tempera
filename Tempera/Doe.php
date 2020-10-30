@@ -1,4 +1,12 @@
 <?php 
+ session_start();
+ if(!isset($_SESSION['id_usuario']))
+ {
+     header("location: Index.php");
+     exit;
+     
+ };
+
 $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
 
 if (!$link) {

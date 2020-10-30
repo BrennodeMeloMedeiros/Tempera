@@ -1,4 +1,11 @@
 <?php
+ session_start();
+ if(!isset($_SESSION['id_usuario']))
+ {
+     header("location: Index.php");
+     exit;
+     
+ };
 
 $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
 
@@ -13,29 +20,62 @@ if (!$link) {
 //print_r($_POST);
 //die;
 if(isset($_POST['Inputname'])){
+
 $nome_receita=$_POST["Inputname"];
 $tags=$_POST["Tags"];
 $porcoes=$_POST["QtddPorcoes"];
 $tempo=$_POST["Time"];
 $descricao=$_POST["Preparo"];
 $calorias=$_POST["Calorias"];
-$ingredientes=$_POST["Ingredientes"];
+$ingredientes="#";
 $imagem=$_FILES['image']['name'];
 
-$sql="insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, image)
+
+// Pega a quantidade de valores do $_POST
+$elementsNum = count($_POST);
+// Define a quantidade de ingredientes dentro do $_POST
+$targetElements= $elementsNum - 7;
+
+$queryAdicionarReceita = "insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, image)
 values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "', '" .$imagem. "')"; 
-
-//echo $sql;
-//die;
-
-mysqli_query($link,$sql);
-
+mysqli_query($link,$queryAdicionarReceita);
 $destino = '' . $_FILES['image']['name'];
- 
 $arquivo_tmp = $_FILES['image']['tmp_name'];
- 
-move_uploaded_file( $arquivo_tmp, $destino  );
-header('location:ReceitaEnviada.php');
+move_uploaded_file($arquivo_tmp, $destino);
+
+$queryId = "SELECT LAST_INSERT_ID()";
+
+$idReceita = mysqli_query($link,$queryId);
+
+if(mysqli_num_rows($idReceita) > 0){
+    $row = mysqli_fetch_array($idReceita);
+    global $targetElements;
+    
+    for($i = 0; $i <= $targetElements; $i++){
+         $nameIngre = "Ingredientes{$i}";
+
+         $Ingre = $_POST[$nameIngre];
+         $queryAdicionarIngredientes =  "insert into tb_receita_ingrediente (id_receita, id_ingrediente) 
+                                        SELECT u.id_receita, ingre.id_ingrediente
+                                            from tb_receita2 as u 
+                                            inner join tb_ingrediente as ingre
+                                            ON (ingre.id_ingrediente = id_ingrediente)
+                                        WHERE ingre.st_nomeIngrediente = '{$Ingre}' AND u.id_receita = '{$row['LAST_INSERT_ID()']}';";
+        //echo $queryAdicionarIngredientes.'<br>';
+         mysqli_query($link,$queryAdicionarIngredientes);        
+    };
+    
+}
+
+
+//header('location:ReceitaEnviada.php');
+
+// // Pega a quantidade de valores do $_POST
+// $queryIdReceita = "select id_receita from tb_receita2 where st_tags = '{$tags}' int_porcoes" ;
+// $elementsNum = count($_POST);
+// // Pra cada elemento no $_POST que seja da Lista de ingredientes (Todos os elementos menos os 7 últimos, que são os Inputs
+// // que não são referentes a ingredientes) ele procura o elemento no $_POST, pega o seu valor e joga na tabela associativa
+// echo mysql_insert_id();
 }
 
 

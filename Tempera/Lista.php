@@ -1,5 +1,12 @@
 <?php 
-session_start()
+
+session_start();
+if(!isset($_SESSION['id_usuario']))
+{
+    header("location: Index.php");
+    exit;
+    
+};
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +40,7 @@ session_start()
         <div id="Button">
                 <!-- O PRIMEIRO BOTÃO MANDA AS IFNORMAÇÕES PARA A PÁGINA 'SALVAR.PHP', ENQUANTO A SEGUNDA MANDA PARA A PÁGINA 'EXPORTAR.PHP', AMBAS RECEBEM AS MESMAS INFORMAÇÕES -->
                 <button class="Blue-Button" form="formList">Salvar Lista de compras</button>
-                <button class="Blue-Button" form="formList" formactation='Exportar.php' >Exportar para a Geladeira</button>
+                <button class="Blue-Button" form="formList" formaction='Exportar.php?Page=Lista-Exportar' >Exportar para a Geladeira</button>
             </div>
         
             <div class="List-Text blue">
@@ -49,7 +56,7 @@ session_start()
                 </p>
             </div>
             <div id="List-Content" class="List-Content">
-                <form autocomplete="off" method="POST" action='Salvar.php' id="formList">
+                <form autocomplete="off" method="POST" action="Exportar.php?Page=Lista-Salvar" id="formList">
                 
                 <?php
                      

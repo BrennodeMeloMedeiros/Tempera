@@ -1,6 +1,13 @@
 <?php 
    
    session_start();
+   if(!isset($_SESSION['id_usuario']))
+   {
+       header("location: Index.php");
+       exit;
+       
+   };
+   
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +41,12 @@
                     Geladeira 
                 </div>
                 <div class="Button">
-                    <button form='formList' class="Blue-Button" formaction='FiltrarGeladeira.php' >Filtrar por ingredientes</button>
+                    <button form='formList' class="Blue-Button" formaction='SalvarGeladeira.php?Funcao=Filtrar'>Filtrar por ingredientes</button>
                     <button form='formList' class="Blue-Button">Salvar alterações</button>
                 </div>
             </div>
             <div class='bot'>
-                <form method='POST' action="SalvarGeladeira.php" id="formList">  
+                <form method='POST' action="SalvarGeladeira.php?Funcao=Salvar" id="formList">  
                     <div id="AddItem" onclick="addItemList()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" fill="Green"/></svg>
                    </div>
