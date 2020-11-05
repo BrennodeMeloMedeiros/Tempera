@@ -2,11 +2,31 @@
  session_start();
  if(!isset($_SESSION['id_usuario']))
  {
-     header("location: Index.php");
+     header("location: index.php");
      exit;
      
  };
 
+ $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+   
+ if (!$link) {
+     echo "Error: Unable to connect to MySQL." . PHP_EOL;
+     echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+     exit;
+ }else {
+     $id = $_SESSION['id_usuario'];
+
+     if(isset($_GET['Sair'])){
+         $_SESSION['id_usuario'] = null;
+         header('location:index.php');
+     };
+     $query = "SELECT * from tb_usuario where id_usuario = {$id}";
+     $exe = mysqli_query($link, $query);
+     
+     
+     while($row = mysqli_fetch_assoc($exe)){
+         
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,8 +63,8 @@
                     </label>
                     <div class='align'>
                         <div class="row Editar" id='row1'>
-                            <input type="text" placeholder='Nome do usuário' id='name' >
-                            <div class='input'> Email do usuário</div>
+                            <input type="text" placeholder='<?php echo $row{'st_nome'}; ?>' id='name' >
+                            <div class='input'> <?php echo $row{'st_email'}; ?></div>
                         </div>
                         <div class="row" id='row2'>
                             <textarea placeholder='Sua bio' class='Editar' spellcheck='false' maxlength='190' rows='4' ></textarea>
@@ -59,6 +79,10 @@
                 </div>
             </form>
         </div>
+<?php 
+     };
+    };
+?>
         </content>
     </main>
 </body>

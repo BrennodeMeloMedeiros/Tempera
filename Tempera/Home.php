@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_SESSION['id_usuario']))
     {
-        header("location: Index.php");
+        header("location: index.php");
         exit;
         
     }
@@ -42,25 +42,39 @@
                 Página Inicial
             </div>
             <?php
-
-// if(isset($_GET)){
-//     $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'" 
-//     foreach($_GET as $ingre){
-
-//     }
-// };
+$id = $_SESSION['id_usuario'];
 if(isset($_GET['Tag']) ){
     $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'";
+}else if(isset($_GET['type']) && $_GET['type'] == 'Filtrar'){
+
+    
+    $idReceitas = "select distinct id_receita from vw_ver_receitas_geladeira
+    where id_usuario = {$id}";
+    $exe = mysqli_query($link,$idReceitas);
+
+    $query = "select * from tb_receita2 where id_receita IN (";
+
+    $num = mysqli_num_rows($exe);
+    $iNum = 1;
+
+    if($num > 0 && $exe != null ){
+        while($row = mysqli_fetch_array($exe)){
+           if($iNum == $num){
+               $query .= $row['id_receita'];
+           }else{
+               $query .=$row['id_receita'].',';
+           };
+           // echo "Num={$iNum}   e   Count  = {$num} <br>";
+           $iNum++;
+        };
+    };
+    $query .= ")";  
 }else{
     $query = "SELECT * FROM tb_receita2 ORDER BY id_receita ASC";
 };
-
-if(isset($_GET['Filtro'])) {
-
-};
-
 $result = mysqli_query($link,$query);
-if(mysqli_num_rows($result) > 0)
+// echo $query;
+if($result && mysqli_num_rows($result) > 0 )
 {
     while($row = mysqli_fetch_array($result))
     {
@@ -85,8 +99,8 @@ if(mysqli_num_rows($result) > 0)
                     <?php 
                     echo substr($row["st_descricao"],0,160) ?>...
                     </p>
-                    </a>
                 </div>
+                </a>
                 <div class="card-footer">
                     <div class='row'>    
                         <span id="Likes">

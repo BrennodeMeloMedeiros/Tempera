@@ -104,6 +104,7 @@ header form{
 }
 .filtro-position:hover .drop{
     display:block;
+    z-index: 99999 ;
 }
 .filtro-position:hover svg{
     transform: rotate(90deg)

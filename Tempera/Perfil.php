@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_SESSION['id_usuario']))
     {
-        header("location: Index.php");
+        header("location: index.php");
         exit;
         
     };
@@ -14,7 +14,15 @@
         echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
         echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
         exit;
-    }
+    }else {
+        $id = $_SESSION['id_usuario'];
+
+        $query = "SELECT * from tb_usuario where id_usuario = {$id}";
+        $exe = mysqli_query($link, $query);
+        
+        
+        while($row = mysqli_fetch_assoc($exe)){
+            
 ?>
 
 <!DOCTYPE html>
@@ -49,17 +57,17 @@
                 </div>
                 <div class='align'>
                     <div class="row" id='row1'>
-                        <input type="text" placeholder='Nome do usuário' readonly>
-                        <input type="email" placeholder='Email do usuário' readonly>
+                        <input type="text" placeholder='<?php echo $row{'st_nome'}; ?>' readonly>
+                        <input type="email" placeholder='<?php echo $row{'st_email'}; ?>' readonly >
                     </div>
                     <div class="mid">
                         <div class="infos">
-                            <span class="Seguidores">Seguidores: XXX</span>
+                            <span class="Seguidores">Seguidores: <?php echo $row{'st_nome'}; ?></span>
                             <span class="Seguindo">Seguindo: XXX</span>
                         </div>
                     </div>
                     <div class="row" id='row2'>
-                        <textarea spellcheck='false' maxlength='190' rows='4' readonly ></textarea>
+                        <textarea spellcheck='false' maxlength='190' rows='4' readonly ><?php echo $row{'bio'}; ?></textarea>
                     </div>
                 </div>
             </div>
@@ -75,12 +83,14 @@
             </div>
             <div class="Button">
                 <a href='EditarPerfil.php' class='Blue-Button'>Editar Perfil</a>
+                <a href='EditarPerfil.php?Sair=Sair' class='Blue-Button'>Sair da Conta</a>
             </div>
             <div id="Receitas">
-            <?php
-            $query = "SELECT * FROM tb_receita2 ORDER BY id_receita ASC";
+                <?php
+$query = "SELECT * FROM tb_receita2  where id_usuario ORDER BY id_receita ASC";
 $result = mysqli_query($link,$query);
-if(mysqli_num_rows($result) > 0)
+// echo $query;
+if($result && mysqli_num_rows($result) > 0 )
 {
     while($row = mysqli_fetch_array($result))
     {
@@ -103,10 +113,10 @@ if(mysqli_num_rows($result) > 0)
                     </p>
                     <p class="descricao">
                     <?php 
-                    echo substr($row["st_descricao"],1,160) ?>...
+                    echo substr($row["st_descricao"],0,160) ?>...
                     </p>
-                    </a>
                 </div>
+                </a>
                 <div class="card-footer">
                     <div class='row'>    
                         <span id="Likes">
@@ -127,8 +137,12 @@ if(mysqli_num_rows($result) > 0)
 <?php
     }
 }
+
+                
+        };
+    };
 ?>
-                </div>
+    </div>
         </div>
         </content>
     </main>

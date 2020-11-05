@@ -252,14 +252,132 @@ color: #000;
 
 
 /* Card de Receitas */
+
+section.card{
+    background: rgb(212, 219, 251)!important;
+    width: 260px;
+    height: 360px;
+    margin: 20px;
+    border-radius: 10px ;
+
+    position:relative;
+    z-index: 1;
+
+}
+section.card img{
+    width: 100%;
+    max-height: 140px;
+    min-height: 140px; 
+    object-fit: cover;
+
+    color:var(--blue-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--blue-white);
+   
+    border-radius: 10px 10px 0px 0px;
+}
+section .card-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top:3px;
+
+    font-size:0.6rem;
+}
+section .card-header span{
+    background: var(--nav-bg);
+    padding: 2px 5px;
+    border-radius:10px;
+    color:#fff;
+}
+section .card-content{
+    margin-top:3px;
+
+    padding: 0 10px;
+
+}
+.titulo{
+    font-size: 0.8rem;
+    width: 100%;
+    margin: 0;
+}
+.descricao{
+    font-size: 0.5rem;
+    font-family: sans-serif;
+    line-height:20px;
+    word-break: break-all;
+    margin-bottom:5px;
+
+    min-height: 80px;
+    max-height: 80px;
+}
+section .card-footer{
+    width: 96%;
+
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:2%;
+
+    position: absolute;
+    bottom:0;
+}
+section .card-footer span{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    
+}
+section .card-footer .row{
+    width: 100%;
+
+    padding:4px 0;
+
+    display: flex;
+    flex-direction: row;
+}
+section .card-footer svg{
+    margin: 0 3px;
+}
+section .card-footer #Autor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    color: var(--blue-black);
+}
+
+
+h3#Error{
+    width: 80%;
+    height: min-content;
+
+    text-align: center;
+
+    padding:2%;
+
+    background:#FFF;
+    border:1px solid gray;
+    border-radius:5px;
+
+    color:var(--blue-color);
+}
+
 #Receitas{
     width: 100%;
-    height:auto;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 
-
-   display:flex;
-   flex-wrap: wrap;
-   justify-content: center;
 }
 
 @media only screen and (max-width: 750px){
