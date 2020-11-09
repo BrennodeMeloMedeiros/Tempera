@@ -6,6 +6,8 @@
         exit;
         
     };
+            
+   
 
     $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
    
@@ -15,6 +17,12 @@
         echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
         exit;
     }else {
+
+        $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+        $exeUser = mysqli_query($link, $queryUser);
+        while($row = mysqli_fetch_assoc($exeUser)){
+            $foto = $row['imagePerfil'];
+        }
         $id = $_SESSION['id_usuario'];
 
         $query = "SELECT * from tb_usuario where id_usuario = {$id}";
@@ -44,7 +52,8 @@
 <body>
     <main id="main">
        <?php 
-       include 'SideMenu.php'
+      
+            include 'SideMenu.php';
        ?>
         <content>
         <div class="Name-Page">
@@ -53,7 +62,14 @@
         <div class='Card'>  
             <div class="Top">
                 <div class="Image">
-                    <img id='PImage' src="IMAGENS/Me.jpg" alt=".">
+                    <img id='PImage' src="<?php 
+                    if(isset($row['imagePerfil'])){
+                        echo $row['imagePerfil'];
+                    }else{
+                        echo 'IMAGENS/AvatarBeta.png';
+                    }
+                     ?> 
+                    ?>" alt=".">
                 </div>
                 <div class='align'>
                     <div class="row" id='row1'>
@@ -67,7 +83,7 @@
                         </div>
                     </div>
                     <div class="row" id='row2'>
-                        <textarea spellcheck='false' maxlength='190' rows='4' readonly ><?php echo $row{'bio'}; ?></textarea>
+                        <textarea spellcheck='false' maxlength='190' rows='4' disabled ><?php echo $row{'bio'}; ?></textarea>
                     </div>
                 </div>
             </div>

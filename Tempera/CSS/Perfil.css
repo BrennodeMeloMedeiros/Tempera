@@ -238,16 +238,16 @@ textarea.Editar{
     margin:10px;
 }
 textarea.Editar::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #000;
+    color: #515151;
     opacity: 1; /* Firefox */
 }
   
 textarea.Editar:-ms-input-placeholder { /* Internet Explorer 10-11 */
-color: #000;
+color: #515151;
 }
 
 textarea.Editar::-ms-input-placeholder { /* Microsoft Edge */
-color: #000;
+color: #515151;
 }
 
 

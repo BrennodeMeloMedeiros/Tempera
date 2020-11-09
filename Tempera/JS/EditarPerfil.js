@@ -37,8 +37,7 @@ function startValidation(e){
     }
 }
 
-const form = document.querySelector('form')
-
+const form = document.querySelector('form#saveForm')
 form.addEventListener(
     'submit',
     (event)=>{       

@@ -6,6 +6,11 @@ if(!isset($_SESSION['id_usuario']))
     exit;
     
 };
+$queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+        $exeUser = mysqli_query($link, $queryUser);
+        while($row = mysqli_fetch_assoc($exeUser)){
+            $foto = $row['imagePerfil'];
+        }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

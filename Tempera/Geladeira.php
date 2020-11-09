@@ -7,6 +7,13 @@
        exit;
        
    };
+   $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+
+   $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+        $exeUser = mysqli_query($link, $queryUser);
+        while($row = mysqli_fetch_assoc($exeUser)){
+            $foto = $row['imagePerfil'];
+        }
    
 ?>
 
@@ -54,7 +61,6 @@
                         <?php
                      
 
-                            $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
 
 
 

@@ -15,7 +15,46 @@
      echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
      exit;
  }else {
-     $id = $_SESSION['id_usuario'];
+    $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+    $exeUser = mysqli_query($link, $queryUser);
+    while($row = mysqli_fetch_assoc($exeUser)){
+        $foto = $row['imagePerfil'];
+
+    }
+    $id = $_SESSION['id_usuario'];
+        if(isset($_FILES['imgPerfil'])
+            || isset($_POST['Nome'])
+            || isset($_POST['Bio'])){
+            
+            if($_FILES['imgPerfil']['error'] == 0){
+                $nomePasta = substr_replace($_FILES['imgPerfil']['name'],"", -4);  
+                $destinoInicial = 'IMAGENS/'.$id.'/';
+                if(!glob("IMAGENS/{$id}")){
+                    mkdir($destinoInicial);
+                }else if(glob("IMAGENS/{$id}/*")){
+                    foreach(glob("IMAGENS/{$id}/*") as $delete){
+                        unlink($delete);
+                    }
+                }
+                $destino = $destinoInicial.$_FILES['imgPerfil']['name'];
+                $arquivo_tmp = $_FILES['imgPerfil']['tmp_name'];
+                move_uploaded_file($arquivo_tmp, $destino);
+                $novaFoto = $destino;
+            }
+            global $destino;
+            $novoNome = $_POST['Nome'];
+            $novaBio = $_POST['Bio'];
+        
+            $queryAtualizarPerfil = "UPDATE tb_usuario 
+            SET 
+            st_nome = '{$novoNome}', bio = '{$novaBio}', imagePerfil = ' {$novaFoto}'
+            WHERE id_usuario = '{$id}'";
+            echo $queryAtualizarPerfil;
+            mysqli_query($link,$queryAtualizarPerfil);
+
+        }else{
+        // Mensagem de Erro
+    }
 
      if(isset($_GET['Sair'])){
          $_SESSION['id_usuario'] = null;
@@ -55,19 +94,33 @@
             Editar Perfil
         </div>
         <div class='Card'>  
-            <form action='#' method='POST' id='saveForm'>
+            <form method='POST' id='saveForm' action='EditarPerfil.php' enctype="multipart/form-data">
                 <div class="Top">
                     <label for='newImage' class="Image">
-                        <img id='PImage' src="IMAGENS/Me.jpg" alt="">
-                        <input type="file" accept="image/*" onchange='viewNewImage()'id="newImage">
+                        <img id='PImage' src="<?php 
+                        if($row['imagePerfil'] != null){
+                            echo $row['imagePerfil'];
+                        }else{
+                            echo 'IMAGENS/AvatarBeta.png';
+                        }
+                         ?>" alt="">
+
+                         
+                        <input value='<?php 
+                        if(isset($row['imagePerfil'])){
+                            echo $row['imagePerfil'];
+                        }else{
+                            echo 'IMAGENS/AvatarBeta.png';
+                        }
+                        ?>' type="file" accept="image/*" name='imgPerfil' form='saveForm' onchange='viewNewImage()' id="newImage">
                     </label>
                     <div class='align'>
                         <div class="row Editar" id='row1'>
-                            <input type="text" placeholder='<?php echo $row{'st_nome'}; ?>' id='name' >
+                            <input type="text" id='name' name='Nome'value='<?php echo $row{'st_nome'}; ?>'>
                             <div class='input'> <?php echo $row{'st_email'}; ?></div>
                         </div>
                         <div class="row" id='row2'>
-                            <textarea placeholder='Sua bio' class='Editar' spellcheck='false' maxlength='190' rows='4' ></textarea>
+                            <textarea class='Editar' spellcheck='false' placeholder='Conte um pouco sobre você (max: 190 caracteres)' maxlength='190' rows='4' name='Bio'><?php echo $row{'bio'}; ?></textarea>
                         </div>
                         <div class="row" id='error'></div>
                     </div>
@@ -75,11 +128,13 @@
                 <div class="Bot">
                 
                 <div class="Button">
+                    <a href='Perfil.php' class='Blue-Button' style='background:var(--blue-color);'>Voltar</a>
                     <button id='save' form='saveForm' class='Blue-Button'>Salvar Alterações</button>
                 </div>
             </form>
         </div>
 <?php 
+    //   };
      };
     };
 ?>

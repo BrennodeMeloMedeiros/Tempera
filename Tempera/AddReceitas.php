@@ -17,6 +17,11 @@ if (!$link) {
     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
+$queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+        $exeUser = mysqli_query($link, $queryUser);
+        while($row = mysqli_fetch_assoc($exeUser)){
+            $foto = $row['imagePerfil'];
+        }
 //print_r($_POST);
 //die;
 if(isset($_POST['Inputname'])){

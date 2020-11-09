@@ -10,9 +10,7 @@ $type = $_GET['type'];
 if($type='Tag'){
     $filtro = $_GET['Tag'];
     header('location:Home.php?Tag='.$filtro);
-}else if($type = 'Geladeira'){
-select * from vw_ver_receitas_geladeira;
 }else{
-    header('location:Home.php')
+    header('location:Home.php');
 }
 ?>
