@@ -37,49 +37,50 @@
     };
 
     function createDirectory($img){
+    // Pega a váriável $link e $id que estão fora do escopo da função
     global $id,$link;
+        // Verifica se já existe um diretório com o id do usuário
         if(!glob("IMAGENS/{$id}")){
-            echo 'criar';
+            // Se ão existir ele cria o Diretório
             mkdir("IMAGENS/{$id}");
         }else if(glob("IMAGENS/$id/*")){
+            // Se o diretório existir e tiver algo dentro dele ele vai apagar tudo
             foreach(glob("IMAGENS/$id/*") as $delete){
+                //Pega cada um dos arquivos dentro do diretório e apaga
                 unlink($delete);
             }
             }
-        
+        // Define o DIretório onde a imagem vai ser upada. 
+        //Faz isso tanto pra poder salvar o caminho no Banco quanto pra poder Salvar a imagem na pasta de aarquivos
+
         $destino = "IMAGENS/{$id}/".$img['imgPerfil']['name'];
-        
         $arquivo_tmp = $_FILES['imgPerfil']['tmp_name'];
+        // Salva o arquivo de Imagem no diretório que foi criado/limpo à cima 
         move_uploaded_file($arquivo_tmp, $destino);
-        
+        // retorna o $destino onde a imagem foi salva pra poder salvar o mesmo caminho no Banco
         return $destino; 
     };
+
     function saveImage($img){
         global $id, $link;
+        // Verifica se alguma imagem foi de fato upada sem ter nenhum erro
         if($img['error'] == 0){
+            // Pegar o diretório onde a imagem foi salva 
             $destino = createDirectory($_FILES);
             $querySalvarImagem = "UPDATE tb_usuario
             SET imagePerfil = '{$destino}'
             WHERE id_usuario = '{$id}'";
+
             mysqli_query($link,$querySalvarImagem);
         }
     };
-
-    function getImage(){
-        $queryBuscarFotoAtual = 
-        "SELECT imagePerfil 
-         FROM tb_usuario
-         WHERE id_usuario ={$id}";
-
-
-    };
-    // Verifica se o Array de Imagem já foi acionado
+    // Verifica se alguma imagem foi upada
     if($_FILES){
         saveImage($_FILES['imgPerfil']);
-    }else{
-        // getImage();
     }
+    // Verifica se o nome ou a Bio foram enviados
     if($_POST){
+        // Salva o nome e a Bio outra vez (Eles tendo sido modificados ou não)    
         saveInfos($_POST);
     }
 
