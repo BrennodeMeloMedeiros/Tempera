@@ -19,47 +19,78 @@
     $exeUser = mysqli_query($link, $queryUser);
     while($row = mysqli_fetch_assoc($exeUser)){
         $foto = $row['imagePerfil'];
-
     }
+
     $id = $_SESSION['id_usuario'];
-        if(isset($_FILES['imgPerfil'])
-            || isset($_POST['Nome'])
-            || isset($_POST['Bio'])){
-            
-            if($_FILES['imgPerfil']['error'] == 0){
-                $nomePasta = substr_replace($_FILES['imgPerfil']['name'],"", -4);  
-                $destinoInicial = 'IMAGENS/'.$id.'/';
-                if(!glob("IMAGENS/{$id}")){
-                    mkdir($destinoInicial);
-                }else if(glob("IMAGENS/{$id}/*")){
-                    foreach(glob("IMAGENS/{$id}/*") as $delete){
-                        unlink($delete);
-                    }
-                }
-                $destino = $destinoInicial.$_FILES['imgPerfil']['name'];
-                $arquivo_tmp = $_FILES['imgPerfil']['tmp_name'];
-                move_uploaded_file($arquivo_tmp, $destino);
-                $novaFoto = $destino;
-            }
-            global $destino;
-            $novoNome = $_POST['Nome'];
-            $novaBio = $_POST['Bio'];
-        
-            $queryAtualizarPerfil = "UPDATE tb_usuario 
-            SET 
-            st_nome = '{$novoNome}', bio = '{$novaBio}', imagePerfil = ' {$novaFoto}'
-            WHERE id_usuario = '{$id}'";
-            echo $queryAtualizarPerfil;
-            mysqli_query($link,$queryAtualizarPerfil);
 
-        }else{
-        // Mensagem de Erro
+    // ================ Salvar alterações =====================//
+  
+    function saveInfos($infos) {
+    global $id,$link;
+        $nome = $infos['Nome'];
+        $bio = $infos['Bio'];
+        $querySalvarInfos = "UPDATE tb_usuario
+        SET st_nome = '{$nome}' , bio = '{$bio}'
+        WHERE id_usuario = '{$id}'";
+
+        mysqli_query($link, $querySalvarInfos);
+    };
+
+    function createDirectory($img){
+    global $id,$link;
+        if(!glob("IMAGENS/{$id}")){
+            echo 'criar';
+            mkdir("IMAGENS/{$id}");
+        }else if(glob("IMAGENS/$id/*")){
+            foreach(glob("IMAGENS/$id/*") as $delete){
+                unlink($delete);
+            }
+            }
+        
+        $destino = "IMAGENS/{$id}/".$img['imgPerfil']['name'];
+        
+        $arquivo_tmp = $_FILES['imgPerfil']['tmp_name'];
+        move_uploaded_file($arquivo_tmp, $destino);
+        
+        return $destino; 
+    };
+    function saveImage($img){
+        global $id, $link;
+        if($img['error'] == 0){
+            $destino = createDirectory($_FILES);
+            $querySalvarImagem = "UPDATE tb_usuario
+            SET imagePerfil = '{$destino}'
+            WHERE id_usuario = '{$id}'";
+            mysqli_query($link,$querySalvarImagem);
+        }
+    };
+
+    function getImage(){
+        $queryBuscarFotoAtual = 
+        "SELECT imagePerfil 
+         FROM tb_usuario
+         WHERE id_usuario ={$id}";
+
+
+    };
+    // Verifica se o Array de Imagem já foi acionado
+    if($_FILES){
+        saveImage($_FILES['imgPerfil']);
+    }else{
+        // getImage();
+    }
+    if($_POST){
+        saveInfos($_POST);
     }
 
-     if(isset($_GET['Sair'])){
+    // ================ Salvar alterações =====================//
+
+    if(isset($_GET['Sair'])){
          $_SESSION['id_usuario'] = null;
          header('location:index.php');
-     };
+    };
+    //  SALVAR DADOS -- FIM --
+
      $query = "SELECT * from tb_usuario where id_usuario = {$id}";
      $exe = mysqli_query($link, $query);
      
@@ -98,7 +129,7 @@
                 <div class="Top">
                     <label for='newImage' class="Image">
                         <img id='PImage' src="<?php 
-                        if($row['imagePerfil'] != null){
+                         if(isset($row['imagePerfil'])){
                             echo $row['imagePerfil'];
                         }else{
                             echo 'IMAGENS/AvatarBeta.png';
@@ -106,13 +137,7 @@
                          ?>" alt="">
 
                          
-                        <input value='<?php 
-                        if(isset($row['imagePerfil'])){
-                            echo $row['imagePerfil'];
-                        }else{
-                            echo 'IMAGENS/AvatarBeta.png';
-                        }
-                        ?>' type="file" accept="image/*" name='imgPerfil' form='saveForm' onchange='viewNewImage()' id="newImage">
+                        <input type="file" accept=".jpg" name='imgPerfil' form='saveForm' onchange='viewNewImage()' id="newImage">
                     </label>
                     <div class='align'>
                         <div class="row Editar" id='row1'>
@@ -134,9 +159,8 @@
             </form>
         </div>
 <?php 
-    //   };
      };
-    };
+     };
 ?>
         </content>
     </main>

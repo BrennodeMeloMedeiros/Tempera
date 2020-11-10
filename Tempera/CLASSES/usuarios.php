@@ -28,7 +28,7 @@ Class Usuario
         }
         else
         {
-        $sql = $pdo->prepare("INSERT INTO tb_usuario (st_nome, st_email, st_senha) VALUE (:n, :e, :s )");
+        $sql = $pdo->prepare("INSERT INTO tb_usuario (st_nome, st_email, st_senha, imagePerfil) VALUE (:n, :e, :s, 'IMAGENS/AvatarBeta.png' )");
 
         $sql->bindValue(":n",$nome);
         $sql->bindValue(":e",$email);
