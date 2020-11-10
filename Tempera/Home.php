@@ -94,7 +94,7 @@ if($result && mysqli_num_rows($result) > 0 )
                     <span class="Tag" ><?php echo $row["st_tags"];?></span>
                     
                 </div>
-                <a href="receita_teste.php?id_receita=<?php echo $row["id_receita"]?>">
+                <a href="Receita.php?id_receita=<?php echo $row["id_receita"]?>">
                 <div class="card-content">
                     <p class="titulo">
                         <b>
@@ -110,7 +110,7 @@ if($result && mysqli_num_rows($result) > 0 )
                 <div class="card-footer">
                     <div class='row'>    
                         <span id="Likes">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="17.091" viewBox="0 0 19 17.091"><g id="Grupo_137" data-name="Grupo 137" transform="translate(-784.559 -512.42)"><g id="Symbol_97_151" data-name="Symbol 97 – 151" transform="translate(785.059 512.92)"><path id="Heart" d="M16.586,1.464a4.836,4.836,0,0,0-6.884,0l-.677.677-.677-.677A4.868,4.868,0,0,0,1.464,8.348l7.561,7.561,7.561-7.561a4.836,4.836,0,0,0,0-6.884" transform="translate(-0.025 -0.025)" fill="none" stroke="#95989a" stroke-width="1" fill-rule="evenodd"/></g></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="17.091" viewBox="0 0 19 17.091"><g id="Grupo_137" data-name="Grupo 137" transform="translate(-784.559 -512.42)"><g id="Symbol_97_151" data-name="Symbol 97 – 151" transform="translate(785.059 512.92)"><path id="Heart" d="M16.586,1.464a4.836,4.836,0,0,0-6.884,0l-.677.677-.677-.677A4.868,4.868,0,0,0,1.464,8.348l7.561,7.561,7.561-7.561a4.836,4.836,0,0,0,0-6.884" transform="translate(-0.025 -0.025)" fill="none" stroke="#95989a" stroke-width="1" fill-rule="evenodd"/></g></g></svg>
                                 609
                             </span>
                         <span id="Duracao">

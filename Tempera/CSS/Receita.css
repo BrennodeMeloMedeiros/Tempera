@@ -15,9 +15,6 @@ content{
 
 
 
-h3{
-    color:var(--blue-color);
-}
 
 #ImagemReceita{
 
@@ -29,6 +26,7 @@ h3{
 
     color:var(--blue-black);
     font-size:0.8rem;
+    text-align:center;
 
     width: 90%;
     height:30vh;
@@ -48,6 +46,10 @@ h3{
     align-items:center;
     justify-content:space-around;
 }
+.row .title{
+    font-size:1rem;
+
+}
 .col{
     width: max-content;
 
@@ -62,8 +64,11 @@ h3{
 
     margin:15px 0;
 }
+.col.noBG{
+    background: none;
+}
 .col p{
-
+    font-weight: bold;
     font-size:0.6rem;
 }
 .col span{
@@ -74,8 +79,39 @@ h3{
 }
 
 
-#ingredientes{
+.PainelReceita{
     width: 95%;
+    height: auto;
 
-    height: 400px;
+    margin:20px auto;
+
+    display:flex;
+    align-items:unset;
+    justify-content:center;
+    flex-direction:column;
+}
+.PainelReceita .ingreCols{
+    width: 80%;
+
+    padding:1%;
+    
+    margin:5px auto;
+
+    font-size:0.9rem;
+
+    border-left:5px solid var(--blue-color);
+    background: var(--blue-white);
+}
+
+
+
+#textPreparo{
+    width: 90%;
+
+    padding:10px 5px;
+    
+    font-size:0.8rem;
+
+    border-radius:4px;
+    background:var(--bg-color);
 }

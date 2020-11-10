@@ -27,7 +27,7 @@ function removeItem(id){
     }
 }
 
-const form = document.querySelector('form')
+const form = document.querySelector('form#NovaReceita')
     const inputs = form.querySelectorAll('input')
 
 function viewTargetImage(){
@@ -84,6 +84,7 @@ for(input of inputs){
     input.addEventListener(
     'invalid', 
     (event) => {
+        event.preventDefault()
         setErrorIndicator(event)
     })
     input.addEventListener(

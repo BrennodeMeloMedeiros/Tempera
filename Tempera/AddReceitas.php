@@ -42,8 +42,9 @@ $elementsNum = count($_POST);
 $targetElements= $elementsNum - 7;
 
 $queryAdicionarReceita = "insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, image, id_usuario)
-values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "', '" .$imagem. "',  '" .$id. "')"; 
+values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "', '" .$imagem. "','" .$id."')"; 
 mysqli_query($link,$queryAdicionarReceita);
+//echo $queryAdicionarReceita.'<br>';
 $destino = '' . $_FILES['image']['name'];
 $arquivo_tmp = $_FILES['image']['tmp_name'];
 move_uploaded_file($arquivo_tmp, $destino);
@@ -66,7 +67,7 @@ if(mysqli_num_rows($idReceita) > 0){
                                             inner join tb_ingrediente as ingre
                                             ON (ingre.id_ingrediente = id_ingrediente)
                                         WHERE ingre.st_nomeIngrediente = '{$Ingre}' AND u.id_receita = '{$row['LAST_INSERT_ID()']}';";
-        //echo $queryAdicionarIngredientes.'<br>';
+        // echo $queryAdicionarIngredientes.'<br>'; 
         mysqli_query($link,$queryAdicionarIngredientes);        
     };
     
@@ -205,7 +206,7 @@ header('location:ReceitaEnviada.php');
                 exit;
             }else{
 
-            $getUsuarios = 'select * from tb_ingrediente';
+            $getUsuarios = 'select DISTINCT st_nomeIngrediente from tb_ingrediente';
             $executeLine = mysqli_query($link, $getUsuarios);
 
             ?> 
