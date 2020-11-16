@@ -26,56 +26,73 @@ $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario
 //die;
 if(isset($_POST['Inputname'])){
 
-$nome_receita=$_POST["Inputname"];
-$tags=$_POST["Tags"];
-$porcoes=$_POST["QtddPorcoes"];
-$tempo=$_POST["Time"];
-$descricao=$_POST["Preparo"];
-$calorias=$_POST["Calorias"];
-$ingredientes="#";
-$imagem=$_FILES['image']['name'];
+    $nome_receita=$_POST["Inputname"];
+    $tags=$_POST["Tags"];
+    $porcoes=$_POST["QtddPorcoes"];
+    $tempo=$_POST["Time"];
+    $descricao=$_POST["Preparo"];
+    $calorias=$_POST["Calorias"];
+    $ingredientes="#";
+    $imagem=$_FILES['image']['name'];
 
-$id = $_SESSION['id_usuario'];
-// Pega a quantidade de valores do $_POST
-$elementsNum = count($_POST);
-// Define a quantidade de ingredientes dentro do $_POST
-$targetElements= $elementsNum - 7;
+    $id = $_SESSION['id_usuario'];
+    // Pega a quantidade de valores do $_POST
+    $elementsNum = count($_POST);
+    // Define a quantidade de ingredientes dentro do $_POST
+    $targetElements= $elementsNum - 7;
 
-$queryAdicionarReceita = "insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, image, id_usuario)
-values('" .$descricao. "','" .$calorias. "', '" .$porcoes. "', '" .$tags. "', '" .$ingredientes. "', '" .$tempo. "', '" .$nome_receita. "', '" .$imagem. "','" .$id."')"; 
-mysqli_query($link,$queryAdicionarReceita);
-//echo $queryAdicionarReceita.'<br>';
-$destino = '' . $_FILES['image']['name'];
-$arquivo_tmp = $_FILES['image']['tmp_name'];
-move_uploaded_file($arquivo_tmp, $destino);
+    // $destino = '' . $_FILES['image']['name'];
+    // $arquivo_tmp = $_FILES['image']['tmp_name'];
 
-$queryId = "SELECT LAST_INSERT_ID()";
+     
+    $queryAdicionarReceita = "insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, id_usuario)
+    values('{$descricao}', '{$calorias}', '{$porcoes}','{$tags}','{$ingredientes}','{$tempo}', '{$nome_receita}','{$id}')";
+    mysqli_query($link,$queryAdicionarReceita);
 
-$idReceita = mysqli_query($link,$queryId);
 
-if(mysqli_num_rows($idReceita) > 0){
-    $row = mysqli_fetch_array($idReceita);
-    global $targetElements;
-    
-    for($i = 0; $i <= $targetElements; $i++){
-         $nameIngre = "Ingredientes{$i}";
 
-         $Ingre = $_POST[$nameIngre];
-         $queryAdicionarIngredientes =  "insert into tb_receita_ingrediente (id_receita, id_ingrediente) 
-                                        SELECT u.id_receita, ingre.id_ingrediente
-                                            from tb_receita2 as u 
-                                            inner join tb_ingrediente as ingre
-                                            ON (ingre.id_ingrediente = id_ingrediente)
-                                        WHERE ingre.st_nomeIngrediente = '{$Ingre}' AND u.id_receita = '{$row['LAST_INSERT_ID()']}';";
-        // echo $queryAdicionarIngredientes.'<br>'; 
-        mysqli_query($link,$queryAdicionarIngredientes);        
+    function createDirectory($img){
+        global $idReceita,$link;
+        if(!glob("IMAGENS/RECEITAS/{$idReceita}")){
+            mkdir("IMAGENS/RECEITAS/{$idReceita}");
+            }else if(glob("IMAGENS/RECEITAS/$idReceita/*")){
+                foreach(glob("IMAGENS/RECEITAS/$idReceita/*") as $delete){
+                    unlink($delete);
+                }
+            }
+
+            $destino = "IMAGENS/RECEITAS/{$idReceita}/".$img['image']['name'];
+            $arquivo_tmp = $_FILES['image']['tmp_name'];
+            move_uploaded_file($arquivo_tmp, $destino);
+            return $destino;
+        };
+    function saveImage($img){
+        global $idReceita, $link; 
+        if($img['error'] == 0){
+            $destino = createDirectory($_FILES);
+            $querySalvarImagem = "UPDATE tb_receita2
+            SET image = '{$destino}'
+            WHERE id_receita = '{$idReceita}'";
+            mysqli_query($link,$querySalvarImagem);
+        }
     };
-    
-}
+    // Pega o Id da receita recem registrada
+    $queryId = "SELECT LAST_INSERT_ID()";
+    $getId = mysqli_query($link,$queryId);
+    while($row = mysqli_fetch_array($getId)){
+        $idReceita = $row['LAST_INSERT_ID()'];
+    }
+   
+    saveImage($_FILES['image']);
 
 
-header('location:ReceitaEnviada.php');
-
+   
+    foreach($_POST['idIngrediente'] as $idIngrediente){
+        $query = "INSERT INTO tb_receita_ingrediente (id_receita,id_ingrediente)
+                    VALUES ($idReceita,{$idIngrediente})";
+        $exe = mysqli_query($link,$query);
+    }
+    header('location:ReceitaEnviada.php');
 }
 
 
@@ -118,31 +135,31 @@ header('location:ReceitaEnviada.php');
                     <input type='file' accept="image/*" onchange='viewTargetImage()' name='image' id='image' class='Blue-Button'>
                     <label for='image' class='Blue-Button'>Adicionar Foto</label>
                 </div>
-                 
-                <p class='opcional row' style='color:green'>Atenção! Colocar uma imagem ajuda muito na visibilidade da sua receita, mas não é obrigatório.</p> 
-                <div id='Inputs-Painel'>
-                    <div class='Input-Row' id='Row1'>
-                        <!-- Linha de Tempo e Porções  -->
-                        <div class='row' id='align'>
-                            <div class='row'>
-                                <p><i class="fas fa-clock"></i><label for='Time'>Tempo</label></p>
-                                <input required pattern='[0-9]{1,3}' maxlength="3" class='Basic-Input' type='text' name='Time' id='Time'>
-                                <spam class='desc'>Minutos</spam>
+                    
+                    <p class='opcional row' style='color:green'>Atenção! Colocar uma imagem ajuda muito na visibilidade da sua receita, mas não é obrigatório.</p> 
+                    <div id='Inputs-Painel'>
+                        <div class='Input-Row' id='Row1'>
+                            <!-- Linha de Tempo e Porções  -->
+                            <div class='row' id='align'>
+                                <div class='row'>
+                                    <p><i class="fas fa-clock"></i><label for='Time'>Tempo</label></p>
+                                    <input required pattern='[0-9]{1,3}' maxlength="3" class='Basic-Input' type='text' name='Time' id='Time'>
+                                    <spam class='desc'>Minutos</spam>
+                                </div>
+                                <div class='row'>
+                                    <p><i class="fas fa-weight-hanging"></i><label for='Calorias'>Calorias</label></p>
+                                    <input  pattern='[0-9]{1,4}' maxlength="4" class='Basic-Input' type='text' name='Calorias' id='Calorias'>
+                                    <spam class='desc'>Cal</spam>
+                                </div>
+                                <div class='row'>
+                                    <p><i class="fas fa-user-friends"></i><label for='Qtdd-Porcoes'>Porções</label></p>
+                                    <input required type='text' pattern='[0-9]{1,2}' maxlength="2" class='Basic-Input' name='QtddPorcoes' id='Qtdd-Pocoes'>
+                                    <spam class='desc'>Porções</spam>
+                                </div>
                             </div>
-                            <div class='row'>
-                                <p><i class="fas fa-weight-hanging"></i><label for='Calorias'>Calorias</label></p>
-                                <input  pattern='[0-9]{1,4}' maxlength="4" class='Basic-Input' type='text' name='Calorias' id='Calorias'>
-                                <spam class='desc'>Cal</spam>
-                            </div>
-                            <div class='row'>
-                                <p><i class="fas fa-user-friends"></i><label for='Qtdd-Porcoes'>Porções</label></p>
-                                <input required type='text' pattern='[0-9]{1,2}' maxlength="2" class='Basic-Input' name='QtddPorcoes' id='Qtdd-Pocoes'>
-                                <spam class='desc'>Porções</spam>
-                            </div>
+                            <span class='opcional row'>Opcional</span> 
+                            <span class='opcional warning row'></span>                         
                         </div>
-                        <span class='opcional row'>Opcional</span> 
-                        <span class='opcional warning row'></span>                         
-                    </div>
 
                     <div class='Input-Row' id='Row2'>
                         <div class='row' id='ListForm'>
@@ -190,14 +207,15 @@ header('location:ReceitaEnviada.php');
 
                     <p class='opcional warning row' id='align' name='submitError'></p> 
                 </div>
-             
-            
             </form>
+          
 
         </div>
         </content>
         <script type='text/javascript'>
-        // Limita as opções de escolha do Datalist de acordo com o Banco de Ingredientes
+       
+            // Limita as opções de escolha do Datalist de acordo com o Banco de Ingredientes
+// ###############################################################################################
             <?php
             if(!$link){
                 echo "Error: Unable to connect to MySql" . PHP_EOL;
@@ -205,97 +223,149 @@ header('location:ReceitaEnviada.php');
                 echo "Error: Unable to connect to MySql" . mysqli_connect_error() . PHP_EOL;
                 exit;
             }else{
-
-            $getUsuarios = 'select DISTINCT st_nomeIngrediente from tb_ingrediente';
+            // query que pega o Nome e o Id de cada ingrediente no Banco
+            $getUsuarios = 'select st_nomeIngrediente, id_ingrediente from tb_ingrediente group by st_nomeIngrediente';
             $executeLine = mysqli_query($link, $getUsuarios);
 
-            ?> 
-            var js_array = [<?php while($row = mysqli_fetch_assoc($executeLine)){ echo utf8_encode("'{$row['st_nomeIngrediente']}',"); };?>]
-            const datalist = document.querySelector('datalist')
+            ?>
 
-            function addOption(item, index){
+            // Objeto que vai conter o Nome e o Id de todos os ingredientes
+            ingredientesObj = {
+                 <?php 
+                 // pega o nome do Ingrediente no banco e salva ele, assim como o seu Id, 
+                 // num objeto JS
+              while($row = mysqli_fetch_assoc($executeLine)){
+                   echo utf8_encode("'{$row['st_nomeIngrediente']}':'{$row['id_ingrediente']}', ");
+               };
+              ?>
+            }         
+            
+            const datalist = document.querySelector('datalist')
+            // Função que vai adicionar todos os ingredientes ao Datalist
+            function addOption(id,nome){
                 let option = document.createElement("option")
-                let optionText = option.innerText = item
-                option.value = item
+                option.value = nome
+                option.name = id
                 datalist.appendChild(option)
             }
-
-            js_array.forEach(addOption)
-
+            // Para cara ingrediente que há no Banco ele executa a função
+            // de adicionar no datalist
+            for(ingres of Object.keys(ingredientesObj)){
+                // envia o id do ingrediente e o nome dele
+                addOption(ingredientesObj[ingres], ingres)
+            }
             <?php
             }
             ?>
-        // Verifica se algum Ingrediente está repetido 
+// ###############################################################################################
+            // Muda o Name do input para o Id do ingrediente selecionado
 
-        function verificarRepetição(){
-            const listItems = document.querySelectorAll('.List-Item');
-            let errorItem = false
             
-            for(list of listItems) {
-                // list = div do item 
-                const firstValue = list.querySelector('.Item').value // Input da div, ou seja, onde está o valor do item 
-                const firstId = list.id // Id do input 
+            const validarIngrediente = () =>{
+                const ingredientesLista =  document.querySelector('div#ListForm')
+                const ingredientes = ingredientesLista.querySelectorAll('input.Item')
+                let invalidar = false
+                for(ingre of ingredientes){                    
+                    let encontrado = false
+                    const value = ingre.value
 
-                const inputsArray = List.querySelectorAll('.Item') // Pega todos o itens da lista denovo 
-            //Pega os valores de todos os itens e checka se algum deles, que não o próprio, é igual a outro 
-                for(input of inputsArray){
-                const secondValue = input.value
-                const secondId = input.parentNode.id
-                
-                    if(firstId != secondId && firstValue == secondValue){
-                        errorItem = true
-                    } else if(!firstValue){
-                        errorItem = true
-                    } else{
+                    for(ingreDB of Object.keys(ingredientesObj)){
+                        if(ingreDB == value){
+                            encontrado = true
+                        }else if(value == "" ||value == " " ){
+                            
+                        }
                     }
-                } 
+                    if(encontrado == false){
+                        ingre.parentNode.style.border = '1px solid red'
+                        ingre.parentNode.style.background = "var(--blue-white)"
+                        ingre.style.background = "var(--blue-white)"
+                        invalidar = true
+                    }else{
+                        ingre.style.background = "#FFF"
+                        ingre.parentNode.style.background = "#FFF"
+                        ingre.parentNode.style.border = ''
+                        ingre.parentNode.style.borderBottom = '1px solid #919191'
+                    }
+                }            
+                return invalidar;
 
             }
-            return errorItem
-        }
-
-
-        // Valida o valor do Input da Datalist (Verifica se o valor existe no Banco ou não)
-
-        const objeto = {}
-        js_array.forEach(item =>{
-            objeto[item] = item
-        } )
-        function comecarValidacao(){
-            const form = document.querySelector('#ListForm')
-            const inputs = form.querySelectorAll('input.Item')
-            let achouIngrediente = true
-            for(input of inputs){
-                const ingrediente = input.value
-                const buscarIngrediente = objeto[ingrediente]
-                if(!buscarIngrediente){
-                   achouIngrediente = false
-                   input.parentNode.style.borderBottom = '2px solid red'
-                   input.parentNode.style.borderLeft = '2px solid red'
-                }else{
-                    input.parentNode.style.borderBottom = '1px solid #919191'
-                    input.parentNode.style.borderLeft = 'none'                    
-                }
-            } 
-            return achouIngrediente
-        }
- 
-         addEventListener('submit',
-         (e)=> {
-            const existeIngrediente = comecarValidacao()
-            const ingredienteRepetido = verificarRepetição()
-            if(!existeIngrediente){
-                e.preventDefault()
-                alert('Algum dos ingredientes que você colocou não existe em nossa tabela, porfavor verifique os campos e remova')
-            }else if (ingredienteRepetido){
-                e.preventDefault()
-                alert('Parece que algum item está repetido, porfavor retire-o da lista')
-            }else{
             
+            const adicionarEvento = (name) =>{
+                // pega todos os itens da lista de Ingrediente
+                let listInputs = form.querySelectorAll('input.Item')
+                for(input of listInputs){
+                    // se o input for o que acabou de ser Adicionado então ele
+                    // adiciona nele o EventListener, assim não causa repetição
+                    if(input.name == name){
+                        input.addEventListener('change', (event) =>{
+                            targetInput = event.target
+                            criarHiddenInput(targetInput)
+                        })
+                        input.addEventListener('blur', (event) =>{
+                            targetInput = event.target
+                            criarHiddenInput(targetInput)
+                        })
+                    }
+                      
+                }     
             }
-        })
-        
+            
+            const criarHiddenInput = (Input) => {
+                targetInput = form.querySelector(`input[name=${Input.name}]`)
+                    
+                    
+                const idForm = document.querySelector('form#NovaReceita')
+                const hiddenInputs = idForm.querySelectorAll('input[type=hidden]')
 
+                const id = ingredientesObj[targetInput.value]
+                if(id){
+                    let trocarIngre = false
+                    let hiddenExistente = false
+                    for(input of hiddenInputs){
+                        if(input.class == targetInput.value){
+                            hiddenExistente = true
+                        }else if (input.id == targetInput.name){
+                            hiddenInput.class = Input.value
+                            input.name = "idIngrediente[]"
+                            input.value = id
+                            input.id = Input.name
+                            trocarIngre = true
+                        }
+                    }
+
+                    if(!hiddenExistente && !trocarIngre){
+       
+                        let hiddenInput = document.createElement("input")
+
+                        hiddenInput.setAttribute('type', 'hidden')
+                        // Seta o value do Input como o Id do ingrediente
+                        hiddenInput.value = id
+                        hiddenInput.class = Input.value
+                        // Seta o Name como o Nome do ingrediente
+                        hiddenInput.name = "idIngrediente[]"
+                        // Sera o id com o valor do 'name' do input que criou o HiddenInput 
+                        hiddenInput.id = Input.name
+                        idForm.appendChild(hiddenInput)
+                    }
+                }
+            }
+
+
+            const deletarHiddenInput = (nomeIngrediente)=>{
+                // Deleta o Hidden input que tem id iquivalente ao nomeIngrediente
+                
+                const idForm = document.querySelector('form#NovaReceita')
+                const hiddenInputs = idForm.querySelectorAll('input[type=hidden]')
+                for(input of hiddenInputs){    
+                    console.log(nomeIngrediente)
+                    if(input.class == nomeIngrediente){
+                        const itemTarget = idForm.querySelector(`input[name='${input.name}']`) 
+                        itemTarget.parentNode.removeChild(itemTarget)
+                    }
+                }
+            }
         </script>
     </main>
 </body>

@@ -104,8 +104,9 @@ section .card-footer #Autor{
     margin: 0;
     color: var(--blue-black);
 }
-
-
+section .card-footer #Autor a{
+color: var(--blue-black);
+}
 h3#Error{
     width: 80%;
     height: min-content;

@@ -48,11 +48,12 @@
                 Página Inicial
             </div>
             <?php
-$id = $_SESSION['id_usuario'];
-if(isset($_GET['Tag']) ){
-    $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'";
-}else if(isset($_GET['type']) && $_GET['type'] == 'Filtrar'){
+    $id = $_SESSION['id_usuario'];
+    if(isset($_GET['Tag']) ){
+        $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'";
 
+
+    }else if(isset($_GET['type']) && $_GET['type'] == 'Filtrar'){
     
     $idReceitas = "select distinct id_receita from vw_ver_receitas_geladeira
     where id_usuario = {$id}";
@@ -75,9 +76,36 @@ if(isset($_GET['Tag']) ){
         };
     };
     $query .= ")";  
-}else{
-    $query = "SELECT * FROM tb_receita2 ORDER BY id_receita ASC";
-};
+    }else if(isset($_GET['search'])){
+        $search = $_GET['search'];
+        $query = "
+
+        Select a.*,c.st_nomeIngrediente, d.st_nome from tb_receita2 as a
+        inner join tb_receita_ingrediente as b
+             ON a.id_receita = b.id_receita 
+        inner join tb_ingrediente as c
+             ON b.id_ingrediente = c.id_ingrediente
+		inner join tb_usuario as d 
+			 ON a.id_usuario = d.id_usuario
+        where 
+            a.st_descricao LIKE '%{$search}%'
+        OR
+            a.st_nome_receita LIKE '%{$search}%'
+        OR
+            a.st_tags LIKE '%{$search}%'
+        OR
+            c.st_nomeIngrediente LIKE '%{$search}%'
+        OR 
+            d.st_nome LIKE '{$search}'
+      ";
+    }else{
+        $query = "SELECT * FROM tb_receita2 as a
+        inner join tb_usuario as b
+            ON a.id_usuario = b.id_usuario
+        ORDER BY id_receita DESC  limit 50;";
+    };
+
+
 $result = mysqli_query($link,$query);
 // echo $query;
 if($result && mysqli_num_rows($result) > 0 )
@@ -119,8 +147,11 @@ if($result && mysqli_num_rows($result) > 0 )
                         </span>
                     </div>
                     <span id="Autor">
-                            Brenno de Melo Medeiros
-                        
+                    <a href="<?php echo "PerfilUsuario.php?id={$row['id_usuario']}"?>">
+                        <?php
+                        echo $row['st_nome'];
+                        ?>
+                    </a>
                     </span>
                 </div>
             </section>

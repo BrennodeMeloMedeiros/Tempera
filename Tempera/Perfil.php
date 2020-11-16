@@ -103,7 +103,10 @@
             </div>
             <div id="Receitas">
                 <?php
-$query = "SELECT * FROM tb_receita2  where id_usuario ORDER BY id_receita ASC";
+$query =  $query = "SELECT * FROM tb_receita2 as a
+inner join tb_usuario as b
+on a.id_usuario = b.id_usuario
+ where a.id_usuario = '{$_SESSION['id_usuario']}' ORDER BY a.id_receita ASC;";
 $result = mysqli_query($link,$query);
 // echo $query;
 if($result && mysqli_num_rows($result) > 0 )
@@ -145,8 +148,11 @@ if($result && mysqli_num_rows($result) > 0 )
                         </span>
                     </div>
                     <span id="Autor">
-                            Brenno de Melo Medeiros
-                        
+                        <a href="<?php echo "PerfilUsuario.php?id={$row['id_usuario']}"?>">
+                            <?php 
+                            echo $row['st_nome'];
+                            ?>
+                        </a>
                     </span>
                 </div>
             </section>

@@ -7,9 +7,12 @@ if(!isset($_SESSION['id_usuario']))
     
 };
 $type = $_GET['type'];
-if($type='Tag'){
+if($type =='Tag'){
     $filtro = $_GET['Tag'];
     header('location:Home.php?Tag='.$filtro);
+}else if($type == 'search'){
+    $search = $_POST['searchInput'];
+    header('location:Home.php?search='.$search);
 }else{
     header('location:Home.php');
 }

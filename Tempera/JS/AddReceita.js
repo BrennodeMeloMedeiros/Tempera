@@ -1,7 +1,16 @@
-const log = console.log
+// ---------------VARIÁVEIS GLOBAIS--------------
+// ---------------VARIÁVEIS GLOBAIS--------------
+
+
+const form = document.querySelector('form#NovaReceita')
+const inputs = form.querySelectorAll('input')
 const List = document.querySelector("#ListForm");
 let a = 0.0
 
+
+// ---------------VARIÁVEIS GLOBAIS--------------
+
+// ---------------FUNÇÕES--------------
 function addItemList(){
     itemsCount = a++
     // Ascento grave permite a quebra de linha ao declarar qual o conteúdo de uma string, substituindo o "" e ''
@@ -12,7 +21,12 @@ function addItemList(){
         </div>
         <input list='Ingredientes' name="Ingredientes`+ itemsCount +`" type="text" placeHolder="Insira o Ingrediente" class="Item">
     </div>`;
+    // O evento "oncahnge" envia o nome do input que foi selecionado e executa a função
+    // responsável por conver o nome do input para o id do ingrediente.
+    // Já que o id do ingrediente vai vir de um array que usa php, a função "onchange"
+    // ira fica na tag script do arquivo .php.
     List.insertAdjacentHTML('beforeend', newItem)    
+    adicionarEvento("Ingredientes"+itemsCount)
 }
 addItemList()
 
@@ -21,14 +35,14 @@ function removeItem(id){
     const itemsRemoveCount = List.childElementCount
     if( itemsRemoveCount >= 4){
         const itemTarget = document.getElementById("item-"+id) 
-         itemTarget.parentNode.removeChild(itemTarget)
+        const valueTarget = itemTarget.querySelector('input').value
+        deletarHiddenInput(valueTarget)
+        itemTarget.parentNode.removeChild(itemTarget)
+         
      }else {
          alert('A Sua receita deve ter ao menos 1 item!')
     }
 }
-
-const form = document.querySelector('form#NovaReceita')
-    const inputs = form.querySelectorAll('input')
 
 function viewTargetImage(){
     const imagePainel = document.querySelector('#Image-Painel')
@@ -43,6 +57,7 @@ function viewTargetImage(){
 function noInputErrorIndicator(event){
     const preparo = form.querySelector('#PreparoText')
     const tags = form.querySelector('#Tags')
+    let stop = false
     fields = [
         preparo,
         tags
@@ -52,21 +67,16 @@ function noInputErrorIndicator(event){
         if(fields[i].value == " " || fields[i].value == "Tag0" || fields[i].value == null || fields[i].value == "" ){
             fields[i].scrollIntoView()
             fields[i].style.border = '2px solid red'
-            event.preventDefault()
+            stop = true
         }else{
             fields[i].style.border = ''
         }
     }
-
+    return stop
 }
 
 
-form.addEventListener(
-    'submit',
-    (event) =>{
-        noInputErrorIndicator(event)
-        console.log('entrou')
-})
+
 
 function setErrorIndicator(event) {
     const input = event.target
@@ -79,6 +89,19 @@ function setErrorIndicator(event) {
     }
    
 }
+// ---------------FUNÇÕES--------------
+
+// ---------------EVENTOS--------------
+
+form.addEventListener(
+    'submit',
+    (event) =>{
+        if(noInputErrorIndicator(event)
+         || validarIngrediente()){
+            event.preventDefault()
+        }
+})
+
 
 for(input of inputs){
     input.addEventListener(
@@ -94,3 +117,4 @@ for(input of inputs){
     }
     )
 }
+// ---------------EVENTOS--------------

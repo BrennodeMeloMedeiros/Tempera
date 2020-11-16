@@ -123,7 +123,7 @@ if($_GET){
                     $exe = mysqli_query($link, $queryBuscarIngredientes);
                     while($row = mysqli_fetch_array($exe)){
                         echo " <div id='{$row['id_ingrediente']}'class='ingreCols'>
-                            {$row['st_nomeIngrediente']}
+                        ".utf8_encode($row['st_nomeIngrediente'])."
                         </div>    
                         ";
                     }
