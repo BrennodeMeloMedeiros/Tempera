@@ -15,6 +15,9 @@
         echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
         exit;
     }
+
+    $a = "DELETE FROM tb_receita2";
+    mysqli_query($link,$a);
     $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
         $exeUser = mysqli_query($link, $queryUser);
         while($row = mysqli_fetch_assoc($exeUser)){
@@ -50,7 +53,10 @@
             <?php
     $id = $_SESSION['id_usuario'];
     if(isset($_GET['Tag']) ){
-        $query = "SELECT * FROM tb_receita2 where st_tags ='{$_GET['Tag']}'";
+        $query = "SELECT * FROM tb_receita2 as a 
+        inner join tb_usuario as b
+        ON a.id_usuario = b.id_usuario
+        where st_tags ='{$_GET['Tag']}'";
 
 
     }else if(isset($_GET['type']) && $_GET['type'] == 'Filtrar'){
@@ -59,7 +65,8 @@
     where id_usuario = {$id}";
     $exe = mysqli_query($link,$idReceitas);
 
-    $query = "select * from tb_receita2 where id_receita IN (";
+    $query = "select * from tb_receita2 
+    where id_receita IN (";
 
     $num = mysqli_num_rows($exe);
     $iNum = 1;
@@ -84,7 +91,7 @@
         inner join tb_receita_ingrediente as b
              ON a.id_receita = b.id_receita 
         inner join tb_ingrediente as c
-             ON b.id_ingrediente = c.id_ingrediente
+                 ON b.id_ingrediente = c.id_ingrediente
 		inner join tb_usuario as d 
 			 ON a.id_usuario = d.id_usuario
         where 
@@ -98,6 +105,21 @@
         OR 
             d.st_nome LIKE '{$search}'
       ";
+    }else if(isset($_GET['show'])){
+        $show = $_GET['show'];
+        if($show == 'historico'){
+            $query = "
+            SELECT DISTINCT b.*, c.st_nome FROM tb_historico as a
+            inner join tb_receita2 as b
+                ON a.id_receita = b.id_receita 
+            inner join tb_usuario as c
+                ON b.id_usuario = c.id_usuario
+            where a.id_usuario = '{$_SESSION['id_usuario']}';
+            ";
+        }else{
+            // (ELSE IF) Lógica para ver os favoritos;  
+        };
+
     }else{
         $query = "SELECT * FROM tb_receita2 as a
         inner join tb_usuario as b

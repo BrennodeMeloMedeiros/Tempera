@@ -152,7 +152,6 @@ textarea{
     flex-direction:column;
     
 
-    color:#919191;
     font-weight: bold;
 
 
@@ -163,7 +162,12 @@ textarea{
     color:#fff;
 
 }
+.Minicard a{
+    width: 90%;
+    all:none;
+    color:#919191;
 
+}
 .Minicard p{
     font-size:0.8rem;
     margin:5px 5px 5px 10px;   

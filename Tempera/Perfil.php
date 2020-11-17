@@ -90,12 +90,23 @@
           
             <div class="Bot">
                 <div class="Minicard">
-                    <p>
-                        Favoritos
-                        <span id='FavQttd'> +256</span>
-                    </p>
-                    
+                    <a href="Home.php?show=favoritos">
+                        <p>
+                            Favoritos
+                            <span id='FavQttd'> +256</span>
+                        </p>
+                    </a>
                 </div>
+                
+                <div class="Minicard">
+                    <a href="Home.php?show=historico">
+                        <p>
+                            Histórico
+                            <span id='FavQttd'> +256</span>
+                        </p>
+                    </a>
+                </div>
+
             </div>
             <div class="Button">
                 <a href='EditarPerfil.php' class='Blue-Button'>Editar Perfil</a>

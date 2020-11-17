@@ -24,6 +24,12 @@ if($_GET){
         ON a.id_usuario = b.id_usuario
     where id_receita = '{$idReceita}';";
 
+    $queryRegistrarHistorico = 
+    "
+    INSERT INTO tb_historico (id_receita, id_usuario)
+    VALUES ({$idReceita}, {$_SESSION['id_usuario']})
+    ";
+    $exe = mysqli_query($link,$queryRegistrarHistorico);
 
     $exe = mysqli_query($link,$queryBuscarReceita);
     if(mysqli_num_rows($exe) > 0 ){
