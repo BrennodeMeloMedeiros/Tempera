@@ -24,7 +24,7 @@
             Error
         </div>
            <div class='Card' style='display:flex;justify-content:center;align-items:center;'>
-                <h1>Parece que houve um pequeno erro da nossa parte </h1> <br> Lamentamos profundamente o ocorrido, caso deseje notificar o erro para nossa equipe contate: <br> <p style='color:var(--blue-color);margin-top:10px;'>+55 11 99155-8521</p>
+                <h2>Parece que houve um erro</h2> <br> Lamentamos o ocorrido, caso deseje notificar o erro para nossa equipe contate: <br> <p style='color:var(--blue-color);margin-top:10px;'>+55 11 99155-8521</p>
            </div>
            
         </content>

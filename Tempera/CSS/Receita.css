@@ -7,7 +7,6 @@ content{
     justify-content: center;
     height: auto;
     min-height: min-content;
-
     flex-direction: column;
 }
 
@@ -114,4 +113,73 @@ content{
 
     border-radius:4px;
     background:var(--bg-color);
+}
+
+
+/*======================= Comentário ===========================*/
+#Comments{
+    width: 100%;
+    height: auto;
+
+    display:flex;
+    justify-content: space-around;
+    
+    padding:10px auto;
+
+    flex-wrap: wrap;
+}
+#Comments .Comment-Box{
+    min-width: 45%;
+    max-width: 45%;
+    height: 125px;
+
+    padding:4px;
+
+    background:#91919125;
+
+    margin-bottom:15px;
+
+    border:1px solid #919191;
+    border-radius:4px;
+}
+#Comments .Comment-Box .name{
+    font-size: 0.6rem;
+    color:var(--blue-color);
+    margin-bottom:5px;
+}
+
+#Comments .Comment-Box .text{
+    font-size:0.6rem;
+}
+
+
+#formNewComment{
+    width: 100%;
+
+    padding:10px;
+
+    display: flex;
+    flex-direction:column;
+}
+#formNewComment textarea {
+    width: 70%;
+    height: 200px;
+    max-width: 70%;
+    max-height: 200px;
+
+    border-radius:5px;
+    border:1px solid black;
+
+    background:var(--bg-color);
+
+    padding:10px;
+
+    font-size:0.9rem;
+
+    resize:none;
+}
+#formNewComment .row{
+    width: 100%;
+
+    margin-top:10px;
 }
