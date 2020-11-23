@@ -27,7 +27,7 @@
 
         $idUser = $_GET['id'];
 
-        $query = "SELECT * from tb_usuario where id_usuario = {$idUser}";
+        $query = "SELECT * from tb_usuario where id_usuario = '{$idUser}'";
         $exe = mysqli_query($link, $query);
         
         while($row = mysqli_fetch_assoc($exe)){
@@ -94,8 +94,9 @@
                
             </div>
             <div class="Button">
+            <button id='save' form='saveForm' onclick='location.href = "Seguir.php?id=<?php echo $idUser?>" ' class='Blue-Button'>Seguir</button>
+            </form>
                  <!-- Botão de deixar de Seguir = Tirar o "id='save'" e trocar o texto do botão para "Deixar de seguir"  -->
-            <button id='save' form='saveForm' class='Blue-Button'>Seguir</button>
             </div>
             <div id="Receitas">
                 <?php
@@ -159,7 +160,7 @@
                 
         };
     }else{
-        echo '<h3 id="Error"> Parece que houve um erro ao achar este perfil, porfavor tente mais tarde</h3>';
+        //header("location:Error.php");
     }
 }
 ?>

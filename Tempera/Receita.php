@@ -52,15 +52,40 @@ if(!empty($_GET['id_receita'])){
         }
     }
 
-
     if(!empty($_POST['estrela'])){
+        $valava = "SELECT * FROM tb_avaliacao where id_usuario = '{$_SESSION['id_usuario']}' and id_receita = '$idReceita'";
+        $exe = mysqli_query($link,$valava);
+       if($row=mysqli_fetch_assoc($exe))
+       {
         $estrela = $_POST['estrela'];
-        
-        $result_avaliacos = "INSERT INTO tb_receita2 where id_receita = '$idReceita' (qnt_estrela) VALUES ('$estrela')";
+        $result_avaliacos = "UPDATE tb_avaliacao SET qnt_estrela = '$estrela' where id_usuario = '{$_SESSION['id_usuario']}' and id_receita = '$idReceita' ";
         $resultado_avaliacos = mysqli_query($link, $result_avaliacos);
+       }
+       else
+       {
+        $estrela = $_POST['estrela'];
+        $result_avaliacos = "INSERT INTO tb_avaliacao (id_usuario,id_receita,qnt_estrela) VALUES ('{$_SESSION['id_usuario']}','$idReceita','$estrela')";
+        $resultado_avaliacos = mysqli_query($link, $result_avaliacos);
+      }
     }
 
 
+    $sql = "SELECT SUM(qnt_estrela) FROM tb_avaliacao WHERE id_receita = '$idReceita'";
+    $gio = mysqli_query($link,$sql);
+    while($row=mysqli_fetch_assoc($gio)){
+        $soma = $row['SUM(qnt_estrela)'];
+    }
+
+        $sql = "SELECT COUNT(*) FROM tb_avaliacao WHERE id_receita = '$idReceita'";
+        $gio = mysqli_query($link,$sql);
+        while($row=mysqli_fetch_assoc($gio)){
+            $pessoas = $row['COUNT(*)'];
+    }
+   $divisao = $soma / $pessoas;
+  
+
+
+    
     $queryBuscarReceita = 
     "select 
     a.*, b.st_nome
