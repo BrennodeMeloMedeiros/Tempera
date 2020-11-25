@@ -70,22 +70,26 @@ if(!empty($_GET['id_receita'])){
     }
 
 
+
     $sql = "SELECT SUM(qnt_estrela) FROM tb_avaliacao WHERE id_receita = '$idReceita'";
     $gio = mysqli_query($link,$sql);
     while($row=mysqli_fetch_assoc($gio)){
         $soma = $row['SUM(qnt_estrela)'];
     }
-
-        $sql = "SELECT COUNT(*) FROM tb_avaliacao WHERE id_receita = '$idReceita'";
-        $gio = mysqli_query($link,$sql);
-        while($row=mysqli_fetch_assoc($gio)){
-            $pessoas = $row['COUNT(*)'];
+    $sql = "SELECT COUNT(*) FROM tb_avaliacao WHERE id_receita = '$idReceita'";
+    $gio = mysqli_query($link,$sql);
+    while($row=mysqli_fetch_assoc($gio)){
+        $pessoas = $row['COUNT(*)'];
     }
-   $divisao = $soma / $pessoas;
-  
+
+    if($soma == 0 || $pessoas == 0){
+        $divisao = 0;
+    }else {
+        $divisao = $soma / $pessoas;
+    }
+    $QtdEstrelas = round($divisao);
 
 
-    
     $queryBuscarReceita = 
     "select 
     a.*, b.st_nome
@@ -127,6 +131,7 @@ if(!empty($_GET['id_receita'])){
 		<link rel="stylesheet" href="CSS/Stars.css">
     <link rel="stylesheet" type="text/css" href="CSS/SideMenu.css">
     <script src="JS\Script.js" defer></script>
+    <script src="JS\VisuReceita.js" defer></script>
     <script src="JS\SideMenu.js"></script>
     <title>
         Receita
@@ -153,9 +158,6 @@ if(!empty($_GET['id_receita'])){
 
                     <form id="EstrelasEnviar" method="POST" action="" enctype="multipart/form-data">
                         <div class="estrelas">
-                            <?php 
-                            
-                            ?>
                             <input type="radio" id="vazio" name="estrela" value="" checked>
 
                             <label for="estrela_um"><i class="fa"></i></label>
@@ -175,68 +177,22 @@ if(!empty($_GET['id_receita'])){
                         </div>
                     </form>
               <script>
-                    const estrelas = document.querySelectorAll('input[name=estrela]')
-                    const formularioEstrelas = document.querySelector("form#EstrelasEnviar") 
-
-                    for(estrela of estrelas){
-                        estrela.addEventListener('click', ()=>{
-                        formularioEstrelas.submit()
-                    })
-                    }
-                    </script>
-
-
-                    </div>
-                    <div class="col noBG">
-                    <?php
-                        $like = getLikeDB();
-                        if($like){
-                            $color = "red";
-                            $heart = true;
-                        }else{
-                            $color = "none";
-                            $heart = false;
-                        }
-                        echo $like;
-                    ?>
-                        <form action="Back-Receita.php?id=<?php echo "{$idReceita}&like={$heart}"?>" id='Like' method='POST'>
-                        
-                            <svg id='likeButton'xmlns="http://www.w3.org/2000/svg" width="19" height="17.091" viewBox="0 0 19 17.091">
-                                <g id="Grupo_137" data-name="Grupo 137" transform="translate(-784.559 -512.42)">
-                                    <g id="Symbol_97_151" data-name="Symbol 97 – 151" transform="translate(785.059 512.92)">
-                                        <path id="Heart" d="M16.586,1.464a4.836,4.836,0,0,0-6.884,0l-.677.677-.677-.677A4.868,4.868,0,0,0,1.464,8.348l7.561,7.561,7.561-7.561a4.836,4.836,0,0,0,0-6.884" transform="translate(-0.025 -0.025)" 
-                                        fill="<?php echo $color; ?>"  stroke="#95989a" stroke-width="1" fill-rule="evenodd"/>
-                                    </g>
-                                </g>
-                            </svg>
-                            <input id='likeValue' name='likeValue' type="hidden" value='0'>
-                        </form>
-                    </div>
-                    <script>
-                        const likeButton = document.querySelector('#likeButton')
-                        likeButton.addEventListener('click', ()=>{
-                            document.querySelector('form#Like').submit()
-                        })
-                    </script>
                     
+                    function loadStars(num){
+                        const stars = document.querySelectorAll('input[name=estrela]')
+                        targetStar = stars[num]  
+                        targetStar.checked = true
+                    
+                    }
+                    loadStars(<?php echo $QtdEstrelas; ?>)
+                    </script>
+
+
+                    </div>
                 </div>
 
                 <div class="row">
                 <div class="col">
-                        <p>Tag</p>
-                        <span><?php echo $tag?></span>
-                    </div>
-                    <div class="col">
-                        <p>Nome do autor</p>
-                        <span><?php echo $autor ?></span>
-                    </div>
-                    <div class="col">
-                        <p>Likes</p>
-                        <span>678</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
                         <p>Tempo</p>
                         <span><?php echo $tempo?></span>
                     </div>
@@ -248,11 +204,24 @@ if(!empty($_GET['id_receita'])){
                         <p>Porções</p>
                         <span><?php echo $porcoes?></span>
                     </div>
+                
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Tag</p>
+                        <span><?php echo $tag?></span>
+                    </div>
+                    <div class="col">
+                        <p>Nome do autor</p>
+                        <span><?php echo $autor ?></span>
+                    </div>
+                </div>
+                
+                
                 <div class="PainelReceita">
                     <div class="row">
                         <p class='Title'> Ingredientes</p>
-                    </div>
+                </div>
                 <?php 
                     $queryBuscarIngredientes = 
                     "select a.id_ingrediente, a.id_receita, b.st_nomeIngrediente 

@@ -97,13 +97,7 @@ section .card-footer .row{
 section .card-footer svg{
     margin: 0 3px;
 }
-section .card-footer #Autor{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    color: var(--blue-black);
-}
+
 section .card-footer #Autor a{
 color: var(--blue-black);
 }
