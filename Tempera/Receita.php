@@ -153,40 +153,47 @@ if(!empty($_GET['id_receita'])){
                 
                 <div class="row">
                     <div class="col noBG">
-                    
-                  
+                        <form id="EstrelasEnviar" method="POST" action="" enctype="multipart/form-data">
+                            <div class="estrelas">
+                                <input type="radio" id="vazio" name="estrela" value="" checked>
 
-                    <form id="EstrelasEnviar" method="POST" action="" enctype="multipart/form-data">
-                        <div class="estrelas">
-                            <input type="radio" id="vazio" name="estrela" value="" checked>
+                                <label for="estrela_um"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_um" name="estrela" value="1">
 
-                            <label for="estrela_um"><i class="fa"></i></label>
-                            <input type="radio" id="estrela_um" name="estrela" value="1">
+                                <label for="estrela_dois"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_dois" name="estrela" value="2">
 
-                            <label for="estrela_dois"><i class="fa"></i></label>
-                            <input type="radio" id="estrela_dois" name="estrela" value="2">
+                                <label for="estrela_tres"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_tres" name="estrela" value="3">
 
-                            <label for="estrela_tres"><i class="fa"></i></label>
-                            <input type="radio" id="estrela_tres" name="estrela" value="3">
+                                <label for="estrela_quatro"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_quatro" name="estrela" value="4">
 
-                            <label for="estrela_quatro"><i class="fa"></i></label>
-                            <input type="radio" id="estrela_quatro" name="estrela" value="4">
-
-                            <label for="estrela_cinco"><i class="fa"></i></label>
-                            <input type="radio" id="estrela_cinco" name="estrela" value="5">
-                        </div>
-                    </form>
-              <script>
-                    
-                    function loadStars(num){
-                        const stars = document.querySelectorAll('input[name=estrela]')
-                        targetStar = stars[num]  
-                        targetStar.checked = true
-                    
-                    }
-                    loadStars(<?php echo $QtdEstrelas; ?>)
-                    </script>
-
+                                <label for="estrela_cinco"><i class="fa"></i></label>
+                                <input type="radio" id="estrela_cinco" name="estrela" value="5">
+                            </div>
+                        </form>
+                        <script>        
+                            function loadStars(num){
+                                const stars = document.querySelectorAll('input[name=estrela]')
+                                targetStar = stars[num]  
+                                targetStar.checked = true
+                            
+                            }
+                            loadStars(<?php echo $QtdEstrelas; ?>)
+                        </script>                            
+                    </div>
+                    <div class="col noBG">
+                            <button onclick='showReport()' id='reportButton' class="Blue-Button" style='background:red;' >Denunciar</button>
+                            <form action="Denuncia.php?idReceita=<?php echo $idReceita?>&idUser=<?php echo $_SESSION['id_usuario']?>" method='POST' id='denuncia'>
+                                <select name="ReportOptions" id="ReportOptions">
+                                    <option value="">Qual o Motivo da Denúncia?</option>
+                                    <option value="Conteúdo Ofensivo">Conteúdo Ofensivo</option>
+                                    <option value="Receita má intencionada">Receita má intencionada</option>
+                                    <option value="Informações incompletas">Informações incompletas</option>
+                                </select>
+                                <button type='submit' class="Blue-Button" style='background:red;font-size:0.5rem;font-weight:bold;' >Enviar Denuncia</button>
+                            </form>
 
                     </div>
                 </div>

@@ -36,7 +36,7 @@
                         Saladas
                     </li>
                     </a>
-                    <a href="Filtrar.php?Tag=Sobremessas&type=Tag">
+                    <a href="Filtrar.php?Tag=Sobremesas&type=Tag">
                     <li class='drop-item'>
                         Sobremesas
                     </li>

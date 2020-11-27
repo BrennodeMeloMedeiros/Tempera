@@ -15,9 +15,6 @@
         echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
         exit;
     }
-
-    $a = "DELETE FROM tb_receita2";
-    mysqli_query($link,$a);
     $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
         $exeUser = mysqli_query($link, $queryUser);
         while($row = mysqli_fetch_assoc($exeUser)){
@@ -86,24 +83,9 @@
     }else if(isset($_GET['search'])){
         $search = $_GET['search'];
         $query = "
-
-        Select a.*,c.st_nomeIngrediente, d.st_nome from tb_receita2 as a
-        inner join tb_receita_ingrediente as b
-             ON a.id_receita = b.id_receita 
-        inner join tb_ingrediente as c
-                 ON b.id_ingrediente = c.id_ingrediente
-		inner join tb_usuario as d 
-			 ON a.id_usuario = d.id_usuario
-        where 
-            a.st_descricao LIKE '%{$search}%'
-        OR
-            a.st_nome_receita LIKE '%{$search}%'
-        OR
-            a.st_tags LIKE '%{$search}%'
-        OR
-            c.st_nomeIngrediente LIKE '%{$search}%'
-        OR 
-            d.st_nome LIKE '{$search}'
+        select a.*,c.st_nomeIngrediente, d.st_nome,
+        case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao
+        from tb_receita2 as a inner join tb_receita_ingrediente as b ON a.id_receita = b.id_receita inner join tb_ingrediente as c ON b.id_ingrediente = c.id_ingrediente inner join tb_usuario as d ON a.id_usuario = d.id_usuario where a.st_descricao LIKE '%asd%' OR a.st_nome_receita LIKE '%asd%' OR a.st_tags LIKE '%asd%' OR c.st_nomeIngrediente LIKE '%asd%' OR d.st_nome LIKE 'asd'
       ";
     }else if(isset($_GET['show'])){
         $show = $_GET['show'];
@@ -168,7 +150,7 @@
 
     ];
 $result = mysqli_query($link,$query);
-// echo $query;
+ //echo $query;
 if($result && mysqli_num_rows($result) > 0 )
 {
     while($row = mysqli_fetch_array($result))

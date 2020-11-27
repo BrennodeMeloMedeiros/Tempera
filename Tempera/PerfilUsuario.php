@@ -18,12 +18,11 @@
         exit;
     }else {
         if($_GET['id']){
-        $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
-        $exeUser = mysqli_query($link, $queryUser);
-        while($row = mysqli_fetch_assoc($exeUser)){
-            $foto = $row['imagePerfil'];
-        }
-
+            $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+            $exeUser = mysqli_query($link, $queryUser);
+                while($row = mysqli_fetch_assoc($exeUser)){
+                    $foto = $row['imagePerfil'];
+                }
 
         $idUser = $_GET['id'];
 
@@ -160,7 +159,7 @@
                 
         };
     }else{
-        //header("location:Error.php");
+        header("location:Error.php");
     }
 }
 ?>

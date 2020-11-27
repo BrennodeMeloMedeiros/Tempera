@@ -48,7 +48,7 @@ if(isset($_POST['Inputname'])){
     $queryAdicionarReceita = "insert into tb_receita2 (st_descricao, int_calorias, int_porcoes, st_tags, st_ingredientes, st_tempo, st_nome_receita, id_usuario)
     values('{$descricao}', '{$calorias}', '{$porcoes}','{$tags}','{$ingredientes}','{$tempo}', '{$nome_receita}','{$id}')";
     mysqli_query($link,$queryAdicionarReceita);
-
+    // echo $queryAdicionarReceita;
 
 
     function createDirectory($img){
