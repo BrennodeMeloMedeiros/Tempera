@@ -159,7 +159,6 @@ textarea{
 }
 .Minicard:hover{
     background: var(--nav-bg);
-    color:#fff;
 
 }
 .Minicard a{
@@ -172,8 +171,12 @@ textarea{
     font-size:0.8rem;
     margin:5px 5px 5px 10px;   
     
+    
     display:flex;
     align-items: center;
+}
+.Minicard:hover p{
+    color:#fff;
 }
 .Minicard p span{
     font-size: 0.6rem;

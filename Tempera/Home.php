@@ -3,8 +3,7 @@
     if(!isset($_SESSION['id_usuario']))
     {
         header("location: index.php");
-        exit;
-        
+        exit;        
     }
 
     $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
@@ -85,7 +84,8 @@
         $query = "
         select a.*,c.st_nomeIngrediente, d.st_nome,
         case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao
-        from tb_receita2 as a inner join tb_receita_ingrediente as b ON a.id_receita = b.id_receita inner join tb_ingrediente as c ON b.id_ingrediente = c.id_ingrediente inner join tb_usuario as d ON a.id_usuario = d.id_usuario where a.st_descricao LIKE '%asd%' OR a.st_nome_receita LIKE '%asd%' OR a.st_tags LIKE '%asd%' OR c.st_nomeIngrediente LIKE '%asd%' OR d.st_nome LIKE 'asd'
+        from tb_receita2 as a inner join tb_receita_ingrediente as b ON a.id_receita = b.id_receita inner join tb_ingrediente as c ON b.id_ingrediente = c.id_ingrediente inner join tb_usuario as d ON a.id_usuario = d.id_usuario 
+        where a.st_descricao LIKE '%$search%' OR a.st_nome_receita LIKE '%$search%' OR a.st_tags LIKE '%$search%' OR c.st_nomeIngrediente LIKE '%$search%' OR d.st_nome LIKE '%$search%'
       ";
     }else if(isset($_GET['show'])){
         $show = $_GET['show'];
@@ -99,7 +99,13 @@
             where a.id_usuario = '{$_SESSION['id_usuario']}';
             ";
         }else{
-            // (ELSE IF) Lógica para ver os favoritos;  
+            $query = "SELECT *,case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = ava.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = ava.id_receita )) end as media_avaliacao from tb_avaliacao as ava
+            inner join tb_usuario as user 
+                ON ava.id_usuario = user.id_usuario
+            inner join tb_receita2 as recei
+                ON ava.id_receita = recei.id_receita
+            where ava.id_usuario = 18 AND qnt_estrela > 3;
+            ";
         };
 
     }else{
@@ -113,7 +119,6 @@
                     ON a.id_usuario = b.id_usuario
                 ORDER BY id_receita DESC  limit 50;";
     };  
-
 
     $array_estrela = [
     0 => "<path id='Icon_feather-star' data-name='Icon feather-star' d='M10.289,3l2.252,4.563,5.037.736-3.645,3.55.86,5.015-4.5-2.369-4.5,2.369.86-5.015L3,8.3l5.037-.736Z' transform='translate(352 427.25)' fill='#919191'/>
@@ -150,7 +155,6 @@
 
     ];
 $result = mysqli_query($link,$query);
- //echo $query;
 if($result && mysqli_num_rows($result) > 0 )
 {
     while($row = mysqli_fetch_array($result))

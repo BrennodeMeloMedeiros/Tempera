@@ -11,12 +11,22 @@ if(!isset($_SESSION['id_usuario']))
 
 function seguir() {
     global $link;
+
     $id = $_SESSION['id_usuario'];
     $idUser = $_GET['id'];
-    $queryAddFollow = "INSERT INTO `tempera`.`tb_seguir` (`id_usuario`, `id_seguidor`) VALUES ('{$id}', '{$idUser}');";
-    mysqli_query($link,$queryAddFollow);
- }
-$query = "";
+    
+    $queryConsultarSeguidor = "SELECT * FROM tb_seguir WHERE id_usuario = '$idUser' AND id_seguidor = '$id'";
+    $exe = mysqli_query($link, $queryConsultarSeguidor);
+    
+    if(mysqli_num_rows($exe) > 0){
+        $query = "DELETE FROM tb_seguir  WHERE id_usuario = '$idUser' AND id_seguidor = '$id' ";
+    }else{
+        $query = "INSERT INTO `tempera`.`tb_seguir` (`id_usuario`, `id_seguidor`) VALUES ('{$idUser}', '{$id}');";
+    }
+
+    mysqli_query($link,$query);
+}
+
 seguir();
 $idUser = $_GET['id'];
 header("location: PerfilUsuario.php?id=$idUser");

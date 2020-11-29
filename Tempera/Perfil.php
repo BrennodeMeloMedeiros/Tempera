@@ -30,7 +30,7 @@
         
         
         while($row = mysqli_fetch_assoc($exe)){
-            
+            $bio =$row{'bio'}; 
 ?>
 
 <!DOCTYPE html>
@@ -78,12 +78,25 @@
                     </div>
                     <div class="mid">
                         <div class="infos">
-                            <span class="Seguidores">Seguidores: <?php echo $row{'st_nome'}; ?></span>
-                            <span class="Seguindo">Seguindo: XXX</span>
+                        <?php 
+                            $querySeguidores = "SELECT COUNT(*) as Seguidores, (
+                                SELECT COUNT(*)
+                                FROM tb_seguir
+                                WHERE id_seguidor = '$id'
+                            ) as Seguindo 
+                            from tb_seguir WHERE id_usuario = '$id';";
+                            $exeSeguidores = mysqli_query($link, $querySeguidores);
+                            while($row = mysqli_fetch_assoc($exeSeguidores)){
+                                $seguidores = $row['Seguidores'];
+                                $seguindo = $row['Seguindo'];
+                            };
+                        ?>
+                            <span class="Seguidores">Seguidores: <?php echo $seguidores ?></span>
+                            <span class="Seguindo">Seguindo: <?php echo $seguindo ?></span>
                         </div>
                     </div>
                     <div class="row" id='row2'>
-                        <textarea spellcheck='false' maxlength='190' rows='4' disabled ><?php echo $row{'bio'}; ?></textarea>
+                        <textarea spellcheck='false' maxlength='190' rows='4' disabled ><?php echo $bio ; ?></textarea>
                     </div>
                 </div>
             </div>
@@ -93,7 +106,7 @@
                     <a href="Home.php?show=favoritos">
                         <p>
                             Favoritos
-                            <span id='FavQttd'> +256</span>
+                            <span id='FavQttd'></span>
                         </p>
                     </a>
                 </div>
@@ -102,7 +115,7 @@
                     <a href="Home.php?show=historico">
                         <p>
                             Histórico
-                            <span id='FavQttd'> +256</span>
+                            <span id='FavQttd'></span>
                         </p>
                     </a>
                 </div>

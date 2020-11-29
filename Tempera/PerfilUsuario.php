@@ -18,11 +18,12 @@
         exit;
     }else {
         if($_GET['id']){
-            $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
-            $exeUser = mysqli_query($link, $queryUser);
-                while($row = mysqli_fetch_assoc($exeUser)){
-                    $foto = $row['imagePerfil'];
-                }
+        $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario']}";
+        $exeUser = mysqli_query($link, $queryUser);
+        while($row = mysqli_fetch_assoc($exeUser)){
+            $foto = $row['imagePerfil'];
+        }
+
 
         $idUser = $_GET['id'];
 
@@ -30,6 +31,7 @@
         $exe = mysqli_query($link, $query);
         
         while($row = mysqli_fetch_assoc($exe)){
+            $bio = $row{'bio'};
 ?>
 
 <!DOCTYPE html>
@@ -79,12 +81,25 @@
                     </div>
                     <div class="mid">
                         <div class="infos">
-                            <span class="Seguidores">Seguidores: <?php echo $row{'st_nome'}; ?></span>
-                            <span class="Seguindo">Seguindo: XXX</span>
+                        <?php 
+                            $querySeguidores = "SELECT COUNT(*) as Seguidores, (
+                                SELECT COUNT(*)
+                                FROM tb_seguir
+                                WHERE id_seguidor = '$idUser'
+                            ) as Seguindo 
+                            from tb_seguir WHERE id_usuario = '$idUser';";
+                            $exeSeguidores = mysqli_query($link, $querySeguidores);
+                            while($row = mysqli_fetch_assoc($exeSeguidores)){
+                                $seguidores = $row['Seguidores'];
+                                $seguindo = $row['Seguindo'];
+                            };
+                        ?>
+                            <span class="Seguidores">Seguidores: <?php echo $seguidores ?></span>
+                            <span class="Seguindo">Seguindo: <?php echo $seguindo ?></span>
                         </div>
                     </div>
                     <div class="row" id='row2'>
-                        <textarea spellcheck='false' maxlength='190' rows='4' disabled ><?php echo $row{'bio'}; ?></textarea>
+                        <textarea spellcheck='false' maxlength='190' rows='4' disabled ><?php echo $bio; ?></textarea>
                     </div>
                 </div>
             </div>
@@ -93,7 +108,29 @@
                
             </div>
             <div class="Button">
-            <button id='save' form='saveForm' onclick='location.href = "Seguir.php?id=<?php echo $idUser?>" ' class='Blue-Button'>Seguir</button>
+            <?php 
+                 $id = $_SESSION['id_usuario'];
+                 $idUser = $_GET['id'];
+                 
+                 $queryConsultarSeguidor =  "SELECT * FROM tb_seguir WHERE id_usuario = '$idUser' AND id_seguidor = '$id'";
+                 $exeQuery = mysqli_query($link, $queryConsultarSeguidor);
+                 if(mysqli_num_rows($exeQuery) > 0){
+                    $Seguir = false;
+                 }else{
+                     $Seguir = true;
+                 }
+                 
+            ?>
+                    <button id='<?php if($Seguir){
+                        echo "save";}
+                        ?>' form='saveForm' onclick='location.href = "Seguir.php?id=<?php echo $idUser?>" ' class='Blue-Button'>
+                        <?php if($Seguir){
+                            echo "Seguir";
+                        }
+                        else{ 
+                            echo "Deixar de Seguir";
+                        }
+                        ?></button>
             </form>
                  <!-- Botão de deixar de Seguir = Tirar o "id='save'" e trocar o texto do botão para "Deixar de seguir"  -->
             </div>
@@ -159,7 +196,7 @@
                 
         };
     }else{
-        header("location:Error.php");
+        //header("location:Error.php");
     }
 }
 ?>
