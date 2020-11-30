@@ -170,6 +170,7 @@ if(mysqli_num_rows($result) > 0){
    <section class='UsersTop'>
        <ul class='User-List'>
            <li class='User'>
+              
                <img src="<?php echo $row["imagePerfil"]?>" alt = "Sem Imagem" class='TopUser'>
                <div class='NameDiv'>
                    <span class='UserName'><?php echo $row["st_nome_receita"] ?></span>
