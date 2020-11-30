@@ -61,8 +61,9 @@
     where id_usuario = {$id}";
     $exe = mysqli_query($link,$idReceitas);
 
-    $query = "select * from tb_receita2 
-    where id_receita IN (";
+    $query = "SELECT *, 
+    case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao FROM tb_receita2 as a 
+    inner join tb_usuario as b ON a.id_usuario = b.id_usuario where id_receita IN (";
 
     $num = mysqli_num_rows($exe);
     $iNum = 1;

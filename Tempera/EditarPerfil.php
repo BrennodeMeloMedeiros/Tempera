@@ -97,7 +97,10 @@
      
      
      while($row = mysqli_fetch_assoc($exe)){
-         
+        $nomeUser = $row{'st_nome'};
+        $emailUser = $row{'st_email'};
+        $bio =$row{'bio'}; 
+        $image = $row['imagePerfil'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -130,8 +133,8 @@
                 <div class="Top">
                     <label for='newImage' class="Image">
                         <img id='PImage' src="<?php 
-                         if(isset($row['imagePerfil'])){
-                            echo $row['imagePerfil'];
+                         if(isset($image)){
+                            echo $image;
                         }else{
                             echo 'IMAGENS/AvatarBeta.png';
                         }
@@ -142,11 +145,11 @@
                     </label>
                     <div class='align'>
                         <div class="row Editar" id='row1'>
-                            <input type="text" id='name' name='Nome'value='<?php echo $row{'st_nome'}; ?>'>
-                            <div class='input'> <?php echo $row{'st_email'}; ?></div>
+                            <input type="text" id='name' name='Nome'value='<?php echo $nomeUser; ?>'>
+                            <div class='input'> <?php echo $emailUser; ?></div>
                         </div>
                         <div class="row" id='row2'>
-                            <textarea class='Editar' spellcheck='false' placeholder='Conte um pouco sobre você (max: 190 caracteres)' maxlength='190' rows='4' name='Bio'><?php echo $row{'bio'}; ?></textarea>
+                            <textarea class='Editar' spellcheck='false' placeholder='Conte um pouco sobre você (max: 190 caracteres)' maxlength='190' rows='4' name='Bio'><?php echo $bio; ?></textarea>
                         </div>
                         <div class="row" id='error'></div>
                     </div>

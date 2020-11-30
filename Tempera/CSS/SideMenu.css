@@ -271,6 +271,20 @@ li.User{
     display: flex;
     align-items: center;
 }
+li.User a {
+    margin:0;
+
+    width: 100%;
+
+    margin:0;
+    
+    font-size:0.6rem;
+    font-weight: bold;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 .UsersTop{
     display: flex;
     flex-direction: column;
@@ -320,7 +334,11 @@ li.User{
     flex-direction: column;   
     justify-content: center;
     align-items: center;
-
+}
+.NameDiv a{
+    display:flex;
+    flex-direction: column;   
+    align-items: center;
 }
 .SubName{
     font-size: 0.5rem;

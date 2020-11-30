@@ -143,7 +143,10 @@ if(mysqli_num_rows($result) > 0){
        <ul class='User-List'>
            <li class='User'>
                <img src="<?php echo $row["imagePerfil"]?>" alt = "Sem Imagem" class='TopUser'>
-               <span class='UserName'><?php echo $row["st_nome"] ?></span>
+               <a href="PerfilUsuario.php?id=<?php echo $row["id_usuario"] ?>">
+                    <span class='UserName'><?php echo $row["st_nome"] ?></span>
+               </a>
+               
            </li>
        </ul>
    </section>
@@ -160,7 +163,7 @@ inner join tb_receita2 as b
 ON a.id_receita = b.id_receita
 inner join tb_usuario as c
 ON b.id_usuario = c.id_usuario
-ORDER BY qnt_estrela DESC limit 4 ;";
+ORDER BY qnt_estrela DESC limit 10;";
 $result = mysqli_query($link,$query2);
 if(mysqli_num_rows($result) > 0){
 
@@ -171,10 +174,12 @@ if(mysqli_num_rows($result) > 0){
        <ul class='User-List'>
            <li class='User'>
               
-               <img src="<?php echo $row["imagePerfil"]?>" alt = "Sem Imagem" class='TopUser'>
+               <img src="<?php echo $row["image"]?>" alt = "Sem Imagem" class='TopUser'>
                <div class='NameDiv'>
-                   <span class='UserName'><?php echo $row["st_nome_receita"] ?></span>
-                   <span class='SubName'><?php echo $row["st_nome"] ?></span>
+                   <a href="Receita.php?id_receita=<?php echo $row["id_receita"] ?>">
+                    <span class='UserName'><?php echo $row["st_nome_receita"] ?></span>
+                    <span class='SubName'><?php echo $row["st_nome"] ?></span>
+                   </a>
                </div>
            </li>
         <?php

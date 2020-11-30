@@ -31,7 +31,11 @@
         $exe = mysqli_query($link, $query);
         
         while($row = mysqli_fetch_assoc($exe)){
-            $bio = $row{'bio'};
+            $nomeUser = $row{'st_nome'};
+            $emailUser = $row{'st_email'};
+            $bio =$row{'bio'}; 
+            $image = $row['imagePerfil'];
+            
 ?>
 
 <!DOCTYPE html>
@@ -59,15 +63,15 @@
         <content>
         <div class="Name-Page">
             <?php 
-            echo 'Perfil de '.$row['st_nome'];
+            echo 'Perfil de '.$nomeUser;
             ?>
         </div>
         <div class='Card'>  
             <div class="Top">
                 <div class="Image">
                     <img id='PImage' src="<?php 
-                    if(isset($row['imagePerfil'])){
-                        echo $row['imagePerfil'];
+                    if(isset($image)){
+                        echo $image;
                     }else{
                         echo 'IMAGENS/AvatarBeta.png';
                     }
@@ -76,8 +80,8 @@
                 </div>
                 <div class='align'>
                     <div class="row" id='row1'>
-                        <input type="text" placeholder='<?php echo $row{'st_nome'}; ?>' readonly>
-                        <input type="email" placeholder='<?php echo $row{'st_email'}; ?>' readonly >
+                        <input type="text" placeholder='<?php echo $nomeUser; ?>' readonly>
+                        <input type="email" placeholder='<?php echo $emailUser; ?>' readonly >
                     </div>
                     <div class="mid">
                         <div class="infos">
@@ -146,6 +150,7 @@
         {
             while($row = mysqli_fetch_array($result))
         {
+            
             
 ?>
  <section class="card">

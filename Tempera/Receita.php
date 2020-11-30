@@ -220,7 +220,7 @@ if(!empty($_GET['id_receita'])){
                     </div>
                     <div class="col">
                         <p>Nome do autor</p>
-                        <span><?php echo $autor ?></span>
+                        <a href="PerfilUsuario.php?id= <?php echo $idAutor ?>"><span><?php echo $autor ?></span></a> 
                     </div>
                 </div>
                 

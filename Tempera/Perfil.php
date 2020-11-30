@@ -7,8 +7,8 @@
         
     };
             
-   
 
+    
     $link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
    
     if (!$link) {
@@ -33,6 +33,7 @@
             $nomeUser = $row{'st_nome'};
             $emailUser = $row{'st_email'};
             $bio =$row{'bio'}; 
+            $image = $row['imagePerfil'];
 ?>
 
 <!DOCTYPE html>
@@ -64,9 +65,9 @@
         <div class='Card'>  
             <div class="Top">
                 <div class="Image">
-                    <img id='PImage' src="<?php 
-                    if(isset($row['imagePerfil'])){
-                        echo $row['imagePerfil'];
+                <img id='PImage' src="<?php 
+                    if(isset($image)){
+                        echo $image;
                     }else{
                         echo 'IMAGENS/AvatarBeta.png';
                     }
@@ -149,7 +150,7 @@ if($result && mysqli_num_rows($result) > 0 )
                     <span class="Tag" ><?php echo $row["st_tags"];?></span>
                     
                 </div>
-                <a href="receita_teste.php?id_receita=<?php echo $row["id_receita"]?>">
+                <a href="Receita.php?id_receita=<?php echo $row["id_receita"]?>">
                 <div class="card-content">
                     <p class="titulo">
                         <b>
