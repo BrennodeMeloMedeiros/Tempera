@@ -30,6 +30,8 @@
         
         
         while($row = mysqli_fetch_assoc($exe)){
+            $nomeUser = $row{'st_nome'};
+            $emailUser = $row{'st_email'};
             $bio =$row{'bio'}; 
 ?>
 
@@ -73,8 +75,8 @@
                 </div>
                 <div class='align'>
                     <div class="row" id='row1'>
-                        <input type="text" placeholder='<?php echo $row{'st_nome'}; ?>' readonly>
-                        <input type="email" placeholder='<?php echo $row{'st_email'}; ?>' readonly >
+                        <input type="text" placeholder='<?php echo $nomeUser ?>' readonly>
+                        <input type="email" placeholder='<?php echo $emailUser; ?>' readonly >
                     </div>
                     <div class="mid">
                         <div class="infos">

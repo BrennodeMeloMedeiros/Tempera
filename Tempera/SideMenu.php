@@ -41,11 +41,6 @@
                         Sobremesas
                     </li>
                     </a>
-                    <a href="Filtrar.php?type=inscricoes">
-                    <li class='drop-item'>
-                        Inscrições
-                    </li>
-                    </a>
 
            </ul>
        </div>
@@ -131,60 +126,59 @@
 
 <!--=============================================  Aside  =============================================-->
 <aside>
-   <section class='UsersTop'>
-       <span class='User-Text blue'><strong>Top Usuários</strong></span>
+<span class='User-Text blue'><strong>Top Usuários</strong></span>
+<?php
+$link = mysqli_connect("clovis-cartola.czcbeh0esbig.us-east-1.rds.amazonaws.com", "tempera", "Tempera_123", "tempera");
+$query = "SELECT a.id_usuario, a.st_nome, a.imagePerfil, count(b.id_seguidor) AS total_seguidores 
+FROM tb_usuario a INNER JOIN tb_seguir b 
+ON a.id_usuario=b.id_usuario 
+GROUP BY a.id_usuario, a.st_nome order by count(id_seguidor) desc;";
+$result = mysqli_query($link,$query);
+if(mysqli_num_rows($result) > 0){
+
+    while($row = mysqli_fetch_array($result)){
+        ?>
+        
+<section class='UsersTop'>
        <ul class='User-List'>
            <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <span class='UserName'>Nome do Usuário</span>
-           </li>
-           <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <span class='UserName'>Nome do Usuário</span>
-           </li>
-           <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <span class='UserName'>Nome do Usuário</span>
-           </li>
-           <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <span class='UserName'>Nome do Usuário</span>
+               <img src="<?php echo $row["imagePerfil"]?>" alt = "Sem Imagem" class='TopUser'>
+               <span class='UserName'><?php echo $row["st_nome"] ?></span>
            </li>
        </ul>
    </section>
-   <section>
+
+
+        <?php
+    }
+}
+?>
+<span class='User-Text blue'><strong>Top Receitas</strong></span>
+<?php
+$query2 = "select * from tb_avaliacao as a 
+inner join tb_receita2 as b
+ON a.id_receita = b.id_receita
+inner join tb_usuario as c
+ON b.id_usuario = c.id_usuario
+ORDER BY qnt_estrela DESC limit 4 ;";
+$result = mysqli_query($link,$query2);
+if(mysqli_num_rows($result) > 0){
+
+    while($row = mysqli_fetch_array($result)){
+        ?>
+        <section>
    <section class='UsersTop'>
-       <span class='User-Text blue'><strong>Top Receitas</strong></span>
        <ul class='User-List'>
            <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
+               <img src="<?php echo $row["imagePerfil"]?>" alt = "Sem Imagem" class='TopUser'>
                <div class='NameDiv'>
-                   <span class='UserName'>Nome da Receita</span>
-                   <span class='SubName'> Nome do Usuário</span>
+                   <span class='UserName'><?php echo $row["st_nome_receita"] ?></span>
+                   <span class='SubName'><?php echo $row["st_nome"] ?></span>
                </div>
            </li>
-           <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <div class='NameDiv'>
-                   <span class='UserName'>Nome da Receita</span>
-                   <span class='SubName'> Nome do Usuário</span>
-               </div>
-           </li>
-           <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <div class='NameDiv'>
-                   <span class='UserName'>Nome da Receita</span>
-                   <span class='SubName'> Nome do Usuário</span>
-               </div>
-           </li>
-           <li class='User'>
-               <img src='IMAGENS/AvatarBeta.png' class='TopUser'>
-               <div class='NameDiv'>
-                   <span class='UserName'>Nome da Receita</span>
-                   <span class='SubName'> Nome do Usuário</span>
-               </div>
-           </li>
-       </ul>
-   </section>
+        <?php
+    }
+}
+?>
 </aside>
 <!--=============================================  Aside  =============================================-->

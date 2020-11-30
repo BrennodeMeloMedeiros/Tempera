@@ -267,6 +267,10 @@ aside{
     height: min-content;
 
 }
+li.User{
+    display: flex;
+    align-items: center;
+}
 .UsersTop{
     display: flex;
     flex-direction: column;
@@ -281,12 +285,26 @@ aside{
     margin-top: 15px;
 }
 .TopUser{
-    width:2rem ;
-    height: auto;
+
+    width:2rem;
+    height: 2rem; 
+
+    margin: 0;
+    margin-right:5px;
+
+    left:5px;
+
+    border-radius:50%;
+    background-size: cover;
+
 }
 .UserName{
-    font-size:0.6rem;
+    width: 100%;
 
+    margin:0;
+    
+    font-size:0.6rem;
+    font-weight: bold;
 }
 .User{
     display:flex;
