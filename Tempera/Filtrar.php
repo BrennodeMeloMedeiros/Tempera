@@ -13,6 +13,8 @@ if($type =='Tag'){
 }else if($type == 'search'){
     $search = $_POST['searchInput'];
     header('location:Home.php?search='.$search);
+}else if($type == 'inscricoes'){
+    header('location:Home.php?inscri=true');
 }else{
     header('location:Home.php');
 }

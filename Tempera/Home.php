@@ -47,13 +47,13 @@
                 Página Inicial
             </div>
             <?php
+    
     $id = $_SESSION['id_usuario'];
     if(isset($_GET['Tag']) ){
-        $query = "SELECT * FROM tb_receita2 as a 
+        $query = "SELECT *,  case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao FROM tb_receita2 as a 
         inner join tb_usuario as b
         ON a.id_usuario = b.id_usuario
         where st_tags ='{$_GET['Tag']}'";
-
 
     }else if(isset($_GET['type']) && $_GET['type'] == 'Filtrar'){
     
@@ -82,16 +82,28 @@
     }else if(isset($_GET['search'])){
         $search = $_GET['search'];
         $query = "
-        select a.*,c.st_nomeIngrediente, d.st_nome,
-        case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao
-        from tb_receita2 as a inner join tb_receita_ingrediente as b ON a.id_receita = b.id_receita inner join tb_ingrediente as c ON b.id_ingrediente = c.id_ingrediente inner join tb_usuario as d ON a.id_usuario = d.id_usuario 
-        where a.st_descricao LIKE '%$search%' OR a.st_nome_receita LIKE '%$search%' OR a.st_tags LIKE '%$search%' OR c.st_nomeIngrediente LIKE '%$search%' OR d.st_nome LIKE '%$search%'
+
+        select a.*, d.st_nome, 
+        case when round((select avg(qnt_estrela) 
+            from tb_avaliacao av where av.id_receita = a.id_receita )) 
+            is null then 0 else round((select avg(qnt_estrela) 
+            from tb_avaliacao av where av.id_receita = a.id_receita )) 
+            end as media_avaliacao 
+        from tb_receita2 as a 
+            inner join tb_receita_ingrediente as b 
+                ON a.id_receita = b.id_receita 
+            inner join tb_ingrediente as c 
+                ON b.id_ingrediente = c.id_ingrediente 
+            inner join tb_usuario as d 
+                ON a.id_usuario = d.id_usuario 
+            where a.st_descricao LIKE '%$search%' OR a.st_nome_receita LIKE '%$search%' OR a.st_tags LIKE '%$search%' OR c.st_nomeIngrediente LIKE '%$search%' OR d.st_nome LIKE '%A%'
+            GROUP BY id_receita;
       ";
     }else if(isset($_GET['show'])){
         $show = $_GET['show'];
         if($show == 'historico'){
             $query = "
-            SELECT DISTINCT b.*, c.st_nome FROM tb_historico as a
+            SELECT DISTINCT b.*, c.st_nome, case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao FROM tb_historico as a
             inner join tb_receita2 as b
                 ON a.id_receita = b.id_receita 
             inner join tb_usuario as c
@@ -108,6 +120,14 @@
             ";
         };
 
+    }else if(!empty($_GET['inscri'])){
+            $query = "
+            select *, case when round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) is null then 0 else round((select avg(qnt_estrela) from tb_avaliacao av where av.id_receita = a.id_receita )) end as media_avaliacao
+from tb_receita2 as a 
+inner join tb_usuario as b 
+    ON a.id_usuario = b.id_usuario
+WHERE a.id_usuario IN (SELECT id_usuario from tb_seguir where id_seguidor = $id);
+            ";
     }else{
         $query = "SELECT *, 
         case when round((select avg(qnt_estrela) from tb_avaliacao av

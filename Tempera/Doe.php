@@ -61,7 +61,7 @@ if (!$link) {
          while($row = mysqli_fetch_assoc($exe)){
             echo 
             "<section class='Ong-Painel'>
-            <p>".$row['st_nome']."</p>  
+            <p id='title'>".$row['st_nome']."</p>  
             <div class='Ong-Text'>
                <p> ".utf8_encode($row['st_descricao'])."</p>
             </div>
