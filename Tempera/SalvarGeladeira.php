@@ -36,6 +36,7 @@ if (!$link) {
     }else{
         header('location:Geladeira.php');
     }
+    header('location:Geladeira.php');
 }
 
 ?>

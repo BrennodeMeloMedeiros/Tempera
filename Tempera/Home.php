@@ -117,7 +117,7 @@
                 ON ava.id_usuario = user.id_usuario
             inner join tb_receita2 as recei
                 ON ava.id_receita = recei.id_receita
-            where ava.id_usuario = 18 AND qnt_estrela > 3;
+            where ava.id_usuario = {$id} AND qnt_estrela > 3;
             ";
         };
 

@@ -41,6 +41,11 @@
                         Sobremesas
                     </li>
                     </a>
+                    <a href="Filtrar.php?type=inscricoes">
+                    <li class='drop-item'>
+                        Inscrições
+                    </li>
+                    </a>
 
            </ul>
        </div>
