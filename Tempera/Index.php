@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <!DOCTYPE html>
 <?php
     require_once 'CLASSES/usuarios.php';
@@ -87,11 +84,7 @@ if (isset($_POST["RegisterName"]))
                 }
                 else
                 {
-                    ?>
-                   <script>
-                      Email2Error();
-                 </script>
-                    <?php
+                    // Se o cadastro der errado
                 }
             }
             else
@@ -140,11 +133,7 @@ if (isset($_POST['LoginEmail']))
             }
             else
             {
-            ?> 
-            <script>
-                    EmailError();
-            </script>
-            <?php 
+                // Se não conseguir cadastrar o Login
             }
         }
         else
