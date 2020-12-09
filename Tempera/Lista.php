@@ -49,7 +49,7 @@ $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario
         <div id="Button">
                 <!-- O PRIMEIRO BOTÃO MANDA AS IFNORMAÇÕES PARA A PÁGINA 'SALVAR.PHP', ENQUANTO A SEGUNDA MANDA PARA A PÁGINA 'EXPORTAR.PHP', AMBAS RECEBEM AS MESMAS INFORMAÇÕES -->
                 <button class="Blue-Button" form="formList">Salvar Lista de compras</button>
-                <button class="Blue-Button" form="formList" formaction='Exportar.php?Page=Lista-Exportar' >Exportar para a Geladeira</button>
+                <button class="Blue-Button" form="formList" formaction='Exportar.php?Page=Lista-Exportar'>Exportar para a Geladeira</button>
             </div>
         
             <div class="List-Text blue">
@@ -77,7 +77,7 @@ $queryUser = "SELECT * from tb_usuario where id_usuario = {$_SESSION['id_usuario
                          exit;
                      }else {
                          
-                         $id = $_SESSION['id_usuario'];
+                        $id = $_SESSION['id_usuario'];
                         $query = "select * from tb_lista where id_usuario = {$id}";
                         $result = mysqli_query($link,$query);
                         if(mysqli_num_rows($result) > 0){

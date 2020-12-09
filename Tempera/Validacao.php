@@ -10,7 +10,7 @@
                 exit;
             }else{
 
-            $getUsuarios = 'select * from tb_ingrediente';
+            $getUsuarios = 'select * from tb_ingrediente group by st_nomeIngrediente';
             $executeLine = mysqli_query($conecta, $getUsuarios);
 
             ?> 
